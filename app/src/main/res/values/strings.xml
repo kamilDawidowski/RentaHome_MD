@@ -1,0 +1,30 @@
+<resources>
+    <string name="app_name">RentHome</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="hint_username">Username</string>
+    <string name="hint_password">Password</string>
+    <string name="Login">Login</string>
+    <string name="Explore">Explore</string>
+    <string name="Offer">Offer</string>
+    <string name="Map">Map</string>
+    <string name="Profile">Profile</string>
+    <string name="Sign_up">Sign Up</string>
+    <string name="search">search</string>
+    <string name="content_description_search">content_description_search</string>
+    <string name="more">more</string>
+    <string name="content_description_more">content_description_more</string>
+    <string name="language">Language</string>
+    <string name="mode">Mode</string>
+    <string name="language_is_changed">Language is changed</string>
+    <string name="mode_is_changed">Mode is changed</string>
+    <string name="mode_is_changed_dark">Mode is chanched to Dark</string>
+    <string name="mode_is_changed_light">Mode is changed to Light</string>
+    <string name="register">Register</string>
+    <string name="do_you_have_an_account">Do you have an  account ?</string>
+    <string name="helper_text">Password must have 6 chars!</string>
+    <string name="hint_email">Email</string>
+    <string name="don_t_have_an_account">Do not have an account ?</string>
+    <string name="confirm_password">Confirm Password</string>
+    <string name="Password">Password</string>
+</resources>
