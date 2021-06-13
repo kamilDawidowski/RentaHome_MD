@@ -9,7 +9,7 @@
         android:id="@+id/menuOffer"
         android:enabled="true"
         android:icon="@drawable/ic_message"
-        android:title="@string/Offer"/>
+        android:title="@string/Reservation"/>
     <item
         android:id="@+id/menuMap"
         android:enabled="true"

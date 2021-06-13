@@ -18,12 +18,8 @@
             app:popEnterAnim="@anim/nav_default_pop_enter_anim"
             app:popExitAnim="@anim/nav_default_pop_exit_anim" />
         <action
-            android:id="@+id/action_loginFragment_to_offerFragment"
-            app:destination="@id/offerFragment"
-            app:enterAnim="@anim/nav_default_enter_anim"
-            app:exitAnim="@anim/nav_default_exit_anim"
-            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
-            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+            android:id="@+id/action_loginFragment_to_exploreFragment"
+            app:destination="@id/exploreFragment" />
     </fragment>
     <fragment
         android:id="@+id/regiserFragment"
@@ -44,8 +40,17 @@
         android:label="fragment_map"
         tools:layout="@layout/fragment_map" />
     <fragment
-        android:id="@+id/offerFragment"
-        android:name="wat.mobilne.renthome.afterLogin.explore.OfferFragment"
-        android:label="fragment_offer"
-        tools:layout="@layout/fragment_offer" />
+        android:id="@+id/exploreFragment"
+        android:name="wat.mobilne.renthome.afterLogin.explore.ExploreFragment"
+        android:label="fragment_explore"
+        tools:layout="@layout/fragment_explore" />
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="wat.mobilne.renthome.afterLogin.profile.ProfileFragment"
+        android:label="fragment_profile"
+        tools:layout="@layout/fragment_profile" />
+    <fragment
+        android:id="@+id/reservationFragment"
+        android:name="wat.mobilne.renthome.afterLogin.reservation.ReservationFragment"
+        android:label="ReservationFragment" />
 </navigation>

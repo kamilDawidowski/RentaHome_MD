@@ -1,4 +1,4 @@
-package wat.mobilne.renthome.afterLogin.offer
+package wat.mobilne.renthome.afterLogin.reservation
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -7,7 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import wat.mobilne.renthome.R
 
-class OfferFragment : Fragment() {
+class ReservationFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -21,7 +21,7 @@ class OfferFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_offer, container, false)
+        return inflater.inflate(R.layout.fragment_reservation, container, false)
     }
 
 

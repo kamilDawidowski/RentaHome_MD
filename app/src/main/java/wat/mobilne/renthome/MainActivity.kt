@@ -21,9 +21,13 @@ import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.setupActionBarWithNavController
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.badge.BadgeDrawable
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.fragment_explore.*
+import wat.mobilne.renthome.adapter.AdapterExplore
+import wat.mobilne.renthome.afterLogin.explore.ItemData
 
 class MainActivity : AppCompatActivity() {
     private lateinit var navController: NavController
@@ -38,6 +42,9 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+
+
 
 
         // Ustawaiamy nasz Acitivity jak tło
@@ -131,6 +138,7 @@ class MainActivity : AppCompatActivity() {
 
 
     }
+
 
 
 

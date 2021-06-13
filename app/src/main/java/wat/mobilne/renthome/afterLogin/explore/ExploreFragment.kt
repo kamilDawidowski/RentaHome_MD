@@ -1,33 +1,36 @@
 package wat.mobilne.renthome.afterLogin.explore
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.recyclerview.widget.LinearLayoutManager
+import kotlinx.android.synthetic.main.fragment_explore.*
 import wat.mobilne.renthome.R
+import wat.mobilne.renthome.adapter.AdapterExplore
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
+class ExploreFragment : Fragment(),AdapterExplore.OnItemClickListener {
 
-/**
- * A simple [Fragment] subclass.
- * Use the [ExploreFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
-class ExploreFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
+
         }
+    }
+
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+// Przykładowa lista dla elementów
+        val offers = generateDummyList(3)
+        recyclerView.adapter = AdapterExplore(offers,this)
+        recyclerView.layoutManager = LinearLayoutManager(context)
+        recyclerView.setHasFixedSize(true)
+
     }
 
     override fun onCreateView(
@@ -38,23 +41,22 @@ class ExploreFragment : Fragment() {
         return inflater.inflate(R.layout.fragment_explore, container, false)
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment ExploreFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            ExploreFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
+    override fun onItemClick(position: Int, currentItem:ItemData) {
+        Toast.makeText(context, "fff" , Toast.LENGTH_SHORT).show()
     }
+
+}
+// Generowanie przykładowych elementów
+private fun generateDummyList(size: Int): List<ItemData> {
+    val list = ArrayList<ItemData>()
+    for (i in 0 until size) {
+        val drawable = when (i % 3) {
+            0 -> R.drawable.ic_profile
+            1 -> R.drawable.ic_map
+            else -> R.drawable.ic_explore
+        }
+        val item = ItemData(drawable, 4, "Line 2","ddd",5.0,5.0)
+        list += item
+    }
+    return list
 }

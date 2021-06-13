@@ -27,4 +27,5 @@
     <string name="don_t_have_an_account">Do not have an account ?</string>
     <string name="confirm_password">Confirm Password</string>
     <string name="Password">Password</string>
+    <string name="Reservation">Reservation</string>
 </resources>

@@ -37,7 +37,7 @@ class LoginFragment : Fragment() {
 
             // Przekierowanie do Oferty
             Toast.makeText(context,inputUsername.text ,Toast.LENGTH_SHORT).show();
-            val action = LoginFragmentDirections.actionLoginFragmentToOfferFragment()
+            val action = LoginFragmentDirections.actionLoginFragmentToExploreFragment()
             findNavController().navigate(action)
 
 
