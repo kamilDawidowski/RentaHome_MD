@@ -28,8 +28,6 @@ import kotlinx.android.synthetic.main.activity_main.*
 class MainActivity : AppCompatActivity() {
     private lateinit var navController: NavController
 
-
-
     @Override
     override fun onCreateView(name: String, context: Context, attrs: AttributeSet): View? {
 
