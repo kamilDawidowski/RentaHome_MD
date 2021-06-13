@@ -43,7 +43,11 @@
         android:id="@+id/exploreFragment"
         android:name="wat.mobilne.renthome.afterLogin.explore.ExploreFragment"
         android:label="fragment_explore"
-        tools:layout="@layout/fragment_explore" />
+        tools:layout="@layout/fragment_explore" >
+        <action
+            android:id="@+id/action_exploreFragment_to_itemDetailFragment"
+            app:destination="@id/itemDetailFragment" />
+    </fragment>
     <fragment
         android:id="@+id/profileFragment"
         android:name="wat.mobilne.renthome.afterLogin.profile.ProfileFragment"
@@ -53,4 +57,25 @@
         android:id="@+id/reservationFragment"
         android:name="wat.mobilne.renthome.afterLogin.reservation.ReservationFragment"
         android:label="ReservationFragment" />
+    <fragment
+        android:id="@+id/itemDetailFragment"
+        android:name="wat.mobilne.renthome.afterLogin.explore.exploreItemDetail.ItemDetailFragment"
+        android:label="fragment_item_detail"
+        tools:layout="@layout/fragment_item_detail" >
+        <action
+            android:id="@+id/action_itemDetailFragment_to_itemReservationDetailFragment"
+            app:destination="@id/itemReservationDetailFragment" />
+        <action
+            android:id="@+id/action_itemDetailFragment_to_exploreFragment"
+            app:destination="@id/exploreFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/itemReservationDetailFragment"
+        android:name="wat.mobilne.renthome.afterLogin.explore.exploreItemDetail.ItemReservationDetailFragment"
+        android:label="fragment_item_reservation_detail"
+        tools:layout="@layout/fragment_item_reservation_detail" >
+        <action
+            android:id="@+id/action_itemReservationDetailFragment_to_exploreFragment"
+            app:destination="@id/exploreFragment" />
+    </fragment>
 </navigation>

@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.fragment_explore.*
 import wat.mobilne.renthome.R
@@ -43,6 +44,9 @@ class ExploreFragment : Fragment(),AdapterExplore.OnItemClickListener {
 
     override fun onItemClick(position: Int, currentItem:ItemData) {
         Toast.makeText(context, "fff" , Toast.LENGTH_SHORT).show()
+        val action = ExploreFragmentDirections.actionExploreFragmentToItemDetailFragment()
+        findNavController().navigate(action)
+
     }
 
 }
