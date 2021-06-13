@@ -7,9 +7,15 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
+import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
+import com.wat.rentahome.models.Registration
 import kotlinx.android.synthetic.main.fragment_regiser.*
+import kotlinx.android.synthetic.main.fragment_regiser.inputPassword
+import okhttp3.Credentials
+import wat.mobilne.renthome.MainActivity
 import wat.mobilne.renthome.R
+import wat.mobilne.renthome.utils.Preferences
 import wat.mobilne.renthome.withoutLogin.login.LoginFragmentDirections
 
 
@@ -29,31 +35,51 @@ class RegiserFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        //Przycisk Reestracji
-        var btnRegister = view.findViewById(R.id.button_Register) as Button;
-        btnRegister.setOnClickListener() {
-            //Dane po wprowadzeniu do autoryzacji
-            inpuUsername.text
-            inputEmail.text
-            inputPassword.text
-            inputPasswordConfirm.text
+        observeRegister()
 
-            // Nawigacja
-            val action = RegiserFragmentDirections.actionRegiserFragmentToLoginFragment()
-            findNavController().navigate(action)
-
-        }
-        // Przycisk Powrotu do logowania
-        var btnLogin = view.findViewById(R.id.btnBacktoLogin) as TextView;
-        btnLogin.setOnClickListener() {
-            //Nawigacja
-            val action = RegiserFragmentDirections.actionRegiserFragmentToLoginFragment()
-            findNavController().navigate(action)
+        button_Register.setOnClickListener() {
+            onRegisterButtonClick()
         }
 
-
-
+        btnToLogin.setOnClickListener() {
+            onButtonToLoginClick()
+        }
         super.onViewCreated(view, savedInstanceState)
+    }
+
+    private fun onButtonToLoginClick() {
+        navigateToLogin()
+    }
+
+    private fun onRegisterButtonClick() {
+        tryRegister()
+    }
+
+    private fun navigateToLogin() {
+        val action = RegiserFragmentDirections.actionRegiserFragmentToLoginFragment()
+        findNavController().navigate(action)
+    }
+
+    private fun observeRegister() {
+        val mainActivity = activity as MainActivity
+        mainActivity.viewModel.registerResponse.observe(mainActivity, Observer { response ->
+            if (response.isSuccessful) {
+                navigateToLogin()
+            } else {
+                // #TODO: Handle server exception
+            }
+        })
+    }
+
+    private fun tryRegister() {
+        val mainActivity = activity as MainActivity
+        val registrationData = Registration(
+            inpuUsername.text.toString(),
+            inpuUsername.text.toString(),
+            inpuUsername.text.toString(),
+            inputEmail.text.toString(),
+            inputPassword.text.toString())
+        mainActivity.viewModel.register(registrationData)
     }
 
 
