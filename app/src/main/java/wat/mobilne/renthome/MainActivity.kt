@@ -17,6 +17,8 @@ import androidx.fragment.app.Fragment
 
 import wat.mobilne.renthome.withoutLogin.login.LoginFragment
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.fragment.findNavController
@@ -24,13 +26,22 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.badge.BadgeDrawable
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.wat.rentahome.MainViewModel
+import com.wat.rentahome.MainViewModelFactory
+import com.wat.rentahome.models.Offer
+import com.wat.rentahome.repository.Repository
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_explore.*
 import wat.mobilne.renthome.adapter.AdapterExplore
 import wat.mobilne.renthome.afterLogin.explore.ItemData
+import wat.mobilne.renthome.utils.Preferences
 
 class MainActivity : AppCompatActivity() {
     private lateinit var navController: NavController
+    lateinit var viewModel: MainViewModel
+        private set
+
+    var offers : List<Offer>? = null
 
     @Override
     override fun onCreateView(name: String, context: Context, attrs: AttributeSet): View? {
@@ -39,13 +50,11 @@ class MainActivity : AppCompatActivity() {
         return super.onCreateView(name, context, attrs)
     }
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-
-
-
+        Preferences.setup(applicationContext)
+        initViewModel()
+        observeOffers()
 
         // Ustawaiamy nasz Acitivity jak tło
         setContentView(R.layout.activity_main)
@@ -139,7 +148,21 @@ class MainActivity : AppCompatActivity() {
 
     }
 
+    private fun initViewModel(){
+        val repository = Repository()
+        val viewModelFactory = MainViewModelFactory(repository)
+        viewModel = ViewModelProvider(this, viewModelFactory).get(MainViewModel::class.java)
+    }
 
 
-
+    private fun observeOffers() {
+        viewModel.offersResponse.observe(this, Observer { response ->
+            if (response.isSuccessful) {
+                offers = response.body()
+                viewModel.getOffers()
+            } else {
+                // #TODO: Handle server exception
+            }
+        })
+    }
 }
