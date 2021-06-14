@@ -44,8 +44,8 @@ class ItemDetailFragment : Fragment() {
 
 
         btnCancel.setOnClickListener {
-            val action=ItemDetailFragmentDirections.actionItemDetailFragmentToExploreFragment()
-            findNavController().navigate(action)
+//            val action=ItemDetailFragmentDirections.actionItemDetailFragmentToExploreFragment()
+//            findNavController().navigate(action)
         }
     }
 

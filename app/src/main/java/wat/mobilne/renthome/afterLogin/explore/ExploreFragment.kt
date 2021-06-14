@@ -37,39 +37,38 @@ class ExploreFragment : Fragment(),AdapterExplore.OnItemClickListener {
             findNavController().navigate(action)
             Toast.makeText(
                 context,
-               "sss",
+                "sss",
+                Toast.LENGTH_SHORT
+            ).show();
+        }
+
+        floating_action_button_mapa.setOnClickListener {
+
+            findNavController().navigate(R.id.profileFragment)
+            Toast.makeText(
+                context,
+                "ddd",
                 Toast.LENGTH_SHORT
             ).show();
 
-            floating_action_button_mapa.setOnClickListener {
-                val action = ExploreFragmentDirections.actionExploreFragmentToMapFragment()
-                findNavController().navigate(action)
-                Toast.makeText(
-                    context,
-                    "ddd",
-                    Toast.LENGTH_SHORT
-                ).show();
-
-            }
-
-            floating_action_button_profile.setOnClickListener {
-                val action = ExploreFragmentDirections.actionExploreFragmentToProfileFragment()
-                findNavController().navigate(action)
-                Toast.makeText(
-                    context,
-                    "dd",
-                    Toast.LENGTH_SHORT
-                ).show();
-
-            }
-
-
-
-
-
         }
 
+        floating_action_button_profile.setOnClickListener {
+//                val action = ExploreFragmentDirections.actionExploreFragmentToProfileFragment()
+//                findNavController().navigate(action)
+            Toast.makeText(
+                context,
+                "dd",
+                Toast.LENGTH_SHORT
+            ).show();
+        }
     }
+
+
+
+
+
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
