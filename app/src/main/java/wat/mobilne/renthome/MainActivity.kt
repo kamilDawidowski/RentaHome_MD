@@ -60,10 +60,6 @@ class MainActivity : AppCompatActivity() {
             supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
         val navController = navHostFragment.navController
 
-        /// badge
-
-        //
-
         topAppBar.setOnMenuItemClickListener { menuItem ->
             when (menuItem.itemId) {
                 id.language -> {
