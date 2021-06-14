@@ -23,7 +23,7 @@ interface BasicApi {
     suspend fun getReservations(): Response<List<Reservation>>
 
     @POST("offer")
-    suspend fun createOffer(offer: Offer): Response<Offer>
+    suspend fun createOffer(@Body offer: Offer): Response<Offer>
 
     @PUT("user")
     suspend fun updateUser(

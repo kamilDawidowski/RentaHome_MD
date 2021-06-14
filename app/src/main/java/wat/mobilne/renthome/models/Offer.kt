@@ -9,5 +9,5 @@ data class Offer(
     val latitude: Double,
     val longitude: Double,
     val price: Double,
-    val dateOfCreate: Date
+    val dateOfCreate: Date?
 )
