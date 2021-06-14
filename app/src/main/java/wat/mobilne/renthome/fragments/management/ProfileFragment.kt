@@ -1,18 +1,22 @@
 package wat.mobilne.renthome.fragments.management
 
+import android.content.Intent
+import android.graphics.Bitmap
 import android.os.Bundle
+import android.provider.MediaStore
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import kotlinx.android.synthetic.main.fragment_profile.*
 import wat.mobilne.renthome.MainActivity
 import wat.mobilne.renthome.R
 import wat.mobilne.renthome.utils.Preferences
-
+private const val REQUESTE_CODE=42
 class ProfileFragment : Fragment() {
 
 
@@ -34,16 +38,21 @@ class ProfileFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         // ustawienia danych użytkytkownika
         setData()
-        buttonConfirmChange.visibility=View.INVISIBLE
+        buttonConfirmChange.visibility = View.INVISIBLE
 
         btnUpdateProfile.setOnClickListener {
             showEditInputs()
         }
+        btnAddPhoto.setOnClickListener {
+            val takePictureIntent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
+            startActivityForResult(takePictureIntent, 123)
+        }
 
         btnChangePassword.setOnClickListener {
-            val action =ProfileFragmentDirections.actionProfileFragmentToChangePasswordFragment()
-            findNavController().navigate(action)
+//            val action = ProfileFragmentDirections.actionProfileFragmentToChangePasswordFragment()
+//            findNavController().navigate(action)
         }
+
 
         buttonConfirmChange.setOnClickListener {
 
@@ -52,8 +61,7 @@ class ProfileFragment : Fragment() {
             chEmail.text
             chName.text
             chSurname.text
-           /////
-
+            /////
 
 
         }
@@ -71,19 +79,19 @@ class ProfileFragment : Fragment() {
     }
 
     private fun showEditInputs() {
-        chUsername.visibility=View.VISIBLE
-        chEmail.visibility=View.VISIBLE
-        chName.visibility=View.VISIBLE
-        chSurname.visibility=View.VISIBLE
-        buttonConfirmChange.visibility=View.VISIBLE
+        chUsername.visibility = View.VISIBLE
+        chEmail.visibility = View.VISIBLE
+        chName.visibility = View.VISIBLE
+        chSurname.visibility = View.VISIBLE
+        buttonConfirmChange.visibility = View.VISIBLE
     }
 
     private fun hideEditInputs() {
-        chUsername.visibility=View.INVISIBLE
-        chEmail.visibility=View.INVISIBLE
-        chName.visibility=View.INVISIBLE
-        chSurname.visibility=View.INVISIBLE
-        buttonConfirmChange.visibility=View.INVISIBLE
+        chUsername.visibility = View.INVISIBLE
+        chEmail.visibility = View.INVISIBLE
+        chName.visibility = View.INVISIBLE
+        chSurname.visibility = View.INVISIBLE
+        buttonConfirmChange.visibility = View.INVISIBLE
     }
 
     private fun changeData() {
@@ -105,6 +113,18 @@ class ProfileFragment : Fragment() {
     private fun updateUser(username: String, description: String) {
         val mainActivity = activity as MainActivity
         mainActivity.viewModel.updateUser(username, description)
+    }
+
+    public override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if(requestCode==123)
+        {
+            var bmp=data?.extras?.get("data") as Bitmap
+            profileImage.setImageBitmap(bmp)
+
+        }
+
+
     }
 }
 
