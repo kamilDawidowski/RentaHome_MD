@@ -10,11 +10,8 @@ import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
-import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.NavController
-import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
 import com.wat.rentahome.MainViewModel
 import com.wat.rentahome.MainViewModelFactory
@@ -22,9 +19,6 @@ import com.wat.rentahome.models.Offer
 import com.wat.rentahome.repository.Repository
 import kotlinx.android.synthetic.main.activity_main.*
 import wat.mobilne.renthome.R.*
-import wat.mobilne.renthome.afterLogin.explore.ExploreFragment
-import wat.mobilne.renthome.afterLogin.profile.ProfileFragment
-import wat.mobilne.renthome.afterLogin.reservation.ReservationFragment
 import wat.mobilne.renthome.utils.Preferences
 import java.util.*
 
@@ -44,25 +38,28 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         Preferences.setup(applicationContext)
+
+        // Prepare repository and API for calls to backend.
         initViewModel()
+
+        // Set observer to wait for offers.
         observeOffers()
+
+        // Load preferred language.
         loadLocate()
+
         setContentView(layout.activity_main)
         var flag = true;
         var flagLanguage = true;
         hideBootomMenu()
 
 
-        //
         changeIconNuberReservation(8)
 
         val navHostFragment =
             supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
         val navController = navHostFragment.navController
 
-        /// badge
-
-        //
 
         topAppBar.setOnMenuItemClickListener { menuItem ->
             when (menuItem.itemId) {

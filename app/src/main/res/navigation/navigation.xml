@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/loginFragment"
-        android:name="wat.mobilne.renthome.withoutLogin.login.LoginFragment"
+        android:name="wat.mobilne.renthome.fragments.management.LoginFragment"
         android:label="fragment_login"
         tools:layout="@layout/fragment_login" >
         <action
@@ -26,17 +26,17 @@
     </fragment>
     <fragment
         android:id="@+id/regiserFragment"
-        android:name="wat.mobilne.renthome.withoutLogin.register.RegiserFragment"
+        android:name="wat.mobilne.renthome.fragments.management.RegiserFragment"
         android:label="fragment_regiser"
         tools:layout="@layout/fragment_regiser" />
     <fragment
         android:id="@+id/mapFragment"
-        android:name="wat.mobilne.renthome.afterLogin.map.MapFragment"
+        android:name="wat.mobilne.renthome.fragments.MapFragment"
         android:label="fragment_map"
         tools:layout="@layout/fragment_map" />
     <fragment
         android:id="@+id/exploreFragment"
-        android:name="wat.mobilne.renthome.afterLogin.explore.ExploreFragment"
+        android:name="wat.mobilne.renthome.fragments.offer.ExploreFragment"
         android:label="fragment_explore"
         tools:layout="@layout/fragment_explore" >
         <action
@@ -50,7 +50,7 @@
     </fragment>
     <fragment
         android:id="@+id/profileFragment"
-        android:name="wat.mobilne.renthome.afterLogin.profile.ProfileFragment"
+        android:name="wat.mobilne.renthome.fragments.management.ProfileFragment"
         android:label="fragment_profile"
         tools:layout="@layout/fragment_profile" >
         <action
@@ -60,7 +60,7 @@
     </fragment>
     <fragment
         android:id="@+id/itemDetailFragment"
-        android:name="wat.mobilne.renthome.afterLogin.explore.exploreItemDetail.ItemDetailFragment"
+        android:name="wat.mobilne.renthome.fragments.offer.ItemDetailFragment"
         android:label="fragment_item_detail"
         tools:layout="@layout/fragment_item_detail" >
         <action
@@ -90,7 +90,7 @@
     </fragment>
     <fragment
         android:id="@+id/itemReservationDetailFragment"
-        android:name="wat.mobilne.renthome.afterLogin.explore.exploreItemDetail.ItemReservationDetailFragment"
+        android:name="wat.mobilne.renthome.fragments.reservation.ItemReservationDetailFragment"
         android:label="fragment_item_reservation_detail"
         tools:layout="@layout/fragment_item_reservation_detail" >
         <argument
@@ -99,17 +99,17 @@
     </fragment>
     <fragment
         android:id="@+id/changePasswordFragment"
-        android:name="wat.mobilne.renthome.afterLogin.profile.ChangePasswordFragment"
+        android:name="wat.mobilne.renthome.fragments.management.ChangePasswordFragment"
         android:label="fragment_change_password"
         tools:layout="@layout/fragment_change_password" />
     <fragment
         android:id="@+id/reservationFragment"
-        android:name="wat.mobilne.renthome.afterLogin.reservation.ReservationFragment"
+        android:name="wat.mobilne.renthome.fragments.reservation.ReservationFragment"
         android:label="fragment_reservation"
         tools:layout="@layout/fragment_reservation" />
     <fragment
         android:id="@+id/addOfferFragment"
-        android:name="wat.mobilne.renthome.afterLogin.addNewOffer.AddOfferFragment"
+        android:name="wat.mobilne.renthome.fragments.offer.AddOfferFragment"
         android:label="fragment_add_offer"
         tools:layout="@layout/fragment_add_offer" />
 </navigation>

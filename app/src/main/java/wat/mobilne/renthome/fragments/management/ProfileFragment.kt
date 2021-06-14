@@ -1,4 +1,4 @@
-package wat.mobilne.renthome.afterLogin.profile
+package wat.mobilne.renthome.fragments.management
 
 import android.os.Bundle
 import android.util.Log
@@ -6,15 +6,12 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
-import kotlinx.android.synthetic.main.fragment_item_reservation_detail.*
 import kotlinx.android.synthetic.main.fragment_profile.*
 import wat.mobilne.renthome.MainActivity
 import wat.mobilne.renthome.R
 import wat.mobilne.renthome.utils.Preferences
-import wat.mobilne.renthome.withoutLogin.login.LoginFragmentDirections
 
 class ProfileFragment : Fragment() {
 

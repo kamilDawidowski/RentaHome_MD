@@ -1,22 +1,17 @@
-package wat.mobilne.renthome.afterLogin.reservation
+package wat.mobilne.renthome.fragments.reservation
 
 import android.annotation.SuppressLint
-import android.graphics.Color
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import kotlinx.android.synthetic.main.fragment_item_reservation_detail.*
-import kotlinx.android.synthetic.main.fragment_list_item_reservation.*
 import kotlinx.android.synthetic.main.fragment_reservation.*
 import wat.mobilne.renthome.R
 import wat.mobilne.renthome.adapter.AdapterReservation
-import wat.mobilne.renthome.afterLogin.explore.ExploreFragmentDirections
-import wat.mobilne.renthome.afterLogin.explore.ItemData
+import wat.mobilne.renthome.models.ItemDataReservation
 
 
 class ReservationFragment : Fragment(),AdapterReservation.OnItemClickListener  {

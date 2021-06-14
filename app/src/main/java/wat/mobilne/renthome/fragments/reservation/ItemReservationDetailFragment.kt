@@ -1,18 +1,15 @@
-package wat.mobilne.renthome.afterLogin.explore.exploreItemDetail
+package wat.mobilne.renthome.fragments.reservation
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.google.android.material.datepicker.MaterialDatePicker
-import kotlinx.android.synthetic.main.fragment_item_detail.*
 import kotlinx.android.synthetic.main.fragment_item_reservation_detail.*
 import wat.mobilne.renthome.R
-import java.util.*
 
 
 class ItemReservationDetailFragment : Fragment() {

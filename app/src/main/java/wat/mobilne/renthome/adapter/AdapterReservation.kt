@@ -5,10 +5,9 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.fragment_list_item_reservation.view.*
-import kotlinx.android.synthetic.main.fragment_profile.view.*
 import wat.mobilne.renthome.R
-import wat.mobilne.renthome.afterLogin.reservation.ItemDataReservation
-import wat.mobilne.renthome.afterLogin.reservation.ReservationFragment
+import wat.mobilne.renthome.models.ItemDataReservation
+import wat.mobilne.renthome.fragments.reservation.ReservationFragment
 
 class AdapterReservation(
 

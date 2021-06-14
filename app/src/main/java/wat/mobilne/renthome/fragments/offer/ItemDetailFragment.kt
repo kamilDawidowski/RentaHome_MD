@@ -1,4 +1,4 @@
-package wat.mobilne.renthome.afterLogin.explore.exploreItemDetail
+package wat.mobilne.renthome.fragments.offer
 
 import android.location.Geocoder
 import android.os.Bundle

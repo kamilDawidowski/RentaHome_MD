@@ -1,4 +1,4 @@
-package wat.mobilne.renthome.afterLogin.profile
+package wat.mobilne.renthome.fragments.management
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment

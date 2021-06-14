@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     style="@style/Theme.RentHome"
-    tools:context=".withoutLogin.login.LoginFragment">
+    tools:context=".fragments.management.LoginFragment">
 
 
     <ImageView

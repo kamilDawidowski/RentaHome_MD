@@ -9,7 +9,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.wat.rentahome.models.Offer
 import kotlinx.android.synthetic.main.list_item_explore.view.*
 import wat.mobilne.renthome.R
-import wat.mobilne.renthome.afterLogin.explore.ItemData
 
 class AdapterExplore (
 

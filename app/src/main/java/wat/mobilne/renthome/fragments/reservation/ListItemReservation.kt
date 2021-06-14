@@ -1,4 +1,4 @@
-package wat.mobilne.renthome.afterLogin.reservation
+package wat.mobilne.renthome.fragments.reservation
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment

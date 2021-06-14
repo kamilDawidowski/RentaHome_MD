@@ -1,4 +1,4 @@
-package wat.mobilne.renthome.afterLogin.map
+package wat.mobilne.renthome.fragments
 
 import android.annotation.SuppressLint
 import android.location.Location
@@ -7,7 +7,6 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment

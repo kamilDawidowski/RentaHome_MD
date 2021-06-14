@@ -5,7 +5,7 @@
     android:id="@+id/constrailLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".afterLogin.explore.exploreItemDetail.ItemReservationDetailFragment">
+    tools:context=".fragments.reservation.ItemReservationDetailFragment">
 
 
     <androidx.cardview.widget.CardView

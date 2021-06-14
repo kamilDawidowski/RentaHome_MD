@@ -1,6 +1,5 @@
-package wat.mobilne.renthome.afterLogin.addNewOffer
+package wat.mobilne.renthome.fragments.offer
 
-import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -9,7 +8,6 @@ import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import kotlinx.android.synthetic.main.fragment_add_offer.*
 import wat.mobilne.renthome.R
-import wat.mobilne.renthome.afterLogin.profile.ProfileFragmentDirections
 
 
 class AddOfferFragment : Fragment() {

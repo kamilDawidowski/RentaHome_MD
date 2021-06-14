@@ -5,7 +5,7 @@
     android:id="@+id/frameLayout3"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".afterLogin.profile.ProfileFragment">
+    tools:context=".fragments.management.ProfileFragment">
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
