@@ -51,4 +51,12 @@ class MainViewModel(private val repository: Repository): ViewModel() {
         }
     }
 
+    val updateUserResponse: MutableLiveData<Response<User>> = MutableLiveData()
+    fun updateUser(username: String, description: String) {
+        viewModelScope.launch {
+            val response = repository.updateUser(username, description)
+            updateUserResponse.value = response
+        }
+    }
+
 }
