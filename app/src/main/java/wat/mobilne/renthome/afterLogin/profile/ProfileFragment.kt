@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
+import kotlinx.android.synthetic.main.fragment_item_reservation_detail.*
 import kotlinx.android.synthetic.main.fragment_profile.*
 import wat.mobilne.renthome.MainActivity
 import wat.mobilne.renthome.R
@@ -36,17 +37,12 @@ class ProfileFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         // ustawienia danych użytkytkownika
         setData()
-
+        buttonConfirmChange.visibility=View.INVISIBLE
 
         btnUpdateProfile.setOnClickListener {
-            chUsername.visibility=View.VISIBLE
-            chEmail.visibility=View.VISIBLE
-            chName.visibility=View.VISIBLE
-            chSurname.visibility=View.VISIBLE
-            buttonConfirmChange.visibility=View.VISIBLE
-
-
+            showEditInputs()
         }
+
         btnChangePassword.setOnClickListener {
             val action =ProfileFragmentDirections.actionProfileFragmentToChangePasswordFragment()
             findNavController().navigate(action)
@@ -61,26 +57,36 @@ class ProfileFragment : Fragment() {
             chSurname.text
            /////
 
-            chUsername.visibility=View.INVISIBLE
-            chEmail.visibility=View.INVISIBLE
-            chName.visibility=View.INVISIBLE
-            chSurname.visibility=View.INVISIBLE
-            buttonConfirmChange.visibility=View.INVISIBLE
+
 
         }
 
-
-
+        hideEditInputs()
 
         super.onViewCreated(view, savedInstanceState)
     }
 
-    private fun setData()
-    {
-        tUsername.setText(Preferences.user.username)
-        tEmail.setText(Preferences.user.email)
-        tName.setText(Preferences.user.name)
-        tSurname.setText(Preferences.user.surname)
+    private fun setData() {
+        tUsername.text = Preferences.user.username
+        tEmail.text = Preferences.user.email
+        tName.text = Preferences.user.name
+        tSurname.text = Preferences.user.surname
+    }
+
+    private fun showEditInputs() {
+        chUsername.visibility=View.VISIBLE
+        chEmail.visibility=View.VISIBLE
+        chName.visibility=View.VISIBLE
+        chSurname.visibility=View.VISIBLE
+        buttonConfirmChange.visibility=View.VISIBLE
+    }
+
+    private fun hideEditInputs() {
+        chUsername.visibility=View.INVISIBLE
+        chEmail.visibility=View.INVISIBLE
+        chName.visibility=View.INVISIBLE
+        chSurname.visibility=View.INVISIBLE
+        buttonConfirmChange.visibility=View.INVISIBLE
     }
 
     private fun changeData() {

@@ -6,6 +6,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.wat.rentahome.models.Offer
 import kotlinx.android.synthetic.main.list_item_explore.view.*
 import wat.mobilne.renthome.R
 import wat.mobilne.renthome.afterLogin.explore.ItemData
@@ -13,7 +14,7 @@ import wat.mobilne.renthome.afterLogin.explore.ItemData
 class AdapterExplore (
 
     // Lista naszych elementów do wyswietlenia
-    private val itemList: List<ItemData>,
+    private val itemList: List<Offer>,
     private val listener: OnItemClickListener,
 
 
@@ -35,7 +36,7 @@ class AdapterExplore (
 
     override fun onBindViewHolder(holder: ExampleViewHolder, position: Int) {
         val currentItem = itemList[position]
-        holder.imageView.setImageResource(currentItem.titleImage)
+        holder.imageView.setImageResource(R.drawable.ic_explore)
         holder.itemCash.text = currentItem.price.toString()
         holder.itemTitle.text = currentItem.title
 //        holder.textView3.text = currentItem.decribe
@@ -66,7 +67,7 @@ class AdapterExplore (
     }
 
     interface OnItemClickListener {
-        fun onItemClick(position: Int, currentItem: ItemData)
+        fun onItemClick(position: Int, currentItem: Offer)
     }
 
 

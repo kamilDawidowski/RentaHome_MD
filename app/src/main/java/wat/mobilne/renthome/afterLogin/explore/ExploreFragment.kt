@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.wat.rentahome.models.Offer
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_explore.*
 import wat.mobilne.renthome.MainActivity
@@ -28,8 +29,10 @@ class ExploreFragment : Fragment(),AdapterExplore.OnItemClickListener {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 // Przykładowa lista dla elementów
-       var offers= generateList()
-        recyclerView.adapter = AdapterExplore(offers,this)
+        val mainActivity = activity as MainActivity
+        mainActivity.offers?.let {
+            recyclerView.adapter = AdapterExplore(it,this)
+        }
         recyclerView.layoutManager = LinearLayoutManager(context)
         recyclerView.setHasFixedSize(true)
 
@@ -43,9 +46,9 @@ class ExploreFragment : Fragment(),AdapterExplore.OnItemClickListener {
 
         }
 
-    override fun onItemClick(position: Int, currentItem: ItemData) {
+    override fun onItemClick(position: Int, currentItem: Offer) {
         Toast.makeText(context, "${currentItem.title}" , Toast.LENGTH_SHORT).show()
-        var description=currentItem.decribe
+        var description=currentItem.description
         var price=currentItem.price.toFloat()
         var title=currentItem.title
         var latitiude=currentItem.latitude.toFloat()
