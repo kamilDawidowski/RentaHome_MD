@@ -33,8 +33,8 @@ class AddOfferFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 
         buttonAddOfert.setOnClickListener {
-            val action = AddOfferFragmentDirections.actionAddOfferFragmentToExploreFragment()
-            findNavController().navigate(action)
+            //val action = AddOfferFragmentDirections.actionAddOfferFragmentToExploreFragment()
+            //findNavController().navigate(action)
         }
         super.onViewCreated(view, savedInstanceState)
     }

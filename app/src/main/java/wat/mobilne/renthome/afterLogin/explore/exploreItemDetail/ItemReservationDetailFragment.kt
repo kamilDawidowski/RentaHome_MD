@@ -66,14 +66,14 @@ class ItemReservationDetailFragment : Fragment() {
 
 
         btnConfirm.setOnClickListener {
-            val action=ItemReservationDetailFragmentDirections.actionItemReservationDetailFragmentToExploreFragment()
-            findNavController().navigate(action)
-            Toast.makeText(
-                context,
-                getString(R.string.confirm),
-                Toast.LENGTH_SHORT
-            ).show();
-
+//            val action=ItemReservationDetailFragmentDirections.actionItemReservationDetailFragmentToExploreFragment()
+//            findNavController().navigate(action)
+//            Toast.makeText(
+//                context,
+//                getString(R.string.confirm),
+//                Toast.LENGTH_SHORT
+//            ).show();
+//
         }
         btnShowData.setOnClickListener {
 
@@ -81,9 +81,9 @@ class ItemReservationDetailFragment : Fragment() {
 
         }
         btnCancelReservation.setOnClickListener {
-            val action=ItemReservationDetailFragmentDirections.actionItemReservationDetailFragmentToExploreFragment()
-            findNavController().navigate(action)
-
+//            val action=ItemReservationDetailFragmentDirections.actionItemReservationDetailFragmentToExploreFragment()
+//            findNavController().navigate(action)
+//
         }
         dataPicker.addOnPositiveButtonClickListener {
             textSelectedData.setText(dataPicker.headerText);
