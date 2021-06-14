@@ -51,9 +51,16 @@ class MainActivity : AppCompatActivity() {
         var flag = true;
         var flagLanguage = true;
 
+        //
+        changeIconNuberReservation(8)
+
         val navHostFragment =
             supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
         val navController = navHostFragment.navController
+
+        /// badge
+
+        //
 
         topAppBar.setOnMenuItemClickListener { menuItem ->
             when (menuItem.itemId) {
@@ -168,6 +175,21 @@ class MainActivity : AppCompatActivity() {
         val editor = getSharedPreferences("Settings", Context.MODE_PRIVATE).edit()
         editor.putString("My_Lang", Lang)
         editor.apply()
+    }
+   private  fun changeIconNuberReservation(rezerwacje:Int){
+       var badge = bottom_navigation.getOrCreateBadge(R.id.reservationFragment)
+
+// An icon only badge will be displayed unless a number is set:
+       if(rezerwacje==null)
+       {
+           badge.isVisible = false
+       }
+       else{
+           badge.isVisible = true
+           badge.number = rezerwacje
+
+       }
+
     }
 
 

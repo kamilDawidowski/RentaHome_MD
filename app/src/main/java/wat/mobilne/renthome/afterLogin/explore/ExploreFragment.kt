@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_explore.*
 import wat.mobilne.renthome.MainActivity
 import wat.mobilne.renthome.R
@@ -81,6 +82,7 @@ class ExploreFragment : Fragment(),AdapterExplore.OnItemClickListener {
                 list.add(row)
             }
         }
+
 
 
 
