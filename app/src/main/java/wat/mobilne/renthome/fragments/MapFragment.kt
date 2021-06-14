@@ -1,12 +1,16 @@
 package wat.mobilne.renthome.fragments
 
+import android.Manifest.permission.ACCESS_FINE_LOCATION
 import android.annotation.SuppressLint
+import android.content.pm.PackageManager
 import android.location.Location
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
 import androidx.navigation.fragment.navArgs
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
@@ -15,9 +19,11 @@ import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.BitmapDescriptorFactory
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
+import kotlinx.android.synthetic.main.fragment_map.*
 import wat.mobilne.renthome.MainActivity
 import wat.mobilne.renthome.R
 import wat.mobilne.renthome.fragments.offer.ItemDetailFragmentArgs
+import java.util.jar.Manifest
 
 // TODO: Rename parameter arguments, choose names that match
 
@@ -25,8 +31,15 @@ class MapFragment : Fragment(), GoogleMap.OnMyLocationButtonClickListener,
     GoogleMap.OnMyLocationClickListener,
     OnMapReadyCallback {
 
-    var  REQUEST_CODE_LOCATION_PERMISON=1;
+    private val REQUEST_LOCATION_PERMISSION = 1
 //    private val args: MapFragmentArgs by navArgs()
+
+    private fun isPermissionGranted() : Boolean {
+        return ContextCompat.checkSelfPermission(
+            activity as MainActivity,
+            android.Manifest.permission.ACCESS_FINE_LOCATION)==PackageManager.PERMISSION_GRANTED
+    }
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -37,10 +50,10 @@ class MapFragment : Fragment(), GoogleMap.OnMyLocationButtonClickListener,
     private val callback = OnMapReadyCallback { googleMap ->
 
 
+
         val menuActivity = activity as MainActivity
 
         val offers = menuActivity.offers
-
 
         //Dodawanie znaczników ofert
         if (offers != null) {

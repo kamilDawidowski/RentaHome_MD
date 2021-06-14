@@ -1,5 +1,7 @@
 package wat.mobilne.renthome.fragments.offer
 
+import android.app.Activity
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -50,7 +52,7 @@ class AddOfferFragment : Fragment() {
 
 
         buttonAddImage.setOnClickListener {
-
+            openGalleryForImage()
             //Zapisanie zdjęcia
         }
         super.onViewCreated(view, savedInstanceState)
@@ -67,6 +69,18 @@ class AddOfferFragment : Fragment() {
                 // #TODO: Handle server exception
             }
         })
+    }
+    private fun openGalleryForImage() {
+        val intent = Intent(Intent.ACTION_PICK)
+        intent.type = "image/*"
+        startActivityForResult(intent, REQUEST_CODE)
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (resultCode == Activity.RESULT_OK && requestCode == REQUEST_CODE) {
+            imageViewAddAdvertisment.setImageURI(data?.data) // handle chosen image
+        }
     }
 
 

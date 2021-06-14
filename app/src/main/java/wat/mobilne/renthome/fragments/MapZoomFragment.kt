@@ -53,6 +53,7 @@ class MapZoomFragment : Fragment() , GoogleMap.OnMyLocationButtonClickListener,
 
 
         googleMap.moveCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
+        googleMap.setTrafficEnabled(true)
 
 //
 
