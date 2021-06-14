@@ -50,6 +50,8 @@ class MainActivity : AppCompatActivity() {
         setContentView(layout.activity_main)
         var flag = true;
         var flagLanguage = true;
+        hideBootomMenu()
+
 
         //
         changeIconNuberReservation(8)
@@ -192,5 +194,19 @@ class MainActivity : AppCompatActivity() {
 
     }
 
+    private fun hideBootomMenu(){
+        bottom_navigation.menu.findItem(R.id.mapFragment).isVisible = false
+        bottom_navigation.menu.findItem(R.id.reservationFragment).isVisible = false
+        bottom_navigation.menu.findItem(R.id.profileFragment).isVisible = false
+        bottom_navigation.menu.findItem(R.id.exploreFragment).isVisible = false
+    }
+    public fun showBootomMenu(){
 
-}
+            bottom_navigation.menu.findItem(R.id.mapFragment).isVisible = true
+            bottom_navigation.menu.findItem(R.id.reservationFragment).isVisible = true
+            bottom_navigation.menu.findItem(R.id.profileFragment).isVisible = true
+            bottom_navigation.menu.findItem(R.id.exploreFragment).isVisible = true
+        }
+    }
+
+

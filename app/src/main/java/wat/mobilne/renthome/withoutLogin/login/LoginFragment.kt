@@ -1,6 +1,5 @@
 package wat.mobilne.renthome.withoutLogin.login
 
-import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -8,10 +7,10 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.Observer
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
-import androidx.navigation.fragment.findNavController
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_login.*
 import okhttp3.Credentials
@@ -41,7 +40,7 @@ class LoginFragment : Fragment() {
         observeLogin()
 
         loginButton.setOnClickListener() {
-            if(validateForm(inputUsername.text.toString(),inputPassword.text.toString())) {
+            if(validateForm(inputUsername.text.toString(), inputPassword.text.toString())) {
                 onLoginButtonClick()
 
             }
@@ -56,7 +55,7 @@ class LoginFragment : Fragment() {
     private fun navigateToExplore() {
         val action = LoginFragmentDirections.actionLoginFragmentToExploreFragment()
         navController.navigate(action)
-        Toast.makeText(context,inputUsername.text.toString() ,Toast.LENGTH_SHORT).show();
+        Toast.makeText(context, inputUsername.text.toString(), Toast.LENGTH_SHORT).show();
     }
 
     private fun onLoginButtonClick() {
@@ -65,7 +64,10 @@ class LoginFragment : Fragment() {
 
     private fun tryLogin() {
         val mainActivity = activity as MainActivity
-        Preferences.basicToken = Credentials.basic(inputUsername.text.toString(), inputPassword.text.toString())
+        Preferences.basicToken = Credentials.basic(
+            inputUsername.text.toString(),
+            inputPassword.text.toString()
+        )
         mainActivity.viewModel.getUser()
     }
 
@@ -77,6 +79,12 @@ class LoginFragment : Fragment() {
                 Log.d("Login", "user: " + response.body().toString())
                 mainActivity.viewModel.getOffers()
                 navigateToExplore()
+                (activity as MainActivity).showBootomMenu()
+
+
+
+
+
             } else {
                 // #TODO: Handle server exception
             }

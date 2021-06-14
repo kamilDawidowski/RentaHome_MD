@@ -38,14 +38,10 @@ class ReservationFragment : Fragment(),AdapterReservation.OnItemClickListener  {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-
-
         recyclerView2.adapter = AdapterReservation(offers,this)
         recyclerView2.layoutManager = LinearLayoutManager(context)
         recyclerView2.setHasFixedSize(true)
-
     }
-
     private fun generateList(): List<ItemDataReservation> {
         val list = ArrayList<ItemDataReservation>()
 
@@ -54,9 +50,6 @@ class ReservationFragment : Fragment(),AdapterReservation.OnItemClickListener  {
             val item = ItemDataReservation( "Item $i", "19.04.2020")
             list += item
         }
-
-
-
 
         return list
     }
@@ -72,16 +65,8 @@ class ReservationFragment : Fragment(),AdapterReservation.OnItemClickListener  {
         // Tutaj wysyłamy powiadominie dla uzytkownika User o potwierdzeniu
 
 
-
-
     }
 
-    fun removeItem(view: View)
-    {
-        val index=1
-
-
-    }
 
 
 }
