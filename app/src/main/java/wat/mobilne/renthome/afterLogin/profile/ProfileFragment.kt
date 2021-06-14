@@ -40,25 +40,15 @@ class ProfileFragment : Fragment() {
             chEmail.visibility=View.VISIBLE
             chName.visibility=View.VISIBLE
             chSurname.visibility=View.VISIBLE
-            Toast.makeText(
-                context,
-                getString(R.string.InCorrectLogin),
-                Toast.LENGTH_SHORT
-            ).show()
+
+
         }
         btnChangePassword.setOnClickListener {
             val action =ProfileFragmentDirections.actionProfileFragmentToChangePasswordFragment()
             findNavController().navigate(action)
         }
 
-        btnGoToReservation.setOnClickListener {
 
-        }
-        floating_action_button_to_explore.setOnClickListener {
-//            val action =ProfileFragmentDirections.actionProfileFragmentToExploreFragment()
-//            findNavController().navigate(action)
-
-        }
 
 
         super.onViewCreated(view, savedInstanceState)
