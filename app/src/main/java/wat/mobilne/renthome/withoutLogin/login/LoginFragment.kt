@@ -12,6 +12,7 @@ import androidx.lifecycle.Observer
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.fragment.findNavController
+import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_login.*
 import okhttp3.Credentials
 import wat.mobilne.renthome.MainActivity
@@ -24,6 +25,7 @@ class LoginFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+
 
         val view = inflater.inflate(R.layout.fragment_login, container, false)
         return view
@@ -41,6 +43,7 @@ class LoginFragment : Fragment() {
         loginButton.setOnClickListener() {
             if(validateForm(inputUsername.text.toString(),inputPassword.text.toString())) {
                 onLoginButtonClick()
+
             }
         }
 

@@ -36,14 +36,8 @@ class ExploreFragment : Fragment(),AdapterExplore.OnItemClickListener {
 
             findNavController().navigate(R.id.itemDetailFragment)
         }
-        floating_action_button_mapa.setOnClickListener {
 
-            findNavController().navigate(R.id.mapFragment)
-        }
-        floating_action_button_profile.setOnClickListener {
 
-            findNavController().navigate(R.id.profileFragment)
-        }
 
 
         }

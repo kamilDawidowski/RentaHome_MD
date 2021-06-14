@@ -19,10 +19,11 @@ import wat.mobilne.renthome.R
 
 // TODO: Rename parameter arguments, choose names that match
 
-
 class MapFragment : Fragment(), GoogleMap.OnMyLocationButtonClickListener,
     GoogleMap.OnMyLocationClickListener,
     OnMapReadyCallback {
+
+    var  REQUEST_CODE_LOCATION_PERMISON=1;
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -57,6 +58,12 @@ class MapFragment : Fragment(), GoogleMap.OnMyLocationButtonClickListener,
         super.onViewCreated(view, savedInstanceState)
         val mapFragment = childFragmentManager.findFragmentById(R.id.map) as SupportMapFragment?
         mapFragment?.getMapAsync(callback)
+
+
+
+
+
+
     }
 
 

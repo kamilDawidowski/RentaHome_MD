@@ -1,33 +1,33 @@
 package wat.mobilne.renthome.afterLogin.reservation
 
+import android.annotation.SuppressLint
+import android.graphics.Color
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import kotlinx.android.synthetic.main.fragment_item_detail.*
+import android.widget.Toast
+import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.LinearLayoutManager
+import kotlinx.android.synthetic.main.fragment_item_reservation_detail.*
+import kotlinx.android.synthetic.main.fragment_list_item_reservation.*
+import kotlinx.android.synthetic.main.fragment_reservation.*
 import wat.mobilne.renthome.R
-
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-/**
- * A simple [Fragment] subclass.
- * Use the [ReservationFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
-class ReservationFragment : Fragment() {
+import wat.mobilne.renthome.adapter.AdapterReservation
+import wat.mobilne.renthome.afterLogin.explore.ExploreFragmentDirections
+import wat.mobilne.renthome.afterLogin.explore.ItemData
 
 
+class ReservationFragment : Fragment(),AdapterReservation.OnItemClickListener  {
+
+    var offers= generateList()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
 
         }
     }
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -35,13 +35,52 @@ class ReservationFragment : Fragment() {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_reservation, container, false)
     }
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        btnCancel.setOnClickListener {
 
+
+        recyclerView2.adapter = AdapterReservation(offers,this)
+        recyclerView2.layoutManager = LinearLayoutManager(context)
+        recyclerView2.setHasFixedSize(true)
+
+    }
+
+    private fun generateList(): List<ItemDataReservation> {
+        val list = ArrayList<ItemDataReservation>()
+
+        for (i in 0 until 5) {
+
+            val item = ItemDataReservation( "Item $i", "19.04.2020")
+            list += item
         }
+
+
+
+
+        return list
+    }
+
+
+    @SuppressLint("ResourceAsColor")
+    override fun onItemClick(position: Int, currentItem: ItemDataReservation) {
+        Toast.makeText(context, "${currentItem.data}" , Toast.LENGTH_SHORT).show()
+        var user=currentItem.user
+        var data=currentItem.data
+
+
+        // Tutaj wysyłamy powiadominie dla uzytkownika User o potwierdzeniu
+
+
+
+
+    }
+
+    fun removeItem(view: View)
+    {
+        val index=1
+
+
     }
 
 

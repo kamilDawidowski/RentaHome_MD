@@ -102,6 +102,27 @@ class MainActivity : AppCompatActivity() {
                     // Respond to navigation item 1 click
                     true
                 }
+                id.mapFragment -> {
+                    //???
+
+                    navController.navigate(R.id.mapFragment)
+                    // Respond to navigation item 1 click
+                    true
+                }
+                id.reservationFragment -> {
+                    //???
+
+                    navController.navigate(R.id.reservationFragment)
+                    // Respond to navigation item 1 click
+                    true
+                }
+                id.profileFragment -> {
+                    //???
+
+                    navController.navigate(R.id.profileFragment)
+                    // Respond to navigation item 1 click
+                    true
+                }
                 else -> false
             }
         }
