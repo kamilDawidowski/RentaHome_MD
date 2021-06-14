@@ -32,6 +32,7 @@ class ItemDetailFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         btnReservation.setOnClickListener {
+
             val action=ItemDetailFragmentDirections.actionItemDetailFragmentToItemReservationDetailFragment()
             findNavController().navigate(action)
 
@@ -43,7 +44,7 @@ class ItemDetailFragment : Fragment() {
 
 
         btnCancel.setOnClickListener {
-            val action=ItemDetailFragmentDirections.actionItemDetailFragmentToExploreFragment()
+            val action=ItemDetailFragmentDirections.actionItemDetailFragmentToProfileFragment()
             findNavController().navigate(action)
         }
     }

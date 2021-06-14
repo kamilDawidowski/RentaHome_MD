@@ -1,5 +1,7 @@
 package wat.mobilne.renthome.withoutLogin.login
 
+import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -8,6 +10,7 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
+import com.wat.rentahome.utils.Constants
 import kotlinx.android.synthetic.main.fragment_login.*
 import okhttp3.Credentials
 import wat.mobilne.renthome.MainActivity
@@ -16,7 +19,7 @@ import wat.mobilne.renthome.utils.Preferences
 
 
 class LoginFragment : Fragment() {
-
+    private var loginCorrectFlag:Boolean=false//Trzeba ustawić to zmienna by zalogowac sie na true w isValidateData funkcji sie to wykonuje
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -32,7 +35,39 @@ class LoginFragment : Fragment() {
         observeLogin()
 
         loginButton.setOnClickListener() {
-            onLoginButtonClick()
+
+
+            if(validateForm(inputUsername.text.toString(),inputPassword.text.toString())) {
+
+                inputUsername.setText("")
+               inputPassword.setText("")
+                val action = LoginFragmentDirections.actionLoginFragmentToExploreFragment()
+                findNavController().navigate(action)
+                Toast.makeText(
+                    context,
+                    getString(R.string.Login_Correct),
+                    Toast.LENGTH_SHORT
+                ).show()
+            }
+            else
+            {
+                Toast.makeText(
+                    context,
+                    getString(R.string.InCorrectLogin),
+                    Toast.LENGTH_SHORT
+                ).show()
+            }
+
+
+
+
+
+
+
+
+
+
+//            onLoginButtonClick()
         }
 
         textViewSignUp.setOnClickListener() {
@@ -69,6 +104,13 @@ class LoginFragment : Fragment() {
             }
         })
     }
+    private fun validateForm(email: String?, password: String?): Boolean {
+        val isValidEmail = email != null && email.isNotBlank() && email.contains("@")
+        val isValidPassword = password != null && password.isNotBlank() && password.length >= 6
+        return isValidEmail && isValidPassword
+    }
+    ////////////// Nowe
+
 
 
 }

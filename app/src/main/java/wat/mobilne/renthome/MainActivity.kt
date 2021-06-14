@@ -20,10 +20,13 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavController
+import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.setupActionBarWithNavController
+import androidx.navigation.ui.setupWithNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.android.gms.maps.MapFragment
 import com.google.android.material.badge.BadgeDrawable
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.wat.rentahome.MainViewModel
@@ -33,13 +36,22 @@ import com.wat.rentahome.repository.Repository
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_explore.*
 import wat.mobilne.renthome.adapter.AdapterExplore
+import wat.mobilne.renthome.afterLogin.explore.ExploreFragment
 import wat.mobilne.renthome.afterLogin.explore.ItemData
+import wat.mobilne.renthome.afterLogin.profile.ProfileFragment
+import wat.mobilne.renthome.afterLogin.reservation.ReservationFragment
 import wat.mobilne.renthome.utils.Preferences
+import wat.mobilne.renthome.withoutLogin.login.LoginFragmentDirections
 
 class MainActivity : AppCompatActivity() {
     private lateinit var navController: NavController
     lateinit var viewModel: MainViewModel
-        private set
+    private val exploreFragment=ExploreFragment() as Fragment
+    private val profileFragment= ProfileFragment() as Fragment
+    private val reservationFragment= ReservationFragment() as Fragment
+    private val mapFragment=wat.mobilne.renthome.afterLogin.map.MapFragment() as Fragment
+
+
 
     var offers : List<Offer>? = null
 
@@ -55,6 +67,7 @@ class MainActivity : AppCompatActivity() {
         Preferences.setup(applicationContext)
         initViewModel()
         observeOffers()
+        //Nawigacja dolna
 
         // Ustawaiamy nasz Acitivity jak tło
         setContentView(R.layout.activity_main)
@@ -64,13 +77,6 @@ class MainActivity : AppCompatActivity() {
 
         topAppBar.setOnMenuItemClickListener { menuItem ->
             when (menuItem.itemId) {
-
-                R.id.search -> {
-
-                    // Handle search icon press
-                    true
-                }
-
                 R.id.language -> {
                     Toast.makeText(
                         this,
@@ -100,50 +106,66 @@ class MainActivity : AppCompatActivity() {
                         flag = true;
 
                     }
-                    // Handle more item (inside overflow menu) press
+
                     true
                 }
+
 
                 else -> false
             }
         }
 
 // An icon only badge will be displayed unless a number is set:
+        val navHostFragment=supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
+        navController=navHostFragment.findNavController()
+        setupActionBarWithNavController(navController)
+        bottom_navigation.setupWithNavController(navController)
 
 
-
-        //Dolne Menu
-        BottomNavigationView.OnNavigationItemSelectedListener { item ->
+//        Dolne Menu
+        bottom_navigation.setOnNavigationItemSelectedListener{item ->
             when (item.itemId) {
 
-                R.id.menuExplore -> {
-                    // Respond to navigation item 1 click
+                R.id.exploreFragment -> {
+
+                    
+
 
 
                     true
                 }
-                R.id.menuOffer -> {
+                R.id.reservationFragment -> {
+
+
+
                     // Respond to navigation item 2 click
                     true
                 }
-                R.id.menuMap -> {
+                R.id.mapFragment -> {
+
+
                     // Respond to navigation item 2 click
                     true
                 }
-                R.id.menuProfile -> {
+                R.id.profileFragment -> {
+
+
+
                     // Respond to navigation item 2 click
                     true
                 }
                 else -> false
             }
+
         }
+
 
 
         // Wyświetlanie Badge do ofert
-        var badge = bottom_navigation.getOrCreateBadge(R.id.menuOffer)
-        badge.isVisible = true
+//        var badge = bottom_navigation.getOrCreateBadge(R.id.reservationFragment)
+//        badge.isVisible = true
 // An icon only badge will be displayed unless a number is set:
-        badge.number = 99
+//        badge.number = 99
 
 
     }
@@ -164,5 +186,15 @@ class MainActivity : AppCompatActivity() {
                 // #TODO: Handle server exception
             }
         })
+    }
+
+    private fun replaceFragment(fragment: Fragment)
+    {
+        if(fragment!=null)
+        {
+            val transaction=supportFragmentManager.beginTransaction()
+            transaction.replace(R.id.nav_host_fragment,fragment)
+            transaction.commit()
+        }
     }
 }

@@ -31,4 +31,20 @@
     <string name="select_travel_data">Select travel data</string>
     <string name="confirm">Confirm</string>
     <string name="summary">Summary</string>
+    <string name="change_password">Change password</string>
+    <string name="update_information">Update information</string>
+    <string name="add_profile_picture">Add profile picture</string>
+    <string name="username">Username:</string>
+    <string name="email">Email:</string>
+    <string name="name">Name:</string>
+    <string name="surname">Surname:</string>
+    <string name="new_password">New Password</string>
+    <string name="cancel">cancel</string>
+    <string name="title">Title</string>
+    <string name="price_for_one_day">Price for one day</string>
+    <string name="description">Description</string>
+    <string name="add_image">Add image</string>
+    <string name="Login_Correct">Login is corect</string>
+    <string name="InCorrectLogin">"Login is incorrect! "</string>
+    <string name="hintincorecpasssword">Your password must contain 6 characters and email must have @ !</string>
 </resources>

@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
-    <item
-        android:id="@+id/search"
-        android:icon="@drawable/ic_search"
-        android:title="@string/search"
-        android:contentDescription="@string/content_description_search"
-        app:showAsAction="ifRoom" />
+<!--    <item-->
+<!--        android:id="@+id/search"-->
+<!--        android:icon="@drawable/ic_search"-->
+<!--        android:title="@string/search"-->
+<!--        android:contentDescription="@string/content_description_search"-->
+<!--        app:showAsAction="ifRoom" />-->
 
             <item
                 android:id="@+id/language"
@@ -18,5 +18,27 @@
                 android:icon="@drawable/ic_dark_mode"
                 app:showAsAction="ifRoom"
                 android:title="@string/mode"></item>
+
+
+<!--    <item-->
+<!--        android:id="@+id/exploreFragment"-->
+<!--        android:enabled="true"-->
+<!--        android:icon="@drawable/ic_explore"-->
+<!--        android:title="@string/Explore"/>-->
+<!--    <item-->
+<!--        android:id="@+id/reservationFragment"-->
+<!--        android:enabled="true"-->
+<!--        android:icon="@drawable/ic_message"-->
+<!--        android:title="@string/Reservation"/>-->
+<!--    <item-->
+<!--        android:id="@+id/mapFragment"-->
+<!--        android:enabled="true"-->
+<!--        android:icon="@drawable/ic_map"-->
+<!--        android:title="@string/Map"/>-->
+<!--    <item-->
+<!--        android:id="@+id/profileFragment"-->
+<!--        android:enabled="true"-->
+<!--        android:icon="@drawable/ic_profile"-->
+<!--        android:title="@string/Profile"/>-->
 
 </menu>

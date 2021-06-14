@@ -47,16 +47,19 @@
         <action
             android:id="@+id/action_exploreFragment_to_itemDetailFragment"
             app:destination="@id/itemDetailFragment" />
+        <action
+            android:id="@+id/action_exploreFragment_to_addOfferFragment"
+            app:destination="@id/addOfferFragment" />
     </fragment>
     <fragment
         android:id="@+id/profileFragment"
         android:name="wat.mobilne.renthome.afterLogin.profile.ProfileFragment"
         android:label="fragment_profile"
-        tools:layout="@layout/fragment_profile" />
-    <fragment
-        android:id="@+id/reservationFragment"
-        android:name="wat.mobilne.renthome.afterLogin.reservation.ReservationFragment"
-        android:label="ReservationFragment" />
+        tools:layout="@layout/fragment_profile" >
+        <action
+            android:id="@+id/action_profileFragment_to_changePasswordFragment"
+            app:destination="@id/changePasswordFragment" />
+    </fragment>
     <fragment
         android:id="@+id/itemDetailFragment"
         android:name="wat.mobilne.renthome.afterLogin.explore.exploreItemDetail.ItemDetailFragment"
@@ -68,6 +71,12 @@
         <action
             android:id="@+id/action_itemDetailFragment_to_exploreFragment"
             app:destination="@id/exploreFragment" />
+        <action
+            android:id="@+id/action_itemDetailFragment_to_mapFragment"
+            app:destination="@id/mapFragment" />
+        <action
+            android:id="@+id/action_itemDetailFragment_to_profileFragment"
+            app:destination="@id/profileFragment" />
     </fragment>
     <fragment
         android:id="@+id/itemReservationDetailFragment"
@@ -76,6 +85,29 @@
         tools:layout="@layout/fragment_item_reservation_detail" >
         <action
             android:id="@+id/action_itemReservationDetailFragment_to_exploreFragment"
+            app:destination="@id/exploreFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/changePasswordFragment"
+        android:name="wat.mobilne.renthome.afterLogin.profile.ChangePasswordFragment"
+        android:label="fragment_change_password"
+        tools:layout="@layout/fragment_change_password" >
+        <action
+            android:id="@+id/action_changePasswordFragment_to_profileFragment"
+            app:destination="@id/profileFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/reservationFragment"
+        android:name="wat.mobilne.renthome.afterLogin.reservation.ReservationFragment"
+        android:label="fragment_reservation"
+        tools:layout="@layout/fragment_reservation" />
+    <fragment
+        android:id="@+id/addOfferFragment"
+        android:name="wat.mobilne.renthome.afterLogin.addNewOffer.AddOfferFragment"
+        android:label="fragment_add_offer"
+        tools:layout="@layout/fragment_add_offer" >
+        <action
+            android:id="@+id/action_addOfferFragment_to_exploreFragment"
             app:destination="@id/exploreFragment" />
     </fragment>
 </navigation>

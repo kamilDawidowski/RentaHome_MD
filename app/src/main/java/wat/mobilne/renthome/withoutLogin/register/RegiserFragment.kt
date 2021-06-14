@@ -5,18 +5,14 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import android.widget.TextView
+import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import com.wat.rentahome.models.Registration
 import kotlinx.android.synthetic.main.fragment_regiser.*
 import kotlinx.android.synthetic.main.fragment_regiser.inputPassword
-import okhttp3.Credentials
 import wat.mobilne.renthome.MainActivity
 import wat.mobilne.renthome.R
-import wat.mobilne.renthome.utils.Preferences
-import wat.mobilne.renthome.withoutLogin.login.LoginFragmentDirections
 
 
 class RegiserFragment : Fragment() {
@@ -38,10 +34,11 @@ class RegiserFragment : Fragment() {
         observeRegister()
 
         button_Register.setOnClickListener() {
+
             onRegisterButtonClick()
         }
 
-        btnToLogin.setOnClickListener() {
+        btnBacktoLogin.setOnClickListener() {
             onButtonToLoginClick()
         }
         super.onViewCreated(view, savedInstanceState)
@@ -52,7 +49,28 @@ class RegiserFragment : Fragment() {
     }
 
     private fun onRegisterButtonClick() {
-        tryRegister()
+
+        if(validateForm(inputEmail.text.toString(),inputPassword.text.toString(),inputPasswordConfirm.text.toString(),inpuUsername.text.toString()))
+        {
+            tryRegister()
+            val action = RegiserFragmentDirections.actionRegiserFragmentToLoginFragment()
+            inpuUsername.setText("")
+            inputPassword.setText("")
+            inputPasswordConfirm.setText("")
+            inputEmail.setText("")
+            findNavController().navigate(action)
+
+        }
+        else
+        {
+            Toast.makeText(
+                context,
+               R.string.hintincorecpasssword,
+                Toast.LENGTH_SHORT
+            ).show()
+
+        }
+
     }
 
     private fun navigateToLogin() {
@@ -81,6 +99,15 @@ class RegiserFragment : Fragment() {
             inputPassword.text.toString())
         mainActivity.viewModel.register(registrationData)
     }
+
+    private fun validateForm(email: String?, password: String?,passwordConfirm:String?,username:String?): Boolean {
+        val isValidEmail = email != null && email.isNotBlank() && email.contains("@")
+        val isUsernameValid=username !=null && username.isNotBlank()&& username.length>=5
+        val isValidPassword = password != null && password.isNotBlank() && password.length >= 6
+        val isValidConfirmPassword = password != null && password.isNotBlank() && password.length >= 6 && password==passwordConfirm
+        return isValidEmail && isValidPassword && isUsernameValid && isValidConfirmPassword
+    }
+
 
 
 }

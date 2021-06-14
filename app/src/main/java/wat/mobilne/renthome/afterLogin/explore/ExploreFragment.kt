@@ -27,10 +27,20 @@ class ExploreFragment : Fragment(),AdapterExplore.OnItemClickListener {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 // Przykładowa lista dla elementów
-        val offers = generateDummyList(3)
+        val offers = generateDummyList(7)
         recyclerView.adapter = AdapterExplore(offers,this)
         recyclerView.layoutManager = LinearLayoutManager(context)
         recyclerView.setHasFixedSize(true)
+
+        floating_action_button.setOnClickListener {
+            val action = ExploreFragmentDirections.actionExploreFragmentToAddOfferFragment()
+            findNavController().navigate(action)
+
+
+
+
+
+        }
 
     }
 

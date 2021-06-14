@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/frameLayout5"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".afterLogin.addNewOffer.AddOfferFragment">
+
+
+    <EditText
+        android:id="@+id/addTitileOfert"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginTop="90dp"
+        android:ems="10"
+        android:hint="@string/title"
+        android:inputType="textPersonName"
+        android:padding="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/addPriceOfert"
+        android:layout_width="match_parent"
+        android:layout_height="44dp"
+        android:layout_marginTop="10dp"
+        android:ems="10"
+        android:hint="@string/price_for_one_day"
+        android:inputType="numberDecimal"
+        android:padding="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/addTitileOfert" />
+
+    <EditText
+        android:id="@+id/addDescriptionOfert"
+        android:layout_width="match_parent"
+        android:layout_height="145dp"
+        android:ems="10"
+        android:gravity="start|top"
+        android:hint="@string/description"
+        android:inputType="textMultiLine"
+        android:padding="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buttonAddImage" />
+
+    <Button
+        android:id="@+id/buttonAddImage"
+        android:layout_width="match_parent"
+        android:layout_height="46dp"
+        android:layout_marginTop="12dp"
+        android:text="@string/add_image"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageViewAddAdvertisment" />
+
+    <Button
+        android:id="@+id/buttonAddOfert"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/confirm"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/addDescriptionOfert" />
+
+    <ImageView
+        android:id="@+id/imageViewAddAdvertisment"
+        android:layout_width="413dp"
+        android:layout_height="167dp"
+        android:layout_marginTop="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/addPriceOfert"
+        tools:src="@tools:sample/avatars" />
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
