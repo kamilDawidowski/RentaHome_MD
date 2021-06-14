@@ -19,18 +19,7 @@ class ItemReservationDetailFragment : Fragment() {
     private val args: ItemReservationDetailFragmentArgs by navArgs()
 
     override fun onCreate(savedInstanceState: Bundle?) {
-
-
-
-
-
-
-
-
-
         super.onCreate(savedInstanceState)
-
-
     }
 
     override fun onCreateView(
@@ -39,54 +28,29 @@ class ItemReservationDetailFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_item_reservation_detail, container, false)
-
-
-
-
-
-
-
-
-
-
-
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val dataPicker=MaterialDatePicker.Builder.dateRangePicker().setTitleText("Pick your reservation Data").build();
+        val dataPicker=MaterialDatePicker.Builder.dateRangePicker().setTitleText("Pick your reservation Data").build()
 
         textCashSummary.text = args.price.toString()
-
-// parametry do przekazania
-        var data=textSelectedData.setText(dataPicker.headerText);
+        //var data=textSelectedData.setText(dataPicker.headerText);
         var pricr=args.price.toString()
 
-
-
-
-
-
         btnConfirm.setOnClickListener {
-
             findNavController().navigate(R.id.exploreFragment)
-
-
         }
+
         btnShowData.setOnClickListener {
-
-            dataPicker.show(parentFragmentManager,"DataPicekr");
-
+            dataPicker.show(parentFragmentManager,"DataPicker");
         }
+
         btnCancelReservation.setOnClickListener {
             findNavController().navigate(R.id.exploreFragment)
-//
         }
         dataPicker.addOnPositiveButtonClickListener {
             textSelectedData.setText(dataPicker.headerText);
-
-
-            // Respond to positive button click.
         }
 
 
