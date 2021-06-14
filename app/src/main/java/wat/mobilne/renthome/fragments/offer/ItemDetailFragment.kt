@@ -45,7 +45,7 @@ class ItemDetailFragment : Fragment() {
         var city=getAddress(lat.toDouble(),long.toDouble())
 //Przekazywanie parametrów zadaeklarowanych wczesniej w naawigacji
         textLocalization.text=city
-        textTitle.text = args.title
+        textTitle.text = "tytuljack."//args.title
         textDescription.text = args.description
         textCash.text = args.price.toString()
 
