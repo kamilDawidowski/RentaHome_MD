@@ -16,33 +16,24 @@
             app:enterAnim="@anim/nav_default_enter_anim"
             app:exitAnim="@anim/nav_default_exit_anim"
             app:popEnterAnim="@anim/nav_default_pop_enter_anim"
-            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+            app:popExitAnim="@anim/nav_default_pop_exit_anim"
+            app:popUpTo="@id/loginFragment" />
         <action
             android:id="@+id/action_loginFragment_to_exploreFragment"
-            app:destination="@id/exploreFragment" />
+            app:destination="@id/exploreFragment"
+            app:popUpTo="@id/loginFragment"
+            app:popUpToInclusive="true" />
     </fragment>
     <fragment
         android:id="@+id/regiserFragment"
         android:name="wat.mobilne.renthome.withoutLogin.register.RegiserFragment"
         android:label="fragment_regiser"
-        tools:layout="@layout/fragment_regiser" >
-        <action
-            android:id="@+id/action_regiserFragment_to_loginFragment"
-            app:destination="@id/loginFragment"
-            app:enterAnim="@anim/nav_default_enter_anim"
-            app:exitAnim="@anim/nav_default_exit_anim"
-            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
-            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
-    </fragment>
+        tools:layout="@layout/fragment_regiser" />
     <fragment
         android:id="@+id/mapFragment"
         android:name="wat.mobilne.renthome.afterLogin.map.MapFragment"
         android:label="fragment_map"
-        tools:layout="@layout/fragment_map" >
-        <action
-            android:id="@+id/action_mapFragment_to_exploreFragment"
-            app:destination="@id/exploreFragment" />
-    </fragment>
+        tools:layout="@layout/fragment_map" />
     <fragment
         android:id="@+id/exploreFragment"
         android:name="wat.mobilne.renthome.afterLogin.explore.ExploreFragment"
@@ -50,16 +41,12 @@
         tools:layout="@layout/fragment_explore" >
         <action
             android:id="@+id/action_exploreFragment_to_itemDetailFragment"
-            app:destination="@id/itemDetailFragment" />
+            app:destination="@id/itemDetailFragment"
+            app:popUpTo="@id/exploreFragment" />
         <action
             android:id="@+id/action_exploreFragment_to_addOfferFragment"
-            app:destination="@id/addOfferFragment" />
-        <action
-            android:id="@+id/action_exploreFragment_to_profileFragment"
-            app:destination="@id/profileFragment" />
-        <action
-            android:id="@+id/action_exploreFragment_to_mapFragment"
-            app:destination="@id/mapFragment" />
+            app:destination="@id/addOfferFragment"
+            app:popUpTo="@id/exploreFragment" />
     </fragment>
     <fragment
         android:id="@+id/profileFragment"
@@ -68,13 +55,8 @@
         tools:layout="@layout/fragment_profile" >
         <action
             android:id="@+id/action_profileFragment_to_changePasswordFragment"
-            app:destination="@id/changePasswordFragment" />
-        <action
-            android:id="@+id/action_profileFragment_to_reservationFragment"
-            app:destination="@id/reservationFragment" />
-        <action
-            android:id="@+id/action_profileFragment_to_exploreFragment"
-            app:destination="@id/exploreFragment" />
+            app:destination="@id/changePasswordFragment"
+            app:popUpTo="@id/profileFragment" />
     </fragment>
     <fragment
         android:id="@+id/itemDetailFragment"
@@ -83,51 +65,27 @@
         tools:layout="@layout/fragment_item_detail" >
         <action
             android:id="@+id/action_itemDetailFragment_to_itemReservationDetailFragment"
-            app:destination="@id/itemReservationDetailFragment" />
-        <action
-            android:id="@+id/action_itemDetailFragment_to_exploreFragment"
-            app:destination="@id/exploreFragment" />
-        <action
-            android:id="@+id/action_itemDetailFragment_to_mapFragment"
-            app:destination="@id/mapFragment" />
-        <action
-            android:id="@+id/action_itemDetailFragment_to_mapFragment2"
-            app:destination="@id/mapFragment" />
+            app:destination="@id/itemReservationDetailFragment"
+            app:popUpTo="@id/itemDetailFragment" />
     </fragment>
     <fragment
         android:id="@+id/itemReservationDetailFragment"
         android:name="wat.mobilne.renthome.afterLogin.explore.exploreItemDetail.ItemReservationDetailFragment"
         android:label="fragment_item_reservation_detail"
-        tools:layout="@layout/fragment_item_reservation_detail" >
-        <action
-            android:id="@+id/action_itemReservationDetailFragment_to_exploreFragment"
-            app:destination="@id/exploreFragment" />
-    </fragment>
+        tools:layout="@layout/fragment_item_reservation_detail" />
     <fragment
         android:id="@+id/changePasswordFragment"
         android:name="wat.mobilne.renthome.afterLogin.profile.ChangePasswordFragment"
         android:label="fragment_change_password"
-        tools:layout="@layout/fragment_change_password" >
-        <action
-            android:id="@+id/action_changePasswordFragment_to_profileFragment"
-            app:destination="@id/profileFragment" />
-    </fragment>
+        tools:layout="@layout/fragment_change_password" />
     <fragment
         android:id="@+id/reservationFragment"
         android:name="wat.mobilne.renthome.afterLogin.reservation.ReservationFragment"
         android:label="fragment_reservation"
-        tools:layout="@layout/fragment_reservation" >
-        <action
-            android:id="@+id/action_reservationFragment_to_exploreFragment"
-            app:destination="@id/exploreFragment" />
-    </fragment>
+        tools:layout="@layout/fragment_reservation" />
     <fragment
         android:id="@+id/addOfferFragment"
         android:name="wat.mobilne.renthome.afterLogin.addNewOffer.AddOfferFragment"
         android:label="fragment_add_offer"
-        tools:layout="@layout/fragment_add_offer" >
-        <action
-            android:id="@+id/action_addOfferFragment_to_exploreFragment"
-            app:destination="@id/exploreFragment" />
-    </fragment>
+        tools:layout="@layout/fragment_add_offer" />
 </navigation>

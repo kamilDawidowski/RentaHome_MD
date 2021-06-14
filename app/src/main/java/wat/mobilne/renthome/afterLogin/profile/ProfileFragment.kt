@@ -50,8 +50,8 @@ class ProfileFragment : Fragment() {
 
         }
         floating_action_button_to_explore.setOnClickListener {
-            val action =ProfileFragmentDirections.actionProfileFragmentToExploreFragment()
-            findNavController().navigate(action)
+//            val action =ProfileFragmentDirections.actionProfileFragmentToExploreFragment()
+//            findNavController().navigate(action)
 
         }
 

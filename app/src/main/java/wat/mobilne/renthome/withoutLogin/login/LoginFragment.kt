@@ -76,9 +76,9 @@ class LoginFragment : Fragment() {
     }
 
     private fun navigateToExplore() {
-        Toast.makeText(context,inputUsername.text.toString() ,Toast.LENGTH_SHORT).show();
         val action = LoginFragmentDirections.actionLoginFragmentToExploreFragment()
         findNavController().navigate(action)
+        Toast.makeText(context,inputUsername.text.toString() ,Toast.LENGTH_SHORT).show();
     }
 
     private fun onLoginButtonClick() {
