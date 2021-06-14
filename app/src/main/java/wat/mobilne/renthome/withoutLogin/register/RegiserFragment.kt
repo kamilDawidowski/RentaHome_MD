@@ -9,10 +9,12 @@ import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import com.wat.rentahome.models.Registration
+import kotlinx.android.synthetic.main.fragment_login.*
 import kotlinx.android.synthetic.main.fragment_regiser.*
 import kotlinx.android.synthetic.main.fragment_regiser.inputPassword
 import wat.mobilne.renthome.MainActivity
 import wat.mobilne.renthome.R
+import wat.mobilne.renthome.withoutLogin.login.LoginFragmentDirections
 
 
 class RegiserFragment : Fragment() {
@@ -53,7 +55,11 @@ class RegiserFragment : Fragment() {
         if(validateForm(inputEmail.text.toString(),inputPassword.text.toString(),inputPasswordConfirm.text.toString(),inpuUsername.text.toString()))
         {
             tryRegister()
-            findNavController().navigate(R.id.loginFragment)
+            Toast.makeText(context,inpuUsername.text.toString() ,Toast.LENGTH_SHORT).show()
+            val action = LoginFragmentDirections.actionLoginFragmentToRegiserFragment()
+            findNavController().navigateUp()
+//            parentFragmentManager.popBackStack()
+//            findNavController().navigate(R.id.loginFragment)
             inpuUsername.setText("")
             inputPassword.setText("")
             inputPasswordConfirm.setText("")

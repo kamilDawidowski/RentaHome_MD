@@ -14,7 +14,6 @@ import wat.mobilne.renthome.R
 import wat.mobilne.renthome.adapter.AdapterExplore
 
 class ExploreFragment : Fragment(),AdapterExplore.OnItemClickListener {
-    val mainActivity = activity as MainActivity
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -50,7 +49,6 @@ class ExploreFragment : Fragment(),AdapterExplore.OnItemClickListener {
         }
 
     override fun onItemClick(position: Int, currentItem: ItemData) {
-        TODO("Not yet implemented")
         Toast.makeText(context, "${currentItem.title}" , Toast.LENGTH_SHORT).show()
         var description=currentItem.decribe
         var price=currentItem.price.toFloat()
@@ -97,10 +95,4 @@ class ExploreFragment : Fragment(),AdapterExplore.OnItemClickListener {
     }
 
 
-
 }
-
-
-
-
-// Generowanie przykładowych elementów

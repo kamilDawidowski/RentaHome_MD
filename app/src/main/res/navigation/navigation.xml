@@ -69,19 +69,24 @@
             app:popUpTo="@id/itemDetailFragment" />
         <argument
             android:name="title"
-            app:argType="string" />
+            app:argType="string"
+            android:defaultValue="tytuł" />
         <argument
             android:name="description"
-            app:argType="string" />
+            app:argType="string"
+            android:defaultValue="opis" />
         <argument
             android:name="long"
-            app:argType="float" />
+            app:argType="float"
+            android:defaultValue="12.0" />
         <argument
             android:name="lat"
-            app:argType="float" />
+            app:argType="float"
+            android:defaultValue="12.0" />
         <argument
             android:name="price"
-            app:argType="float" />
+            app:argType="float"
+            android:defaultValue="12.0" />
     </fragment>
     <fragment
         android:id="@+id/itemReservationDetailFragment"
