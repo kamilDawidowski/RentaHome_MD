@@ -54,10 +54,6 @@ class MainActivity : AppCompatActivity() {
             supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
         val navController = navHostFragment.navController
 
-        /// badge
-
-        //
-
         topAppBar.setOnMenuItemClickListener { menuItem ->
             when (menuItem.itemId) {
                 id.language -> {
@@ -86,7 +82,6 @@ class MainActivity : AppCompatActivity() {
                         ).show();
                         flag = true;
                     }
-
                     true
                 }
                 else -> false
@@ -144,6 +139,10 @@ class MainActivity : AppCompatActivity() {
                 // #TODO: Handle server exception
             }
         })
+    }
+
+    fun fetchOffers() {
+        viewModel.getOffers()
     }
 
     private fun loadLocate() {

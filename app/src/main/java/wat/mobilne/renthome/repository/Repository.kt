@@ -31,4 +31,8 @@ class Repository {
     suspend fun updateUser(username: String, email: String): Response<User> {
         return  RetrofitInstance.api.updateUser(username, email)
     }
+
+    suspend fun createOffer(offer: Offer): Response<Offer> {
+        return RetrofitInstance.api.createOffer(offer)
+    }
 }

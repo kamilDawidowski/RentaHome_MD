@@ -74,7 +74,7 @@ class LoginFragment : Fragment() {
             if (response.isSuccessful) {
                 Preferences.user = response.body()!!
                 Log.d("Login", "user: " + response.body().toString())
-                mainActivity.viewModel.getOffers()
+                mainActivity.fetchOffers()
                 navigateToExplore()
                 (activity as MainActivity).showBootomMenu()
             } else {
