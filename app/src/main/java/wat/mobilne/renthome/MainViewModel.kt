@@ -59,4 +59,12 @@ class MainViewModel(private val repository: Repository): ViewModel() {
         }
     }
 
+    val createOfferResponse: MutableLiveData<Response<Offer>> = MutableLiveData()
+    fun createOffer(offer: Offer) {
+        viewModelScope.launch {
+            val response = repository.createOffer(offer)
+            createOfferResponse.value = response
+        }
+    }
+
 }

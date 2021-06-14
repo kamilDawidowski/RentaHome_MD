@@ -28,6 +28,7 @@ class ExploreFragment : Fragment(), AdapterExplore.OnItemClickListener {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val mainActivity = activity as MainActivity
+        mainActivity.fetchOffers()
         mainActivity.offers?.let {
             recyclerView.adapter = AdapterExplore(it, this)
         }

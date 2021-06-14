@@ -22,9 +22,6 @@ import com.wat.rentahome.models.Offer
 import com.wat.rentahome.repository.Repository
 import kotlinx.android.synthetic.main.activity_main.*
 import wat.mobilne.renthome.R.*
-import wat.mobilne.renthome.afterLogin.explore.ExploreFragment
-import wat.mobilne.renthome.afterLogin.profile.ProfileFragment
-import wat.mobilne.renthome.afterLogin.reservation.ReservationFragment
 import wat.mobilne.renthome.utils.Preferences
 import java.util.*
 
@@ -60,10 +57,6 @@ class MainActivity : AppCompatActivity() {
             supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
         val navController = navHostFragment.navController
 
-        /// badge
-
-        //
-
         topAppBar.setOnMenuItemClickListener { menuItem ->
             when (menuItem.itemId) {
                 id.language -> {
@@ -92,7 +85,6 @@ class MainActivity : AppCompatActivity() {
                         ).show();
                         flag = true;
                     }
-
                     true
                 }
                 else -> false
@@ -150,6 +142,10 @@ class MainActivity : AppCompatActivity() {
                 // #TODO: Handle server exception
             }
         })
+    }
+
+    fun fetchOffers() {
+        viewModel.getOffers()
     }
 
     private fun loadLocate() {

@@ -22,10 +22,11 @@ interface BasicApi {
     @GET("reservation")
     suspend fun getReservations(): Response<List<Reservation>>
 
+    @POST("offer")
+    suspend fun createOffer(offer: Offer): Response<Offer>
+
     @PUT("user")
     suspend fun updateUser(
         @Query("username") username: String,
         @Query("description") description: String) : Response<User>
-
-
 }
