@@ -45,6 +45,17 @@ class ProfileFragment : Fragment() {
             val action =ProfileFragmentDirections.actionProfileFragmentToChangePasswordFragment()
             findNavController().navigate(action)
         }
+
+        btnGoToReservation.setOnClickListener {
+
+        }
+        floating_action_button_to_explore.setOnClickListener {
+            val action =ProfileFragmentDirections.actionProfileFragmentToExploreFragment()
+            findNavController().navigate(action)
+
+        }
+
+
         super.onViewCreated(view, savedInstanceState)
     }
 }

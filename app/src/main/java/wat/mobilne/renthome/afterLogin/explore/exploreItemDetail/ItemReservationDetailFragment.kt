@@ -5,6 +5,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.navigation.fragment.findNavController
 import com.google.android.material.datepicker.MaterialDatePicker
 import kotlinx.android.synthetic.main.fragment_item_reservation_detail.*
 import wat.mobilne.renthome.R
@@ -64,6 +66,13 @@ class ItemReservationDetailFragment : Fragment() {
 
 
         btnConfirm.setOnClickListener {
+            val action=ItemReservationDetailFragmentDirections.actionItemReservationDetailFragmentToExploreFragment()
+            findNavController().navigate(action)
+            Toast.makeText(
+                context,
+                getString(R.string.confirm),
+                Toast.LENGTH_SHORT
+            ).show();
 
         }
         btnShowData.setOnClickListener {
@@ -72,6 +81,8 @@ class ItemReservationDetailFragment : Fragment() {
 
         }
         btnCancelReservation.setOnClickListener {
+            val action=ItemReservationDetailFragmentDirections.actionItemReservationDetailFragmentToExploreFragment()
+            findNavController().navigate(action)
 
         }
         dataPicker.addOnPositiveButtonClickListener {

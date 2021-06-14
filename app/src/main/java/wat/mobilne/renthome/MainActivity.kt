@@ -116,56 +116,28 @@ class MainActivity : AppCompatActivity() {
         }
 
 // An icon only badge will be displayed unless a number is set:
-        val navHostFragment=supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
-        navController=navHostFragment.findNavController()
-        setupActionBarWithNavController(navController)
-        bottom_navigation.setupWithNavController(navController)
+
+//        navigation.OnNavigationItemSelectedListener { item ->
+//            when(item.itemId) {
+//                R.id.exploreFragment -> {
+//                    Toast.makeText(
+//                        this,
+//                        getString(R.string.mode_is_changed_light),
+//                        Toast.LENGTH_SHORT
+//                    ).show();
+//                    // Respond to navigation item 1 click
+//                    true
+//                }
+//
+//                else -> false
+//            }
+//        }
 
 
-//        Dolne Menu
-        bottom_navigation.setOnNavigationItemSelectedListener{item ->
-            when (item.itemId) {
-
-                R.id.exploreFragment -> {
-
-                    
-
-
-
-                    true
-                }
-                R.id.reservationFragment -> {
-
-
-
-                    // Respond to navigation item 2 click
-                    true
-                }
-                R.id.mapFragment -> {
-
-
-                    // Respond to navigation item 2 click
-                    true
-                }
-                R.id.profileFragment -> {
-
-
-
-                    // Respond to navigation item 2 click
-                    true
-                }
-                else -> false
-            }
-
-        }
 
 
 
         // Wyświetlanie Badge do ofert
-//        var badge = bottom_navigation.getOrCreateBadge(R.id.reservationFragment)
-//        badge.isVisible = true
-// An icon only badge will be displayed unless a number is set:
-//        badge.number = 99
 
 
     }
@@ -188,13 +160,5 @@ class MainActivity : AppCompatActivity() {
         })
     }
 
-    private fun replaceFragment(fragment: Fragment)
-    {
-        if(fragment!=null)
-        {
-            val transaction=supportFragmentManager.beginTransaction()
-            transaction.replace(R.id.nav_host_fragment,fragment)
-            transaction.commit()
-        }
-    }
+
 }

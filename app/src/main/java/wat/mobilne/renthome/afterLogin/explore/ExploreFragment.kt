@@ -35,6 +35,33 @@ class ExploreFragment : Fragment(),AdapterExplore.OnItemClickListener {
         floating_action_button.setOnClickListener {
             val action = ExploreFragmentDirections.actionExploreFragmentToAddOfferFragment()
             findNavController().navigate(action)
+            Toast.makeText(
+                context,
+               "sss",
+                Toast.LENGTH_SHORT
+            ).show();
+
+            floating_action_button_mapa.setOnClickListener {
+                val action = ExploreFragmentDirections.actionExploreFragmentToMapFragment()
+                findNavController().navigate(action)
+                Toast.makeText(
+                    context,
+                    "ddd",
+                    Toast.LENGTH_SHORT
+                ).show();
+
+            }
+
+            floating_action_button_profile.setOnClickListener {
+                val action = ExploreFragmentDirections.actionExploreFragmentToProfileFragment()
+                findNavController().navigate(action)
+                Toast.makeText(
+                    context,
+                    "dd",
+                    Toast.LENGTH_SHORT
+                ).show();
+
+            }
 
 
 

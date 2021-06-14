@@ -38,7 +38,11 @@
         android:id="@+id/mapFragment"
         android:name="wat.mobilne.renthome.afterLogin.map.MapFragment"
         android:label="fragment_map"
-        tools:layout="@layout/fragment_map" />
+        tools:layout="@layout/fragment_map" >
+        <action
+            android:id="@+id/action_mapFragment_to_exploreFragment"
+            app:destination="@id/exploreFragment" />
+    </fragment>
     <fragment
         android:id="@+id/exploreFragment"
         android:name="wat.mobilne.renthome.afterLogin.explore.ExploreFragment"
@@ -50,6 +54,12 @@
         <action
             android:id="@+id/action_exploreFragment_to_addOfferFragment"
             app:destination="@id/addOfferFragment" />
+        <action
+            android:id="@+id/action_exploreFragment_to_profileFragment"
+            app:destination="@id/profileFragment" />
+        <action
+            android:id="@+id/action_exploreFragment_to_mapFragment"
+            app:destination="@id/mapFragment" />
     </fragment>
     <fragment
         android:id="@+id/profileFragment"
@@ -59,6 +69,12 @@
         <action
             android:id="@+id/action_profileFragment_to_changePasswordFragment"
             app:destination="@id/changePasswordFragment" />
+        <action
+            android:id="@+id/action_profileFragment_to_reservationFragment"
+            app:destination="@id/reservationFragment" />
+        <action
+            android:id="@+id/action_profileFragment_to_exploreFragment"
+            app:destination="@id/exploreFragment" />
     </fragment>
     <fragment
         android:id="@+id/itemDetailFragment"
@@ -75,8 +91,8 @@
             android:id="@+id/action_itemDetailFragment_to_mapFragment"
             app:destination="@id/mapFragment" />
         <action
-            android:id="@+id/action_itemDetailFragment_to_profileFragment"
-            app:destination="@id/profileFragment" />
+            android:id="@+id/action_itemDetailFragment_to_mapFragment2"
+            app:destination="@id/mapFragment" />
     </fragment>
     <fragment
         android:id="@+id/itemReservationDetailFragment"
@@ -100,7 +116,11 @@
         android:id="@+id/reservationFragment"
         android:name="wat.mobilne.renthome.afterLogin.reservation.ReservationFragment"
         android:label="fragment_reservation"
-        tools:layout="@layout/fragment_reservation" />
+        tools:layout="@layout/fragment_reservation" >
+        <action
+            android:id="@+id/action_reservationFragment_to_exploreFragment"
+            app:destination="@id/exploreFragment" />
+    </fragment>
     <fragment
         android:id="@+id/addOfferFragment"
         android:name="wat.mobilne.renthome.afterLogin.addNewOffer.AddOfferFragment"

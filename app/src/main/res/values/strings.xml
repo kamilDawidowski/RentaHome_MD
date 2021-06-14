@@ -47,4 +47,14 @@
     <string name="Login_Correct">Login is corect</string>
     <string name="InCorrectLogin">"Login is incorrect! "</string>
     <string name="hintincorecpasssword">Your password must contain 6 characters and email must have @ !</string>
+    <string name="title_activity_second">SecondActivity</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+
+    <string name="hello_first_fragment">Hello first fragment</string>
+    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    <string name="my_reservation">My Reservation</string>
 </resources>

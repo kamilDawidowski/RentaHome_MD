@@ -1,6 +1,5 @@
 package wat.mobilne.renthome.withoutLogin.login
 
-import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -10,7 +9,6 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
-import com.wat.rentahome.utils.Constants
 import kotlinx.android.synthetic.main.fragment_login.*
 import okhttp3.Credentials
 import wat.mobilne.renthome.MainActivity
@@ -43,6 +41,7 @@ class LoginFragment : Fragment() {
                inputPassword.setText("")
                 val action = LoginFragmentDirections.actionLoginFragmentToExploreFragment()
                 findNavController().navigate(action)
+
                 Toast.makeText(
                     context,
                     getString(R.string.Login_Correct),

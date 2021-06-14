@@ -5,8 +5,10 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.findNavController
+import kotlinx.android.synthetic.main.fragment_add_offer.*
 import wat.mobilne.renthome.R
-
+import wat.mobilne.renthome.afterLogin.profile.ProfileFragmentDirections
 
 
 class AddOfferFragment : Fragment() {
@@ -26,6 +28,15 @@ class AddOfferFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_add_offer, container, false)
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+
+        buttonAddOfert.setOnClickListener {
+            val action = AddOfferFragmentDirections.actionAddOfferFragmentToExploreFragment()
+            findNavController().navigate(action)
+        }
+        super.onViewCreated(view, savedInstanceState)
     }
 
 }

@@ -33,10 +33,8 @@
                 android:id="@+id/btnChangePassword"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="40dp"
+                android:layout_marginTop="20dp"
                 android:text="@string/change_password"
-                app:layout_constraintEnd_toEndOf="@+id/btnUpdateProfile"
-                app:layout_constraintHorizontal_bias="0.473"
                 app:layout_constraintStart_toStartOf="@+id/btnUpdateProfile"
                 app:layout_constraintTop_toBottomOf="@+id/btnUpdateProfile" />
 
@@ -44,21 +42,21 @@
                 android:id="@+id/btnAddPhoto"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="40dp"
+                android:layout_marginTop="20dp"
                 android:text="@string/add_profile_picture"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.49"
-                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/btnChangePassword"
                 app:layout_constraintTop_toBottomOf="@+id/btnChangePassword" />
 
             <Button
                 android:id="@+id/btnUpdateProfile"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="36dp"
+                android:layout_marginTop="24dp"
                 android:text="@string/update_information"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.497"
+                app:layout_constraintHorizontal_bias="0.119"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/cardView" />
 
@@ -161,7 +159,6 @@
                         android:layout_height="wrap_content"
                         android:ems="10"
                         android:inputType="textPersonName"
-                        android:text="@string/username"
                         android:visibility="invisible"
                         app:layout_constraintBottom_toBottomOf="@+id/tUsername"
                         app:layout_constraintEnd_toEndOf="parent" />
@@ -172,7 +169,6 @@
                         android:layout_height="wrap_content"
                         android:ems="10"
                         android:inputType="textPersonName"
-                        android:text="@string/name"
                         android:visibility="invisible"
                         app:layout_constraintBottom_toBottomOf="@+id/tName"
                         app:layout_constraintStart_toStartOf="@+id/chEmail" />
@@ -183,7 +179,6 @@
                         android:layout_height="wrap_content"
                         android:ems="10"
                         android:inputType="textPersonName"
-                        android:text="@string/email"
                         android:visibility="invisible"
                         app:layout_constraintBottom_toBottomOf="@+id/tEmail"
                         app:layout_constraintEnd_toEndOf="parent"
@@ -196,7 +191,6 @@
                         android:layout_height="wrap_content"
                         android:ems="10"
                         android:inputType="textPersonName"
-                        android:text="@string/surname"
                         android:visibility="invisible"
                         app:layout_constraintBottom_toBottomOf="@+id/tSurname"
                         app:layout_constraintStart_toStartOf="@+id/chName" />
@@ -204,6 +198,29 @@
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </androidx.cardview.widget.CardView>
+
+            <Button
+                android:id="@+id/btnGoToReservation"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="@string/my_reservation"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/btnAddPhoto"
+                app:layout_constraintTop_toBottomOf="@+id/btnAddPhoto" />
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/floating_action_button_to_explore"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom|right"
+                android:layout_marginEnd="56dp"
+                app:layout_constraintBottom_toBottomOf="@+id/btnGoToReservation"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toEndOf="@+id/btnGoToReservation"
+                app:srcCompat="@android:drawable/ic_menu_revert" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>

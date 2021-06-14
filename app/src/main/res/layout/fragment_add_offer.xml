@@ -12,7 +12,6 @@
         android:id="@+id/addTitileOfert"
         android:layout_width="match_parent"
         android:layout_height="40dp"
-        android:layout_marginTop="90dp"
         android:ems="10"
         android:hint="@string/title"
         android:inputType="textPersonName"
