@@ -69,8 +69,6 @@ class MainActivity : AppCompatActivity() {
                     setLocate("en")
                     recreate()
                     flagLanguage = false;
-
-
                     true
                 }
                 id.mode -> {
@@ -91,7 +89,6 @@ class MainActivity : AppCompatActivity() {
                             Toast.LENGTH_SHORT
                         ).show();
                         flag = true;
-
                     }
 
                     true
