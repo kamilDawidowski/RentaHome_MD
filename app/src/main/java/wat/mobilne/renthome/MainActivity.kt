@@ -10,11 +10,8 @@ import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
-import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.NavController
-import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
 import com.wat.rentahome.MainViewModel
 import com.wat.rentahome.MainViewModelFactory
@@ -22,9 +19,6 @@ import com.wat.rentahome.models.Offer
 import com.wat.rentahome.repository.Repository
 import kotlinx.android.synthetic.main.activity_main.*
 import wat.mobilne.renthome.R.*
-import wat.mobilne.renthome.afterLogin.explore.ExploreFragment
-import wat.mobilne.renthome.afterLogin.profile.ProfileFragment
-import wat.mobilne.renthome.afterLogin.reservation.ReservationFragment
 import wat.mobilne.renthome.utils.Preferences
 import java.util.*
 

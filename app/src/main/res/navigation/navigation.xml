@@ -87,6 +87,9 @@
             android:name="price"
             app:argType="float"
             android:defaultValue="12.0" />
+        <action
+            android:id="@+id/action_itemDetailFragment_to_mapZoomFragment"
+            app:destination="@id/mapZoomFragment" />
     </fragment>
     <fragment
         android:id="@+id/itemReservationDetailFragment"
@@ -112,4 +115,16 @@
         android:name="wat.mobilne.renthome.fragments.offer.AddOfferFragment"
         android:label="fragment_add_offer"
         tools:layout="@layout/fragment_add_offer" />
+    <fragment
+        android:id="@+id/mapZoomFragment"
+        android:name="wat.mobilne.renthome.fragments.MapZoomFragment"
+        android:label="fragment_map_zoom"
+        tools:layout="@layout/fragment_map_zoom" >
+        <argument
+            android:name="lat"
+            app:argType="float" />
+        <argument
+            android:name="long"
+            app:argType="float" />
+    </fragment>
 </navigation>
