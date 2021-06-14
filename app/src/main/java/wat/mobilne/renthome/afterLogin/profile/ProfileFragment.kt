@@ -1,13 +1,16 @@
 package wat.mobilne.renthome.afterLogin.profile
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import kotlinx.android.synthetic.main.fragment_profile.*
+import wat.mobilne.renthome.MainActivity
 import wat.mobilne.renthome.R
 import wat.mobilne.renthome.utils.Preferences
 import wat.mobilne.renthome.withoutLogin.login.LoginFragmentDirections
@@ -79,9 +82,26 @@ class ProfileFragment : Fragment() {
         tName.setText(Preferences.user.name)
         tSurname.setText(Preferences.user.surname)
     }
-    private fun changeData()
-    {
 
+    private fun changeData() {
+
+    }
+
+    private fun observeUpdate() {
+        val mainActivity = activity as MainActivity
+        mainActivity.viewModel.updateUserResponse.observe(viewLifecycleOwner, Observer { response ->
+            if (response.isSuccessful) {
+                Preferences.user = response.body()!!
+                Log.d("Login", "user changed: " + response.body().toString())
+            } else {
+                // #TODO: Handle server exception
+            }
+        })
+    }
+
+    private fun updateUser(username: String, description: String) {
+        val mainActivity = activity as MainActivity
+        mainActivity.viewModel.updateUser(username, description)
     }
 }
 

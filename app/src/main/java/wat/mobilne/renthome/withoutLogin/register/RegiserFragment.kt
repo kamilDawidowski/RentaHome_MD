@@ -56,10 +56,7 @@ class RegiserFragment : Fragment() {
         {
             tryRegister()
             Toast.makeText(context,inpuUsername.text.toString() ,Toast.LENGTH_SHORT).show()
-            val action = LoginFragmentDirections.actionLoginFragmentToRegiserFragment()
             findNavController().navigateUp()
-//            parentFragmentManager.popBackStack()
-//            findNavController().navigate(R.id.loginFragment)
             inpuUsername.setText("")
             inputPassword.setText("")
             inputPasswordConfirm.setText("")
