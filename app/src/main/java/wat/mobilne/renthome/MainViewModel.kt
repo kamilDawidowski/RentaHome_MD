@@ -7,6 +7,7 @@ import com.wat.rentahome.models.*
 import com.wat.rentahome.repository.Repository
 import kotlinx.coroutines.launch
 import retrofit2.Response
+import wat.mobilne.renthome.models.Reservation
 
 class MainViewModel(private val repository: Repository): ViewModel() {
 
@@ -39,6 +40,14 @@ class MainViewModel(private val repository: Repository): ViewModel() {
         viewModelScope.launch {
             val response = repository.register(registration)
             registerResponse.value = response
+        }
+    }
+
+    val reservationsResponse: MutableLiveData<Response<List<Reservation>>> = MutableLiveData()
+    fun getReservations() {
+        viewModelScope.launch {
+            val response = repository.getReservations()
+            reservationsResponse.value = response
         }
     }
 
