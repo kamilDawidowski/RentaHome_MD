@@ -3,6 +3,7 @@ package wat.mobilne.renthome
 import android.app.Activity
 import android.content.Context
 import android.content.res.Configuration
+import android.os.Build
 import android.os.Bundle
 import android.util.AttributeSet
 import android.util.Log
@@ -10,11 +11,9 @@ import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
-import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentTransaction
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.NavController
-import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
 import com.wat.rentahome.MainViewModel
 import com.wat.rentahome.MainViewModelFactory
@@ -24,6 +23,7 @@ import kotlinx.android.synthetic.main.activity_main.*
 import wat.mobilne.renthome.R.*
 import wat.mobilne.renthome.utils.Preferences
 import java.util.*
+
 
 class MainActivity : AppCompatActivity() {
     lateinit var viewModel: MainViewModel
@@ -62,7 +62,6 @@ class MainActivity : AppCompatActivity() {
                 id.language -> {
                     Toast.makeText(this, getString(string.languageENG), Toast.LENGTH_SHORT).show()
                     setLocate("en")
-                    recreate()
                     flagLanguage = false;
                     true
                 }
@@ -138,6 +137,12 @@ class MainActivity : AppCompatActivity() {
             if (response.isSuccessful) {
                 offers = response.body()
                 Log.d("Offers", "Offers: " + response.body().toString())
+                val exploreFragment = supportFragmentManager.findFragmentById(R.id.exploreFragment);
+                val ft: FragmentTransaction = supportFragmentManager.beginTransaction()
+                if (Build.VERSION.SDK_INT >= 26) {
+                    ft.setReorderingAllowed(false)
+                }
+                exploreFragment?.let { ft.detach(it).attach(it).commit() }
             } else {
                 // #TODO: Handle server exception
             }

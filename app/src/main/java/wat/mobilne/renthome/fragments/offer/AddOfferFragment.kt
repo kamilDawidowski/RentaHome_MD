@@ -1,17 +1,21 @@
 package wat.mobilne.renthome.fragments.offer
 
+import android.os.Build
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.annotation.RequiresApi
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
+import com.wat.rentahome.models.Offer
 import kotlinx.android.synthetic.main.fragment_add_offer.*
 import wat.mobilne.renthome.MainActivity
 import wat.mobilne.renthome.R
 import wat.mobilne.renthome.utils.Preferences
+import java.time.LocalDate
 
 
 class AddOfferFragment : Fragment() {
@@ -38,8 +42,11 @@ class AddOfferFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 
+        observeCreateOffer()
+
         buttonAddOfert.setOnClickListener {
 
+            createOffer()
             // Dodanie zmiennych do ogłoszenia
             addDescriptionOfert.text
             addPriceOfert.text
@@ -58,15 +65,23 @@ class AddOfferFragment : Fragment() {
 
     private fun observeCreateOffer() {
         val mainActivity = activity as MainActivity
-        mainActivity.viewModel.offersResponse.observe(viewLifecycleOwner, Observer { response ->
+        mainActivity.viewModel.createOfferResponse.observe(viewLifecycleOwner, Observer { response ->
             // When user successfully logged in
             if (response.isSuccessful) {
                 val offer = response.body()!!
-                mainActivity.viewModel.getOffers()
+                Log.d("Response", "Created offer: " + response.body().toString())
+                mainActivity.fetchOffers()
             } else {
                 // #TODO: Handle server exception
             }
         })
+    }
+
+    private fun createOffer() {
+        val mainActivity = activity as MainActivity
+        val offer = Offer(Preferences.user, addTitileOfert.text.toString(), addDescriptionOfert.text.toString(), 2.0, 2.0, 2.0, null)
+        Log.d("Offer", offer.toString())
+        mainActivity.viewModel.createOffer(offer)
     }
 
 
