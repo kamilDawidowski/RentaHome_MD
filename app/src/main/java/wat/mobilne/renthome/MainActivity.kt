@@ -1,7 +1,9 @@
 package wat.mobilne.renthome
 
+import android.app.Activity
 import android.content.ClipData
 import android.content.Context
+import android.content.res.Configuration
 import android.graphics.drawable.Icon
 import android.os.Bundle
 import android.util.AttributeSet
@@ -42,6 +44,7 @@ import wat.mobilne.renthome.afterLogin.profile.ProfileFragment
 import wat.mobilne.renthome.afterLogin.reservation.ReservationFragment
 import wat.mobilne.renthome.utils.Preferences
 import wat.mobilne.renthome.withoutLogin.login.LoginFragmentDirections
+import java.util.*
 
 class MainActivity : AppCompatActivity() {
     private lateinit var navController: NavController
@@ -67,22 +70,39 @@ class MainActivity : AppCompatActivity() {
         Preferences.setup(applicationContext)
         initViewModel()
         observeOffers()
+        loadLocate()
         //Nawigacja dolna
 
         // Ustawaiamy nasz Acitivity jak tło
         setContentView(R.layout.activity_main)
         var flag = true;
+        var flagLanguage = true;
 
 // górnrny pasek
 
         topAppBar.setOnMenuItemClickListener { menuItem ->
             when (menuItem.itemId) {
                 R.id.language -> {
+                    if(flagLanguage)
+                    {
+                        setLocate("en")
+                        recreate()
+                        flagLanguage=false;
+
+                    }
+                    else
+                    {
+                        setLocate("pl")
+                        recreate()
+                        flagLanguage=true;
+
+                    }
                     Toast.makeText(
                         this,
                         getString(R.string.language_is_changed),
                         Toast.LENGTH_SHORT
                     ).show();
+
 
                     true
                 }
@@ -158,6 +178,30 @@ class MainActivity : AppCompatActivity() {
                 // #TODO: Handle server exception
             }
         })
+    }
+
+    private fun loadLocate() {
+        val sharedPreferences = getSharedPreferences("Settings", Activity.MODE_PRIVATE)
+        val language = sharedPreferences.getString("My_Lang", "")
+        if (language != null) {
+            setLocate(language)
+        }
+    }
+
+    private fun setLocate(Lang: String) {
+
+        val locale = Locale(Lang)
+
+        Locale.setDefault(locale)
+
+        val config = Configuration()
+
+        config.locale = locale
+        baseContext.resources.updateConfiguration(config, baseContext.resources.displayMetrics)
+
+        val editor = getSharedPreferences("Settings", Context.MODE_PRIVATE).edit()
+        editor.putString("My_Lang", Lang)
+        editor.apply()
     }
 
 

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">RentHome</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="hint_username">Użytkownik</string>
+    <string name="hint_password">Hasło</string>
+    <string name="Login">Login</string>
+    <string name="Explore">Wyszukiwanie</string>
+    <string name="Offer">Oferta</string>
+    <string name="Map">Mapa</string>
+    <string name="Profile">Profil</string>
+    <string name="Sign_up">Rejestracja</string>
+    <string name="search">szukaj</string>
+    <string name="content_description_search">content_description_search</string>
+    <string name="more">więcej</string>
+    <string name="content_description_more">content_description_more</string>
+    <string name="language">Język</string>
+    <string name="mode">Tryb</string>
+    <string name="language_is_changed">Język jest zmieniony</string>
+    <string name="mode_is_changed">Tryb jest zmieniony</string>
+    <string name="mode_is_changed_dark">Tryb zmieniony na ciemny</string>
+    <string name="mode_is_changed_light">Tryb zmieniony na jasny</string>
+    <string name="register">Rejestracja</string>
+    <string name="do_you_have_an_account">Czy masz konto ?</string>
+    <string name="helper_text">Hasło musi zawierać 6 znaków</string>
+    <string name="hint_email">Email</string>
+    <string name="don_t_have_an_account">Nie masz konta?</string>
+    <string name="confirm_password">Potwierdz hasło</string>
+    <string name="Password">Hasło</string>
+    <string name="Reservation">Rezerwacja</string>
+    <string name="select_travel_data">Wybierz datę podróży</string>
+    <string name="confirm">Potwierdz</string>
+    <string name="summary">Podsumowanie</string>
+    <string name="change_password">Zmień hasło</string>
+    <string name="update_information">Aktulizuj informacje</string>
+    <string name="add_profile_picture">Dodaj zdjęcie profilowe</string>
+    <string name="username">Użytkownik:</string>
+    <string name="email">Email:</string>
+    <string name="name">Imię:</string>
+    <string name="surname">Nazwisko:</string>
+    <string name="new_password">Nowe hasło</string>
+    <string name="cancel">Odwołaj</string>
+    <string name="title">Tytuł</string>
+    <string name="price_for_one_day">Cena za jeden dzień</string>
+    <string name="description">Opis</string>
+    <string name="add_image">Dodaj zdjęcie</string>
+    <string name="Login_Correct">Login jest prawidłowy</string>
+    <string name="InCorrectLogin">"Login jest nieprawidłowy! "</string>
+    <string name="hintincorecpasssword">Twoje hasło musi mieć conajmniej 6 znnaków!</string>
+    <string name="title_activity_second">SecondActivity</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Dalej</string>
+    <string name="previous">Poprzednio</string>
+
+    <string name="hello_first_fragment">Hello first fragment</string>
+    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    <string name="my_reservation">Moja rezerwacja</string>
+</resources>
