@@ -57,4 +57,6 @@
     <string name="hello_first_fragment">Hello first fragment</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
     <string name="my_reservation">My Reservation</string>
+    <string name="languagePL">Language : ENG</string>
+    <string name="languageENG">Language: PL</string>
 </resources>

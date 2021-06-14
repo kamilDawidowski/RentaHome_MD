@@ -66,7 +66,7 @@ class LoginFragment : Fragment() {
 
 
 
-//            onLoginButtonClick()
+            onLoginButtonClick()
         }
 
         textViewSignUp.setOnClickListener() {

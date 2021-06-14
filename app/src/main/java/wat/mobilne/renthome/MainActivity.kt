@@ -6,6 +6,7 @@ import android.content.Context
 import android.content.res.Configuration
 import android.graphics.drawable.Icon
 import android.os.Bundle
+import android.preference.PreferenceManager
 import android.util.AttributeSet
 import android.view.Menu
 import android.view.View
@@ -30,6 +31,7 @@ import androidx.navigation.ui.setupWithNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.gms.maps.MapFragment
 import com.google.android.material.badge.BadgeDrawable
+import com.google.android.material.bottomnavigation.BottomNavigationMenu
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.wat.rentahome.MainViewModel
 import com.wat.rentahome.MainViewModelFactory
@@ -37,6 +39,7 @@ import com.wat.rentahome.models.Offer
 import com.wat.rentahome.repository.Repository
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_explore.*
+import wat.mobilne.renthome.R.*
 import wat.mobilne.renthome.adapter.AdapterExplore
 import wat.mobilne.renthome.afterLogin.explore.ExploreFragment
 import wat.mobilne.renthome.afterLogin.explore.ItemData
@@ -53,6 +56,8 @@ class MainActivity : AppCompatActivity() {
     private val profileFragment= ProfileFragment() as Fragment
     private val reservationFragment= ReservationFragment() as Fragment
     private val mapFragment=wat.mobilne.renthome.afterLogin.map.MapFragment() as Fragment
+    var flag = true;
+    var flagLanguage = true;
 
 
 
@@ -74,7 +79,7 @@ class MainActivity : AppCompatActivity() {
         //Nawigacja dolna
 
         // Ustawaiamy nasz Acitivity jak tło
-        setContentView(R.layout.activity_main)
+        setContentView(layout.activity_main)
         var flag = true;
         var flagLanguage = true;
 
@@ -82,37 +87,28 @@ class MainActivity : AppCompatActivity() {
 
         topAppBar.setOnMenuItemClickListener { menuItem ->
             when (menuItem.itemId) {
-                R.id.language -> {
-                    if(flagLanguage)
-                    {
+                id.language -> {
+
+
+                        Toast.makeText(
+                            this,
+                            getString(string.languageENG),
+                            Toast.LENGTH_SHORT
+                        ).show();
                         setLocate("en")
                         recreate()
-                        flagLanguage=false;
-
-                    }
-                    else
-                    {
-                        setLocate("pl")
-                        recreate()
-                        flagLanguage=true;
-
-                    }
-                    Toast.makeText(
-                        this,
-                        getString(R.string.language_is_changed),
-                        Toast.LENGTH_SHORT
-                    ).show();
+                        flagLanguage = false;
 
 
                     true
                 }
-                R.id.mode -> {
+                id.mode -> {
 
                     if (flag) {
                         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
                         Toast.makeText(
                             this,
-                            getString(R.string.mode_is_changed_dark),
+                            getString(string.mode_is_changed_dark),
                             Toast.LENGTH_SHORT
                         ).show();
                         flag = false;
@@ -120,7 +116,7 @@ class MainActivity : AppCompatActivity() {
                         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
                         Toast.makeText(
                             this,
-                            getString(R.string.mode_is_changed_light),
+                            getString(string.mode_is_changed_light),
                             Toast.LENGTH_SHORT
                         ).show();
                         flag = true;
@@ -135,23 +131,31 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
-// An icon only badge will be displayed unless a number is set:
 
-//        navigation.OnNavigationItemSelectedListener { item ->
-//            when(item.itemId) {
-//                R.id.exploreFragment -> {
-//                    Toast.makeText(
-//                        this,
-//                        getString(R.string.mode_is_changed_light),
-//                        Toast.LENGTH_SHORT
-//                    ).show();
-//                    // Respond to navigation item 1 click
-//                    true
-//                }
-//
-//                else -> false
-//            }
-//        }
+        bottom_navigation.setOnNavigationItemSelectedListener {
+                item ->
+            when(item.itemId) {
+                id.exploreFragment -> {
+                  bottom_navigation.findNavController().navigate(R.id.profileFragment)
+                    // Respond to navigation item 1 click
+                    true
+                }
+                id.exploreFragment -> {
+                    Toast.makeText(
+                        this,
+                        getString(string.mode_is_changed_light),
+                        Toast.LENGTH_SHORT
+                    ).show();
+                    // Respond to navigation item 1 click
+                    true
+                }
+
+                else -> false
+            }
+
+        }
+
+
 
 
 

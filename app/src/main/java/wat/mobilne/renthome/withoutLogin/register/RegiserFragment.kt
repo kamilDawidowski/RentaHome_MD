@@ -53,12 +53,12 @@ class RegiserFragment : Fragment() {
         if(validateForm(inputEmail.text.toString(),inputPassword.text.toString(),inputPasswordConfirm.text.toString(),inpuUsername.text.toString()))
         {
             tryRegister()
-//            val action = RegiserFragmentDirections.actionRegiserFragmentToLoginFragment()
-//            inpuUsername.setText("")
-//            inputPassword.setText("")
-//            inputPasswordConfirm.setText("")
-//            inputEmail.setText("")
-//            findNavController().navigate(action)
+            findNavController().navigate(R.id.loginFragment)
+            inpuUsername.setText("")
+            inputPassword.setText("")
+            inputPasswordConfirm.setText("")
+            inputEmail.setText("")
+
 
         }
         else
@@ -74,8 +74,7 @@ class RegiserFragment : Fragment() {
     }
 
     private fun navigateToLogin() {
-//        val action = RegiserFragmentDirections.actionRegiserFragmentToLoginFragment()
-//        findNavController().navigate(action)
+
     }
 
     private fun observeRegister() {

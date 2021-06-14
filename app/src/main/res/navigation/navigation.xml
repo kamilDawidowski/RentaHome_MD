@@ -67,12 +67,31 @@
             android:id="@+id/action_itemDetailFragment_to_itemReservationDetailFragment"
             app:destination="@id/itemReservationDetailFragment"
             app:popUpTo="@id/itemDetailFragment" />
+        <argument
+            android:name="title"
+            app:argType="string" />
+        <argument
+            android:name="description"
+            app:argType="string" />
+        <argument
+            android:name="long"
+            app:argType="float" />
+        <argument
+            android:name="lat"
+            app:argType="float" />
+        <argument
+            android:name="price"
+            app:argType="float" />
     </fragment>
     <fragment
         android:id="@+id/itemReservationDetailFragment"
         android:name="wat.mobilne.renthome.afterLogin.explore.exploreItemDetail.ItemReservationDetailFragment"
         android:label="fragment_item_reservation_detail"
-        tools:layout="@layout/fragment_item_reservation_detail" />
+        tools:layout="@layout/fragment_item_reservation_detail" >
+        <argument
+            android:name="price"
+            app:argType="float" />
+    </fragment>
     <fragment
         android:id="@+id/changePasswordFragment"
         android:name="wat.mobilne.renthome.afterLogin.profile.ChangePasswordFragment"

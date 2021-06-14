@@ -7,23 +7,16 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import com.google.android.material.datepicker.MaterialDatePicker
+import kotlinx.android.synthetic.main.fragment_item_detail.*
 import kotlinx.android.synthetic.main.fragment_item_reservation_detail.*
 import wat.mobilne.renthome.R
 import java.util.*
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
 
-/**
- * A simple [Fragment] subclass.
- * Use the [ItemReservationDetailFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class ItemReservationDetailFragment : Fragment() {
-
+    private val args: ItemReservationDetailFragmentArgs by navArgs()
 
     override fun onCreate(savedInstanceState: Bundle?) {
 
@@ -63,17 +56,22 @@ class ItemReservationDetailFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         val dataPicker=MaterialDatePicker.Builder.dateRangePicker().setTitleText("Pick your reservation Data").build();
 
+        textCashSummary.text = args.price.toString()
+
+// parametry do przekazania
+        var data=textSelectedData.setText(dataPicker.headerText);
+        var pricr=args.price.toString()
+
+
+
+
 
 
         btnConfirm.setOnClickListener {
-//            val action=ItemReservationDetailFragmentDirections.actionItemReservationDetailFragmentToExploreFragment()
-//            findNavController().navigate(action)
-//            Toast.makeText(
-//                context,
-//                getString(R.string.confirm),
-//                Toast.LENGTH_SHORT
-//            ).show();
-//
+
+            findNavController().navigate(R.id.exploreFragment)
+
+
         }
         btnShowData.setOnClickListener {
 
@@ -81,12 +79,12 @@ class ItemReservationDetailFragment : Fragment() {
 
         }
         btnCancelReservation.setOnClickListener {
-//            val action=ItemReservationDetailFragmentDirections.actionItemReservationDetailFragmentToExploreFragment()
-//            findNavController().navigate(action)
+            findNavController().navigate(R.id.exploreFragment)
 //
         }
         dataPicker.addOnPositiveButtonClickListener {
             textSelectedData.setText(dataPicker.headerText);
+
 
             // Respond to positive button click.
         }

@@ -19,10 +19,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.RentHome"
         android:usesCleartextTraffic="true">
-        <activity
-            android:name=".afterLogin.SecondActivity"
-            android:label="@string/title_activity_second"
-            android:theme="@style/Theme.RentHome.NoActionBar"></activity>
+
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"

@@ -1,6 +1,5 @@
 package wat.mobilne.renthome.afterLogin.explore
 
-import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -10,10 +9,12 @@ import android.widget.Toast
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.fragment_explore.*
+import wat.mobilne.renthome.MainActivity
 import wat.mobilne.renthome.R
 import wat.mobilne.renthome.adapter.AdapterExplore
 
 class ExploreFragment : Fragment(),AdapterExplore.OnItemClickListener {
+    val mainActivity = activity as MainActivity
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -27,47 +28,40 @@ class ExploreFragment : Fragment(),AdapterExplore.OnItemClickListener {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 // Przykładowa lista dla elementów
-        val offers = generateDummyList(7)
+       var offers= generateList()
         recyclerView.adapter = AdapterExplore(offers,this)
         recyclerView.layoutManager = LinearLayoutManager(context)
         recyclerView.setHasFixedSize(true)
 
         floating_action_button.setOnClickListener {
-            val action = ExploreFragmentDirections.actionExploreFragmentToAddOfferFragment()
-            findNavController().navigate(action)
-            Toast.makeText(
-                context,
-                "sss",
-                Toast.LENGTH_SHORT
-            ).show();
-        }
 
+            findNavController().navigate(R.id.itemDetailFragment)
+        }
         floating_action_button_mapa.setOnClickListener {
 
-            findNavController().navigate(R.id.profileFragment)
-            Toast.makeText(
-                context,
-                "ddd",
-                Toast.LENGTH_SHORT
-            ).show();
-
+            findNavController().navigate(R.id.mapFragment)
         }
-
         floating_action_button_profile.setOnClickListener {
-//                val action = ExploreFragmentDirections.actionExploreFragmentToProfileFragment()
-//                findNavController().navigate(action)
-            Toast.makeText(
-                context,
-                "dd",
-                Toast.LENGTH_SHORT
-            ).show();
+
+            findNavController().navigate(R.id.profileFragment)
         }
+
+
+        }
+
+    override fun onItemClick(position: Int, currentItem: ItemData) {
+        TODO("Not yet implemented")
+        Toast.makeText(context, "${currentItem.title}" , Toast.LENGTH_SHORT).show()
+        var description=currentItem.decribe
+        var price=currentItem.price.toFloat()
+        var title=currentItem.title
+        var latitiude=currentItem.latitude.toFloat()
+        var longitude=currentItem.longitude.toFloat()
+
+
+        val action = ExploreFragmentDirections.actionExploreFragmentToItemDetailFragment(title,description,longitude,latitiude,price)
+        findNavController().navigate(action)
     }
-
-
-
-
-
 
 
     override fun onCreateView(
@@ -77,26 +71,36 @@ class ExploreFragment : Fragment(),AdapterExplore.OnItemClickListener {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_explore, container, false)
     }
+    private fun generateList(): List<ItemData> {
+        val list = ArrayList<ItemData>()
+        val mainActivity = activity as MainActivity
+        val result=mainActivity.offers
 
-    override fun onItemClick(position: Int, currentItem:ItemData) {
-        Toast.makeText(context, "fff" , Toast.LENGTH_SHORT).show()
-        val action = ExploreFragmentDirections.actionExploreFragmentToItemDetailFragment()
-        findNavController().navigate(action)
-
-    }
-
-}
-// Generowanie przykładowych elementów
-private fun generateDummyList(size: Int): List<ItemData> {
-    val list = ArrayList<ItemData>()
-    for (i in 0 until size) {
-        val drawable = when (i % 3) {
-            0 -> R.drawable.ic_profile
-            1 -> R.drawable.ic_map
-            else -> R.drawable.ic_explore
+        if (result != null) {
+            result.forEach {
+                val row=ItemData(
+                    R.drawable.ic_explore,
+                    it.price,
+                    it.title,
+                    it.description,
+                    it.latitude,
+                    it.longitude
+                )
+                list.add(row)
+            }
         }
-        val item = ItemData(drawable, 4, "Line 2","ddd",5.0,5.0)
-        list += item
+
+
+
+
+        return list
     }
-    return list
+
+
+
 }
+
+
+
+
+// Generowanie przykładowych elementów

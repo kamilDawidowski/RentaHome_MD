@@ -9,6 +9,7 @@ import android.widget.Toast
 import androidx.navigation.fragment.findNavController
 import kotlinx.android.synthetic.main.fragment_profile.*
 import wat.mobilne.renthome.R
+import wat.mobilne.renthome.utils.Preferences
 import wat.mobilne.renthome.withoutLogin.login.LoginFragmentDirections
 
 class ProfileFragment : Fragment() {
@@ -30,6 +31,10 @@ class ProfileFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        // ustawienia danych użytkytkownika
+        setData()
+
+
         btnUpdateProfile.setOnClickListener {
             chUsername.visibility=View.VISIBLE
             chEmail.visibility=View.VISIBLE
@@ -57,6 +62,18 @@ class ProfileFragment : Fragment() {
 
 
         super.onViewCreated(view, savedInstanceState)
+    }
+
+    private fun setData()
+    {
+        tUsername.setText(Preferences.user.username)
+        tEmail.setText(Preferences.user.email)
+        tName.setText(Preferences.user.name)
+        tSurname.setText(Preferences.user.surname)
+    }
+    private fun changeData()
+    {
+
     }
 }
 
