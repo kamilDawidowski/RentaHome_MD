@@ -36,7 +36,7 @@ class ExploreFragment : Fragment(), AdapterExplore.OnItemClickListener {
 
         floating_action_button.setOnClickListener {
 
-            findNavController().navigate(R.id.itemDetailFragment)
+            findNavController().navigate(R.id.addOfferFragment)
         }
     }
 
