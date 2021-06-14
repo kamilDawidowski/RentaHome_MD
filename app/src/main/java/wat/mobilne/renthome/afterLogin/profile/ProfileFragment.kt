@@ -40,12 +40,30 @@ class ProfileFragment : Fragment() {
             chEmail.visibility=View.VISIBLE
             chName.visibility=View.VISIBLE
             chSurname.visibility=View.VISIBLE
+            buttonConfirmChange.visibility=View.VISIBLE
 
 
         }
         btnChangePassword.setOnClickListener {
             val action =ProfileFragmentDirections.actionProfileFragmentToChangePasswordFragment()
             findNavController().navigate(action)
+        }
+
+        buttonConfirmChange.setOnClickListener {
+
+            // Update w bazie danych wprowadzonych parametrów :
+            chUsername.text
+            chEmail.text
+            chName.text
+            chSurname.text
+           /////
+
+            chUsername.visibility=View.INVISIBLE
+            chEmail.visibility=View.INVISIBLE
+            chName.visibility=View.INVISIBLE
+            chSurname.visibility=View.INVISIBLE
+            buttonConfirmChange.visibility=View.INVISIBLE
+
         }
 
 
