@@ -40,12 +40,12 @@
                 android:id="@+id/imageView3"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
-                android:layout_marginTop="50dp"
+                android:layout_marginBottom="64dp"
                 android:src="@drawable/ic_pay"
+                app:layout_constraintBottom_toTopOf="@+id/btnShowData"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.232"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/btnShowData" />
+                app:layout_constraintStart_toStartOf="parent" />
 
             <TextView
                 android:id="@+id/textCashSummary"
@@ -78,32 +78,29 @@
                 android:id="@+id/btnCancelReservation"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="100dp"
+                android:layout_marginStart="32dp"
+                android:layout_marginBottom="32dp"
                 android:text="@android:string/cancel"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.216"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/imageView3" />
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
 
             <Button
                 android:id="@+id/btnConfirm"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="30dp"
+                android:layout_marginEnd="32dp"
+                android:layout_marginBottom="32dp"
                 android:text="@string/confirm"
-                app:layout_constraintBottom_toBottomOf="@+id/btnCancelReservation"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.719"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/btnCancelReservation"
-                app:layout_constraintVertical_bias="0.0" />
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
 
             <Button
                 android:id="@+id/btnShowData"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="60dp"
+                android:layout_marginBottom="128dp"
                 android:text="@string/select_travel_data"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textView4" />

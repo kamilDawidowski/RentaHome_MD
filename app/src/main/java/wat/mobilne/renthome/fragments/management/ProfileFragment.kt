@@ -5,17 +5,21 @@ import android.graphics.Bitmap
 import android.os.Bundle
 import android.provider.MediaStore
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
-import androidx.navigation.fragment.findNavController
 import kotlinx.android.synthetic.main.fragment_profile.*
+import okhttp3.MediaType
+import okhttp3.MultipartBody
+import okhttp3.RequestBody
 import wat.mobilne.renthome.MainActivity
 import wat.mobilne.renthome.R
+import wat.mobilne.renthome.utils.ImageProcesser
 import wat.mobilne.renthome.utils.Preferences
+
+
 private const val REQUESTE_CODE=42
 class ProfileFragment : Fragment() {
 
@@ -38,6 +42,9 @@ class ProfileFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         // ustawienia danych użytkytkownika
         setData()
+        observeUpdate()
+        observeUploadImage()
+
         buttonConfirmChange.visibility = View.INVISIBLE
 
         btnUpdateProfile.setOnClickListener {
@@ -121,10 +128,36 @@ class ProfileFragment : Fragment() {
         {
             var bmp=data?.extras?.get("data") as Bitmap
             profileImage.setImageBitmap(bmp)
-
+            uploadImage(bmp)
         }
+    }
 
+    private fun uploadImage(imageBmp: Bitmap) {
+        val image = context?.let { ImageProcesser.bitmapToFile(imageBmp, "profileImage", it) }
+        val fileBody: RequestBody =
+            RequestBody.create(MediaType.parse("multipart/form-data"), image)
+        val body = MultipartBody.Builder().addFormDataPart("file-type", "profile")
+            .addFormDataPart("photo", "image.png", fileBody)
+            .build()
+//        val requestFile: RequestBody =
+//            RequestBody.create(MediaType.parse("multipart/form-data"), image)
+//        val fileBody = MultipartBody.Part.createFormData("imageFile", image?.name, requestFile)
+        Log.d("image", fileBody.toString())
+        val mainActivity = activity as MainActivity
+        mainActivity.viewModel.uploadImage(body, "multipart/form-data; boundary=" + body.boundary())
+    }
 
+    private fun observeUploadImage() {
+        val mainActivity = activity as MainActivity
+        mainActivity.viewModel.uploadImageResponse.observe(viewLifecycleOwner, Observer { response ->
+            // When user successfully logged in
+            if (response.isSuccessful) {
+                val responseBody = response.body()!!
+                Log.d("Upload", "Uploaded image" + responseBody.toString())
+            } else {
+                // #TODO: Handle server exception
+            }
+        })
     }
 }
 

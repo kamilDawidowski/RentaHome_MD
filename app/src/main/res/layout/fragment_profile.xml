@@ -191,19 +191,18 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="20dp"
                         android:text="@string/update_information"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintHorizontal_bias="0.172"
-                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="@+id/btnChangePassword"
+                        app:layout_constraintStart_toStartOf="@+id/btnChangePassword"
                         app:layout_constraintTop_toBottomOf="@+id/btnChangePassword" />
 
                     <Button
                         android:id="@+id/btnChangePassword"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="52dp"
                         android:layout_marginTop="20dp"
                         android:text="@string/change_password"
-                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="@+id/btnAddPhoto"
+                        app:layout_constraintStart_toStartOf="@+id/btnAddPhoto"
                         app:layout_constraintTop_toBottomOf="@+id/btnAddPhoto" />
 
                     <com.google.android.material.imageview.ShapeableImageView
