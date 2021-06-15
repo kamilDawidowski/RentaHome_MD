@@ -11,6 +11,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import kotlinx.android.synthetic.main.fragment_profile.*
 import okhttp3.MediaType
 import okhttp3.MultipartBody
@@ -19,10 +20,13 @@ import wat.mobilne.renthome.MainActivity
 import wat.mobilne.renthome.R
 import wat.mobilne.renthome.utils.ImageProcesser
 import wat.mobilne.renthome.utils.Preferences
+import wat.mobilne.renthome.viewmodel.OfferViewModel
+import wat.mobilne.renthome.viewmodel.UserViewModel
 
 
 private const val REQUESTE_CODE=42
 class ProfileFragment : Fragment() {
+    lateinit var userViewModel: UserViewModel
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -42,9 +46,11 @@ class ProfileFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         // ustawienia danych użytkytkownika
+        userViewModel = ViewModelProvider(this).get(UserViewModel::class.java)
+
         setData()
         observeUpdate()
-        observeUploadImage()
+//        observeUploadImage()
 
         buttonConfirmChange.visibility = View.INVISIBLE
 
@@ -64,6 +70,7 @@ class ProfileFragment : Fragment() {
 
         buttonConfirmChange.setOnClickListener {
             //updateUser(chUsername.text.toString(), chEmail.text.toString())
+            updateUser(chUsername.text.toString(), "abc1")
             buttonConfirmChange.visibility = View.INVISIBLE
             hideEditInputs()
         }
@@ -101,20 +108,27 @@ class ProfileFragment : Fragment() {
     }
 
     private fun observeUpdate() {
-        val mainActivity = activity as MainActivity
-        mainActivity.viewModel.updateUserResponse.observe(viewLifecycleOwner, { response ->
+        userViewModel.updateUserResponse.observe(viewLifecycleOwner, { response ->
             if (response.isSuccessful) {
                 Preferences.user = response.body()!!
                 Log.d("Login", "user changed: " + response.body().toString())
-            } else {
-                // #TODO: Handle server exception
             }
         })
+//        val mainActivity = activity as MainActivity
+//        mainActivity.viewModel.updateUserResponse.observe(viewLifecycleOwner, { response ->
+//            if (response.isSuccessful) {
+//                Preferences.user = response.body()!!
+//                Log.d("Login", "user changed: " + response.body().toString())
+//            } else {
+//                // #TODO: Handle server exception
+//            }
+//        })
     }
 
     private fun updateUser(username: String, description: String) {
-        val mainActivity = activity as MainActivity
-        mainActivity.viewModel.updateUser(username, description)
+        userViewModel.updateUser(username, description)
+//        val mainActivity = activity as MainActivity
+//        mainActivity.viewModel.updateUser(username, description)
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {

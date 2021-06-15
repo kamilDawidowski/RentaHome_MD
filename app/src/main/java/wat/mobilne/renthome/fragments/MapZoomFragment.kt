@@ -22,26 +22,17 @@ import wat.mobilne.renthome.R
 class MapZoomFragment : Fragment() , GoogleMap.OnMyLocationButtonClickListener,
     GoogleMap.OnMyLocationClickListener,
     OnMapReadyCallback {
-
     var  REQUEST_CODE_LOCATION_PERMISON=1
     private val args: MapZoomFragmentArgs by navArgs()
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
-
         }
     }
+
     private val callback = OnMapReadyCallback { googleMap ->
-
-
-
-
-
                 val pointZoom=LatLng(args.lat.toDouble(), args.long.toDouble())
-
-//
                 googleMap.addMarker(
                     MarkerOptions().position(pointZoom).title(getString(R.string.your_choice)).icon(
                         BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_ORANGE)
@@ -50,26 +41,14 @@ class MapZoomFragment : Fragment() , GoogleMap.OnMyLocationButtonClickListener,
         val cameraPosition = CameraPosition.Builder()
             .target(pointZoom)
             .zoom(7f).build()
-
-
         googleMap.moveCamera(CameraUpdateFactory.newCameraPosition(cameraPosition))
         googleMap.isTrafficEnabled = true
-
-//
-
-
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val mapFragment = childFragmentManager.findFragmentById(R.id.map2) as SupportMapFragment?
         mapFragment?.getMapAsync(callback)
-
-
-
-
-
-
     }
 
 
@@ -81,10 +60,7 @@ class MapZoomFragment : Fragment() , GoogleMap.OnMyLocationButtonClickListener,
         return inflater.inflate(R.layout.fragment_map_zoom, container, false)
     }
 
-
-
     override fun onMyLocationClick(p0: Location) {
-
     }
 
     @SuppressLint("MissingPermission")

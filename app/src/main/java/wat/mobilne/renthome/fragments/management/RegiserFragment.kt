@@ -55,7 +55,6 @@ class RegiserFragment : Fragment() {
             inputPassword.setText("")
             inputPasswordConfirm.setText("")
             inputEmail.setText("")
-
         }
         else
         {

@@ -10,6 +10,7 @@ import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import kotlinx.android.synthetic.main.fragment_item_detail.*
+import wat.mobilne.renthome.MainActivity
 import wat.mobilne.renthome.R
 import java.io.IOException
 import java.lang.IllegalArgumentException
@@ -41,14 +42,10 @@ class ItemDetailFragment : Fragment() {
         initData()
 
         btnReservation.setOnClickListener {
-
+            makeReservation()
             val action=ItemDetailFragmentDirections.actionItemDetailFragmentToItemReservationDetailFragment(args.price)
             findNavController().navigate(action)
         }
-
-
-
-
 
         btnCancel.setOnClickListener {
 //            val action=ItemDetailFragmentDirections.actionItemDetailFragmentToExploreFragment()
@@ -100,6 +97,9 @@ class ItemDetailFragment : Fragment() {
         textTitle.text = args.title
         textDescription.text = args.description
         textCash.text = args.price.toString()
+    }
+
+    private fun makeReservation() {
     }
 
 

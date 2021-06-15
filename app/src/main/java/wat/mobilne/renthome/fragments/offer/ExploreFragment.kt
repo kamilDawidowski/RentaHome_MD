@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import wat.mobilne.renthome.models.Offer
@@ -14,9 +15,10 @@ import kotlinx.android.synthetic.main.fragment_explore.*
 import wat.mobilne.renthome.MainActivity
 import wat.mobilne.renthome.R
 import wat.mobilne.renthome.adapter.AdapterExplore
+import wat.mobilne.renthome.viewmodel.OfferViewModel
 
 class ExploreFragment : Fragment(), AdapterExplore.OnItemClickListener {
-
+    lateinit var offerViewModel: OfferViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -28,16 +30,15 @@ class ExploreFragment : Fragment(), AdapterExplore.OnItemClickListener {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val mainActivity = activity as MainActivity
-        observerOfferChange()
-        mainActivity.viewModel.getOffers()
+
+        offerViewModel = ViewModelProvider(this).get(OfferViewModel::class.java)
+        observeOfferChange()
+        offerViewModel.getOffers()
+
         recyclerView.layoutManager = LinearLayoutManager(context)
         recyclerView.setHasFixedSize(true)
 
-
-
         floating_action_button.setOnClickListener {
-
             findNavController().navigate(ExploreFragmentDirections.actionExploreFragmentToAddOfferFragment())
         }
     }
@@ -50,11 +51,7 @@ class ExploreFragment : Fragment(), AdapterExplore.OnItemClickListener {
         val latitude = currentItem.latitude.toFloat()
         val longitude = currentItem.longitude.toFloat()
         val action = ExploreFragmentDirections.actionExploreFragmentToItemDetailFragment(
-            title,
-            description,
-            longitude,
-            latitude,
-            price
+            currentItem
         )
         findNavController().navigate(action)
     }
@@ -68,12 +65,9 @@ class ExploreFragment : Fragment(), AdapterExplore.OnItemClickListener {
         return inflater.inflate(R.layout.fragment_explore, container, false)
     }
 
-    private fun observerOfferChange() {
-        val mainActivity = activity as MainActivity
-        mainActivity.offers.observe(viewLifecycleOwner, { offers ->
-            recyclerView.adapter = AdapterExplore(offers, this)
+    private fun observeOfferChange() {
+        offerViewModel.getOffersResponse.observe(viewLifecycleOwner, { offers ->
+            recyclerView.adapter = offers.body()?.let { AdapterExplore(it, this) }
         })
     }
-
-
 }

@@ -8,20 +8,27 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.google.android.gms.location.*
 import wat.mobilne.renthome.models.Offer
 import kotlinx.android.synthetic.main.fragment_add_offer.*
+import kotlinx.android.synthetic.main.fragment_explore.*
 import wat.mobilne.renthome.MainActivity
 import wat.mobilne.renthome.R
+import wat.mobilne.renthome.adapter.AdapterExplore
 import wat.mobilne.renthome.utils.Preferences
+import wat.mobilne.renthome.viewmodel.OfferViewModel
+
 var lat=0
 var long=0
 class AddOfferFragment : Fragment() {
 
     private lateinit var fusedLocationClient: FusedLocationProviderClient
+    lateinit var offerViewModel: OfferViewModel
 
 
     val REQUEST_CODE = 100
@@ -44,6 +51,7 @@ class AddOfferFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        offerViewModel = ViewModelProvider(this).get(OfferViewModel::class.java)
         observeCreateOffer()
         buttonAddOfert.setOnClickListener {
             createOffer()
@@ -63,19 +71,12 @@ class AddOfferFragment : Fragment() {
     }
 
     private fun observeCreateOffer() {
-        val mainActivity = activity as MainActivity
-        mainActivity.viewModel.createOfferResponse.observe(
-            viewLifecycleOwner,
-            { response ->
-                // When user successfully logged in
-                if (response.isSuccessful) {
-                    val offer = response.body()!!
-                    Log.d("Response", "Created offer: " + response.body().toString())
-                    mainActivity.viewModel.getOffers()
-                } else {
-                    // #TODO: Handle server exception
-                }
-            })
+        offerViewModel.createOfferResponse.observe(viewLifecycleOwner, { offers ->
+            if (offers.isSuccessful) {
+                findNavController().navigate(R.id.exploreFragment)
+            } else {
+            }
+        })
     }
     private fun openGalleryForImage() {
         val intent = Intent(Intent.ACTION_PICK)
