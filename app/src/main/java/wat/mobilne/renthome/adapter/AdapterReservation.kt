@@ -44,7 +44,7 @@ class AdapterReservation(
         }
 
         override fun onClick(v: View?) {
-            val position: Int = getAbsoluteAdapterPosition()
+            val position: Int = absoluteAdapterPosition
             val currentItem = itemList[position]
 
             if (position != RecyclerView.NO_POSITION) {

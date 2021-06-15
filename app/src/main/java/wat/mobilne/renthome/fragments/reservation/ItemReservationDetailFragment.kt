@@ -15,10 +15,6 @@ import wat.mobilne.renthome.R
 class ItemReservationDetailFragment : Fragment() {
     private val args: ItemReservationDetailFragmentArgs by navArgs()
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -40,14 +36,14 @@ class ItemReservationDetailFragment : Fragment() {
         }
 
         btnShowData.setOnClickListener {
-            dataPicker.show(parentFragmentManager,"DataPicker");
+            dataPicker.show(parentFragmentManager,"DataPicker")
         }
 
         btnCancelReservation.setOnClickListener {
             findNavController().navigate(R.id.exploreFragment)
         }
         dataPicker.addOnPositiveButtonClickListener {
-            textSelectedData.setText(dataPicker.headerText);
+            textSelectedData.text = dataPicker.headerText
         }
 
 

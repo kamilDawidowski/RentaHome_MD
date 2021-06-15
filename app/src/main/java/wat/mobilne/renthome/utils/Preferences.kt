@@ -2,9 +2,8 @@ package wat.mobilne.renthome.utils
 
 import android.content.Context
 import android.content.SharedPreferences
-import com.wat.rentahome.utils.Constants
 import androidx.core.content.edit
-import com.wat.rentahome.models.User
+import wat.mobilne.renthome.models.User
 
 object Preferences {
     private var sharedPreferences: SharedPreferences? = null

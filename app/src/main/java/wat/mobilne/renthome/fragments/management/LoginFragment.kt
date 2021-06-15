@@ -6,14 +6,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.core.content.res.ResourcesCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import kotlinx.android.synthetic.main.fragment_login.*
-import kotlinx.android.synthetic.main.fragment_login.inputPassword
-import kotlinx.android.synthetic.main.fragment_regiser.*
 import okhttp3.Credentials
 import wat.mobilne.renthome.MainActivity
 import wat.mobilne.renthome.R
@@ -27,10 +24,7 @@ class LoginFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-
-
-        val view = inflater.inflate(R.layout.fragment_login, container, false)
-        return view
+        return inflater.inflate(R.layout.fragment_login, container, false)
     }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -41,14 +35,13 @@ class LoginFragment : Fragment() {
         // Set observer to wait for user to log in.
         observeLogin()
 
-        loginButton.setOnClickListener() {
+        loginButton.setOnClickListener {
             if(validateForm(inputUsername.text.toString(), inputPassword.text.toString())) {
                 onLoginButtonClick()
             }
-
         }
 
-        textViewSignUp.setOnClickListener() {
+        textViewSignUp.setOnClickListener {
             val action = LoginFragmentDirections.actionLoginFragmentToRegiserFragment()
             navController.navigate(action)
         }
@@ -57,7 +50,7 @@ class LoginFragment : Fragment() {
     private fun navigateToExplore() {
         val action = LoginFragmentDirections.actionLoginFragmentToExploreFragment()
         navController.navigate(action)
-        Toast.makeText(context, inputUsername.text.toString(), Toast.LENGTH_SHORT).show();
+        Toast.makeText(context, inputUsername.text.toString(), Toast.LENGTH_SHORT).show()
     }
 
     private fun onLoginButtonClick() {
@@ -75,17 +68,16 @@ class LoginFragment : Fragment() {
 
     private fun observeLogin() {
         val mainActivity = activity as MainActivity
-        mainActivity.viewModel.userResponse.observe(viewLifecycleOwner, Observer { response ->
+        mainActivity.viewModel.userResponse.observe(viewLifecycleOwner, { response ->
             // When user successfully logged in
             if (response.isSuccessful) {
                 Preferences.user = response.body()!!
                 Log.d("Login", "user: " + response.body().toString())
-                mainActivity.fetchOffers()
+                mainActivity.viewModel.getOffers()
                 navigateToExplore()
-
                 (activity as MainActivity).showBootomMenu()
             } else {
-                Toast.makeText(context,getString(R.string.incorrect_data) ,Toast.LENGTH_SHORT).show()
+                // #TODO: Handle server exception
             }
         })
     }

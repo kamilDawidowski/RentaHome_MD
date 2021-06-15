@@ -1,4 +1,4 @@
-package com.wat.rentahome.models
+package wat.mobilne.renthome.models
 
 import java.util.*
 

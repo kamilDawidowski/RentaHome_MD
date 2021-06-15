@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.wat.rentahome.models.Offer
+import wat.mobilne.renthome.models.Offer
 import kotlinx.android.synthetic.main.list_item_explore.view.*
 import wat.mobilne.renthome.R
 
@@ -55,7 +55,7 @@ class AdapterExplore (
         }
 
         override fun onClick(v: View?) {
-            val position: Int = getAbsoluteAdapterPosition()
+            val position: Int = absoluteAdapterPosition
             val currentItem = itemList[position]
 
             if (position != RecyclerView.NO_POSITION) {

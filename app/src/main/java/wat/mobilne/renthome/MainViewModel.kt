@@ -1,15 +1,14 @@
-package com.wat.rentahome
+package wat.mobilne.renthome
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.wat.rentahome.models.*
-import com.wat.rentahome.repository.Repository
+import wat.mobilne.renthome.repository.Repository
 import kotlinx.coroutines.launch
 import okhttp3.MultipartBody
 import okhttp3.ResponseBody
 import retrofit2.Response
-import wat.mobilne.renthome.models.Reservation
+import wat.mobilne.renthome.models.*
 
 class MainViewModel(private val repository: Repository): ViewModel() {
 
@@ -66,6 +65,7 @@ class MainViewModel(private val repository: Repository): ViewModel() {
         viewModelScope.launch {
             val response = repository.createOffer(offer)
             createOfferResponse.value = response
+            getOffers()
         }
     }
 

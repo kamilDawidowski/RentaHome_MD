@@ -8,7 +8,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
-import com.wat.rentahome.models.Registration
+import wat.mobilne.renthome.models.Registration
 import kotlinx.android.synthetic.main.fragment_regiser.*
 import kotlinx.android.synthetic.main.fragment_regiser.inputPassword
 import wat.mobilne.renthome.MainActivity
@@ -16,11 +16,6 @@ import wat.mobilne.renthome.R
 
 
 class RegiserFragment : Fragment() {
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -33,12 +28,12 @@ class RegiserFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         observeRegister()
 
-        button_Register.setOnClickListener() {
+        button_Register.setOnClickListener {
 
             onRegisterButtonClick()
         }
 
-        btnBacktoLogin.setOnClickListener() {
+        btnBacktoLogin.setOnClickListener {
             onButtonToLoginClick()
         }
         super.onViewCreated(view, savedInstanceState)
@@ -80,7 +75,7 @@ class RegiserFragment : Fragment() {
 
     private fun observeRegister() {
         val mainActivity = activity as MainActivity
-        mainActivity.viewModel.registerResponse.observe(mainActivity, Observer { response ->
+        mainActivity.viewModel.registerResponse.observe(mainActivity, { response ->
             if (response.isSuccessful) {
                 navigateToLogin()
             } else {

@@ -56,7 +56,7 @@ class ItemDetailFragment : Fragment() {
         }
     }
 
-    private fun getAddress(latitude: Double, longitude: Double): String? {
+    private fun getAddress(latitude: Double, longitude: Double): String {
         val result = StringBuilder()
         try {
             val geocoder = Geocoder(context, Locale.getDefault())

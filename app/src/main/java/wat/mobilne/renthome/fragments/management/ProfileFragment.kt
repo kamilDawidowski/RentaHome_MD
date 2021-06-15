@@ -8,6 +8,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import kotlinx.android.synthetic.main.fragment_profile.*
@@ -62,15 +63,9 @@ class ProfileFragment : Fragment() {
 
 
         buttonConfirmChange.setOnClickListener {
-
-            // Update w bazie danych wprowadzonych parametrów :
-            chUsername.text
-            chEmail.text
-            chName.text
-            chSurname.text
-            /////
-
-
+            //updateUser(chUsername.text.toString(), chEmail.text.toString())
+            buttonConfirmChange.visibility = View.INVISIBLE
+            hideEditInputs()
         }
 
         hideEditInputs()
@@ -107,7 +102,7 @@ class ProfileFragment : Fragment() {
 
     private fun observeUpdate() {
         val mainActivity = activity as MainActivity
-        mainActivity.viewModel.updateUserResponse.observe(viewLifecycleOwner, Observer { response ->
+        mainActivity.viewModel.updateUserResponse.observe(viewLifecycleOwner, { response ->
             if (response.isSuccessful) {
                 Preferences.user = response.body()!!
                 Log.d("Login", "user changed: " + response.body().toString())
@@ -122,13 +117,13 @@ class ProfileFragment : Fragment() {
         mainActivity.viewModel.updateUser(username, description)
     }
 
-    public override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         if(requestCode==123)
         {
             var bmp=data?.extras?.get("data") as Bitmap
             profileImage.setImageBitmap(bmp)
-            uploadImage(bmp)
+//            uploadImage(bmp)
         }
     }
 
@@ -149,12 +144,12 @@ class ProfileFragment : Fragment() {
 
     private fun observeUploadImage() {
         val mainActivity = activity as MainActivity
-        mainActivity.viewModel.uploadImageResponse.observe(viewLifecycleOwner, Observer { response ->
-            // When user successfully logged in
+        mainActivity.viewModel.uploadImageResponse.observe(viewLifecycleOwner, { response ->
             if (response.isSuccessful) {
-                val responseBody = response.body()!!
+                val responseBody = response.body()
                 Log.d("Upload", "Uploaded image" + responseBody.toString())
             } else {
+                Toast.makeText(context, "ERROR: " + response.code(), Toast.LENGTH_SHORT).show()
                 // #TODO: Handle server exception
             }
         })

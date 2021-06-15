@@ -1,4 +1,4 @@
-package com.wat.rentahome.utils
+package wat.mobilne.renthome.utils
 
 object Constants {
     const val PREFS_NAME = "preferences"

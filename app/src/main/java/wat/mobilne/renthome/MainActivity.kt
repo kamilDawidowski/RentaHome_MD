@@ -3,7 +3,6 @@ package wat.mobilne.renthome
 import android.app.Activity
 import android.content.Context
 import android.content.res.Configuration
-import android.content.res.Resources
 import android.os.Bundle
 import android.util.AttributeSet
 import android.util.Log
@@ -11,24 +10,20 @@ import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.NavHostFragment
-import com.wat.rentahome.MainViewModel
-import com.wat.rentahome.MainViewModelFactory
-import com.wat.rentahome.models.Offer
-import com.wat.rentahome.repository.Repository
+import wat.mobilne.renthome.models.Offer
+import wat.mobilne.renthome.repository.Repository
 import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.list_item_explore.view.*
 import wat.mobilne.renthome.R.*
 import wat.mobilne.renthome.utils.Preferences
 import java.util.*
-
 class MainActivity : AppCompatActivity() {
     lateinit var viewModel: MainViewModel
-    var flag = true;
-    var flagLanguage = true;
-    var offers: List<Offer>? = null
+
+    var offers: MutableLiveData<List<Offer>> = MutableLiveData()
 
     @Override
     override fun onCreateView(name: String, context: Context, attrs: AttributeSet): View? {
@@ -42,11 +37,10 @@ class MainActivity : AppCompatActivity() {
         Preferences.setup(applicationContext)
         initViewModel()
         observeOffers()
-//        loadLocate()
-
+        loadLocate()
         setContentView(layout.activity_main)
-
-
+        var flag = true
+        var flagLanguage = true
         hideBootomMenu()
 
 
@@ -54,53 +48,36 @@ class MainActivity : AppCompatActivity() {
         changeIconNuberReservation(8)
 
         val navHostFragment =
-            supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
+            supportFragmentManager.findFragmentById(id.nav_host_fragment) as NavHostFragment
         val navController = navHostFragment.navController
 
         topAppBar.setOnMenuItemClickListener { menuItem ->
             when (menuItem.itemId) {
                 id.language -> {
-                    if(flagLanguage)
-                    {
-                        Toast.makeText(this, getString(string.languagePL), Toast.LENGTH_SHORT).show()
-                        setLocale(this,"pl")
-                        flagLanguage = false;
-
-
-                    }
-                    else{
-
-//                    setLocate("en")
-
-                        Toast.makeText(this, getString(string.languageENG), Toast.LENGTH_SHORT).show()
-                        setLocale(this,"en")
-                        flagLanguage = true;
-//                        recreate()
-
-                    }
-
-
-
+                    Toast.makeText(this, getString(string.languageENG), Toast.LENGTH_SHORT).show()
+                    setLocate("en")
+                    recreate()
+                    flagLanguage = false
                     true
                 }
                 id.mode -> {
 
                     if (flag) {
-                        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+                        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
                         Toast.makeText(
                             this,
                             getString(string.mode_is_changed_dark),
                             Toast.LENGTH_SHORT
-                        ).show();
-                        flag = false;
+                        ).show()
+                        flag = false
                     } else {
-                        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+                        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
                         Toast.makeText(
                             this,
                             getString(string.mode_is_changed_light),
                             Toast.LENGTH_SHORT
-                        ).show();
-                        flag = true;
+                        ).show()
+                        flag = true
                     }
                     true
                 }
@@ -113,28 +90,28 @@ class MainActivity : AppCompatActivity() {
                 id.exploreFragment -> {
                     //???
 
-                    navController.navigate(R.id.exploreFragment)
+                    navController.navigate(id.exploreFragment)
                     // Respond to navigation item 1 click
                     true
                 }
                 id.mapFragment -> {
                     //???
 
-                    navController.navigate(R.id.mapFragment)
+                    navController.navigate(id.mapFragment)
                     // Respond to navigation item 1 click
                     true
                 }
                 id.reservationFragment -> {
                     //???
 
-                    navController.navigate(R.id.reservationFragment)
+                    navController.navigate(id.reservationFragment)
                     // Respond to navigation item 1 click
                     true
                 }
                 id.profileFragment -> {
                     //???
 
-                    navController.navigate(R.id.profileFragment)
+                    navController.navigate(id.profileFragment)
                     // Respond to navigation item 1 click
                     true
                 }
@@ -150,12 +127,10 @@ class MainActivity : AppCompatActivity() {
     }
 
 
-
-
     private fun observeOffers() {
-        viewModel.offersResponse.observe(this, Observer { response ->
+        viewModel.offersResponse.observe(this, { response ->
             if (response.isSuccessful) {
-                offers = response.body()
+                offers.value = response.body()
                 Log.d("Offers", "Offers: " + response.body().toString())
             } else {
                 // #TODO: Handle server exception
@@ -163,28 +138,31 @@ class MainActivity : AppCompatActivity() {
         })
     }
 
-    fun fetchOffers() {
-        viewModel.getOffers()
+    private fun loadLocate() {
+        val sharedPreferences = getSharedPreferences("Settings", Activity.MODE_PRIVATE)
+        val language = sharedPreferences.getString("My_Lang", "")
+        if (language != null) {
+            setLocate(language)
+        }
     }
 
-//    private fun loadLocate() {
-//        val sharedPreferences = getSharedPreferences("Settings", Activity.MODE_PRIVATE)
-//        val language = sharedPreferences.getString("My_Lang", "")
-//        if (language != null) {
-//            setLocate(language)
-//        }
-//    }
+    private fun setLocate(Lang: String) {
 
-    fun setLocale(activity: Activity, languageCode: String?) {
-        val locale = Locale(languageCode)
+        val locale = Locale(Lang)
+
         Locale.setDefault(locale)
-        val resources: Resources = activity.resources
-        val config: Configuration = resources.getConfiguration()
-        config.setLocale(locale)
-        resources.updateConfiguration(config, resources.getDisplayMetrics())
+
+        val config = Configuration()
+
+        config.locale = locale
+        baseContext.resources.updateConfiguration(config, baseContext.resources.displayMetrics)
+
+        val editor = getSharedPreferences("Settings", Context.MODE_PRIVATE).edit()
+        editor.putString("My_Lang", Lang)
+        editor.apply()
     }
-   private  fun changeIconNuberReservation(rezerwacje: Int){
-       var badge = bottom_navigation.getOrCreateBadge(R.id.reservationFragment)
+   private  fun changeIconNuberReservation(rezerwacje:Int){
+       var badge = bottom_navigation.getOrCreateBadge(id.reservationFragment)
 
 // An icon only badge will be displayed unless a number is set:
        if(rezerwacje==null)
@@ -200,17 +178,17 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun hideBootomMenu(){
-        bottom_navigation.menu.findItem(R.id.mapFragment).isVisible = false
-        bottom_navigation.menu.findItem(R.id.reservationFragment).isVisible = false
-        bottom_navigation.menu.findItem(R.id.profileFragment).isVisible = false
-        bottom_navigation.menu.findItem(R.id.exploreFragment).isVisible = false
+        bottom_navigation.menu.findItem(id.mapFragment).isVisible = false
+        bottom_navigation.menu.findItem(id.reservationFragment).isVisible = false
+        bottom_navigation.menu.findItem(id.profileFragment).isVisible = false
+        bottom_navigation.menu.findItem(id.exploreFragment).isVisible = false
     }
-    public fun showBootomMenu(){
+    fun showBootomMenu(){
 
-            bottom_navigation.menu.findItem(R.id.mapFragment).isVisible = true
-            bottom_navigation.menu.findItem(R.id.reservationFragment).isVisible = true
-            bottom_navigation.menu.findItem(R.id.profileFragment).isVisible = true
-            bottom_navigation.menu.findItem(R.id.exploreFragment).isVisible = true
+            bottom_navigation.menu.findItem(id.mapFragment).isVisible = true
+            bottom_navigation.menu.findItem(id.reservationFragment).isVisible = true
+            bottom_navigation.menu.findItem(id.profileFragment).isVisible = true
+            bottom_navigation.menu.findItem(id.exploreFragment).isVisible = true
         }
     }
 
