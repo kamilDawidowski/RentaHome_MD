@@ -15,6 +15,7 @@
     <color name="colorOnSecondary">@color/white</color>
     <color name="primaryColor">#FF9800</color>
     <color name="primaryLightColor">#FFC107</color>
+    <color name="primaryLigtColor2">#B3963F</color>
     <color name="primaryDarkColor">#FF5722</color>
     <color name="secondaryColor">#3F51B5</color>
     <color name="secondaryLightColor">#F44336</color>
