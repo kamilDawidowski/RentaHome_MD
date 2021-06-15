@@ -23,7 +23,7 @@ class MapZoomFragment : Fragment() , GoogleMap.OnMyLocationButtonClickListener,
     GoogleMap.OnMyLocationClickListener,
     OnMapReadyCallback {
 
-    var  REQUEST_CODE_LOCATION_PERMISON=1;
+    var  REQUEST_CODE_LOCATION_PERMISON=1
     private val args: MapZoomFragmentArgs by navArgs()
 
 
@@ -52,8 +52,8 @@ class MapZoomFragment : Fragment() , GoogleMap.OnMyLocationButtonClickListener,
             .zoom(7f).build()
 
 
-        googleMap.moveCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
-        googleMap.setTrafficEnabled(true)
+        googleMap.moveCamera(CameraUpdateFactory.newCameraPosition(cameraPosition))
+        googleMap.isTrafficEnabled = true
 
 //
 

@@ -2,11 +2,9 @@ package wat.mobilne.renthome.utils
 
 import android.content.Context
 import android.graphics.Bitmap
-import android.os.Environment
 import java.io.ByteArrayOutputStream
 import java.io.File
 import java.io.FileOutputStream
-import java.io.OutputStream
 
 
 object ImageProcesser {

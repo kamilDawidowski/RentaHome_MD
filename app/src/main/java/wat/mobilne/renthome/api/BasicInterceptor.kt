@@ -1,12 +1,7 @@
-package com.wat.rentahome.api
+package wat.mobilne.renthome.api
 
-import android.content.Context
-import android.util.Log
-import com.wat.rentahome.utils.Constants
-import okhttp3.Credentials
 import okhttp3.Interceptor
 import okhttp3.Response
-import retrofit2.http.Header
 import wat.mobilne.renthome.utils.Preferences
 
 class BasicInterceptor: Interceptor {

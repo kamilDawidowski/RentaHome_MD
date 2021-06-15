@@ -1,23 +1,18 @@
 package wat.mobilne.renthome.fragments.offer
 
-import android.Manifest
 import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.Intent
-import android.content.pm.PackageManager
-import android.location.Location
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
-import androidx.core.app.ActivityCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import com.google.android.gms.location.*
-import com.wat.rentahome.models.Offer
+import wat.mobilne.renthome.models.Offer
 import kotlinx.android.synthetic.main.fragment_add_offer.*
 import wat.mobilne.renthome.MainActivity
 import wat.mobilne.renthome.R
@@ -71,12 +66,12 @@ class AddOfferFragment : Fragment() {
         val mainActivity = activity as MainActivity
         mainActivity.viewModel.createOfferResponse.observe(
             viewLifecycleOwner,
-            Observer { response ->
+            { response ->
                 // When user successfully logged in
                 if (response.isSuccessful) {
                     val offer = response.body()!!
                     Log.d("Response", "Created offer: " + response.body().toString())
-                    mainActivity.fetchOffers()
+                    mainActivity.viewModel.getOffers()
                 } else {
                     // #TODO: Handle server exception
                 }

@@ -1,4 +1,4 @@
-package com.wat.rentahome.models
+package wat.mobilne.renthome.models
 
 data class Registration(
     private val username: String,

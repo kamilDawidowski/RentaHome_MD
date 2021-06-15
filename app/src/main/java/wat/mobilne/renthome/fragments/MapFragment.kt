@@ -11,7 +11,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.annotation.DrawableRes
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import com.google.android.gms.maps.GoogleMap
@@ -21,7 +20,6 @@ import com.google.android.gms.maps.model.BitmapDescriptor
 import com.google.android.gms.maps.model.BitmapDescriptorFactory
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
-import kotlinx.android.synthetic.main.fragment_map.*
 import wat.mobilne.renthome.MainActivity
 import wat.mobilne.renthome.R
 
@@ -59,7 +57,7 @@ class MapFragment : Fragment(), GoogleMap.OnMyLocationButtonClickListener,
 
         //Dodawanie znaczników ofert
         if (offers != null) {
-            offers.forEach() {
+            offers.value?.forEach {
                 val point = LatLng(it.latitude, it.longitude)
                 val icon = BitmapFactory.decodeResource(
                     context?.resources,

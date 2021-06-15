@@ -1,6 +1,7 @@
-package com.wat.rentahome.api
+package wat.mobilne.renthome.api
 
-import com.wat.rentahome.utils.Constants
+import com.wat.rentahome.api.BasicApi
+import wat.mobilne.renthome.utils.Constants
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 

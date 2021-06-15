@@ -1,8 +1,8 @@
-package com.wat.rentahome
+package wat.mobilne.renthome
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.wat.rentahome.repository.Repository
+import wat.mobilne.renthome.repository.Repository
 
 class MainViewModelFactory(
     private val repository: Repository

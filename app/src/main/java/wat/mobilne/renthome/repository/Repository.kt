@@ -1,12 +1,11 @@
-package com.wat.rentahome.repository
+package wat.mobilne.renthome.repository
 
-import com.wat.rentahome.api.UnauthorizedRetrofitInstance
-import com.wat.rentahome.api.RetrofitInstance
-import com.wat.rentahome.models.*
+import wat.mobilne.renthome.api.UnauthorizedRetrofitInstance
+import wat.mobilne.renthome.api.RetrofitInstance
 import okhttp3.MultipartBody
 import okhttp3.ResponseBody
 import retrofit2.Response
-import wat.mobilne.renthome.models.Reservation
+import wat.mobilne.renthome.models.*
 
 class Repository {
 
@@ -26,7 +25,7 @@ class Repository {
         return UnauthorizedRetrofitInstance.api.register(registration)
     }
 
-    suspend fun getReservations(): Response<List<Reservation>>? {
+    suspend fun getReservations(): Response<List<Reservation>> {
         return RetrofitInstance.api.getReservations()
     }
 
