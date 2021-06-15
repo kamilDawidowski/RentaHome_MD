@@ -6,11 +6,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.core.content.res.ResourcesCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import kotlinx.android.synthetic.main.fragment_login.*
+import kotlinx.android.synthetic.main.fragment_login.inputPassword
+import kotlinx.android.synthetic.main.fragment_regiser.*
 import okhttp3.Credentials
 import wat.mobilne.renthome.MainActivity
 import wat.mobilne.renthome.R
@@ -24,6 +27,8 @@ class LoginFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+
+
         val view = inflater.inflate(R.layout.fragment_login, container, false)
         return view
     }
@@ -40,6 +45,7 @@ class LoginFragment : Fragment() {
             if(validateForm(inputUsername.text.toString(), inputPassword.text.toString())) {
                 onLoginButtonClick()
             }
+
         }
 
         textViewSignUp.setOnClickListener() {
@@ -76,9 +82,10 @@ class LoginFragment : Fragment() {
                 Log.d("Login", "user: " + response.body().toString())
                 mainActivity.fetchOffers()
                 navigateToExplore()
+
                 (activity as MainActivity).showBootomMenu()
             } else {
-                // #TODO: Handle server exception
+                Toast.makeText(context,getString(R.string.incorrect_data) ,Toast.LENGTH_SHORT).show()
             }
         })
     }

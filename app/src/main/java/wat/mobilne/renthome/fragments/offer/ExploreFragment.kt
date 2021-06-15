@@ -35,6 +35,8 @@ class ExploreFragment : Fragment(), AdapterExplore.OnItemClickListener {
         recyclerView.layoutManager = LinearLayoutManager(context)
         recyclerView.setHasFixedSize(true)
 
+
+
         floating_action_button.setOnClickListener {
 
             findNavController().navigate(ExploreFragmentDirections.actionExploreFragmentToAddOfferFragment())

@@ -10,8 +10,10 @@
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:layout_editor_absoluteX="230dp"
-        tools:layout_editor_absoluteY="228dp" >
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -22,6 +24,7 @@
                 android:id="@+id/cardView"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
@@ -159,7 +162,7 @@
                         android:layout_marginTop="100dp"
                         android:text="@string/add_profile_picture"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintHorizontal_bias="0.169"
+                        app:layout_constraintHorizontal_bias="0.014"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/textView10" />
 
@@ -167,7 +170,7 @@
                         android:id="@+id/buttonConfirmChange"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="60dp"
+                        android:layout_marginStart="40dp"
                         android:text="@string/confirm"
                         app:layout_constraintBottom_toBottomOf="@+id/btnAddPhoto"
                         app:layout_constraintEnd_toEndOf="parent"
@@ -189,21 +192,20 @@
                         android:id="@+id/btnUpdateProfile"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="20dp"
+                        android:layout_marginStart="10dp"
                         android:text="@string/update_information"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintHorizontal_bias="0.172"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/btnChangePassword" />
+                        app:layout_constraintStart_toEndOf="@+id/btnChangePassword"
+                        app:layout_constraintTop_toTopOf="@+id/btnChangePassword" />
 
                     <Button
                         android:id="@+id/btnChangePassword"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="52dp"
                         android:layout_marginTop="20dp"
                         android:text="@string/change_password"
-                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintStart_toStartOf="@+id/btnAddPhoto"
                         app:layout_constraintTop_toBottomOf="@+id/btnAddPhoto" />
 
                     <com.google.android.material.imageview.ShapeableImageView

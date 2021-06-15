@@ -3,6 +3,7 @@ package wat.mobilne.renthome
 import android.app.Activity
 import android.content.Context
 import android.content.res.Configuration
+import android.content.res.Resources
 import android.os.Bundle
 import android.util.AttributeSet
 import android.util.Log
@@ -18,12 +19,15 @@ import com.wat.rentahome.MainViewModelFactory
 import com.wat.rentahome.models.Offer
 import com.wat.rentahome.repository.Repository
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.list_item_explore.view.*
 import wat.mobilne.renthome.R.*
 import wat.mobilne.renthome.utils.Preferences
 import java.util.*
+
 class MainActivity : AppCompatActivity() {
     lateinit var viewModel: MainViewModel
-
+    var flag = true;
+    var flagLanguage = true;
     var offers: List<Offer>? = null
 
     @Override
@@ -38,10 +42,11 @@ class MainActivity : AppCompatActivity() {
         Preferences.setup(applicationContext)
         initViewModel()
         observeOffers()
-        loadLocate()
+//        loadLocate()
+
         setContentView(layout.activity_main)
-        var flag = true;
-        var flagLanguage = true;
+
+
         hideBootomMenu()
 
 
@@ -55,10 +60,27 @@ class MainActivity : AppCompatActivity() {
         topAppBar.setOnMenuItemClickListener { menuItem ->
             when (menuItem.itemId) {
                 id.language -> {
-                    Toast.makeText(this, getString(string.languageENG), Toast.LENGTH_SHORT).show()
-                    setLocate("en")
-                    recreate()
-                    flagLanguage = false;
+                    if(flagLanguage)
+                    {
+                        Toast.makeText(this, getString(string.languagePL), Toast.LENGTH_SHORT).show()
+                        setLocale(this,"pl")
+                        flagLanguage = false;
+
+
+                    }
+                    else{
+
+//                    setLocate("en")
+
+                        Toast.makeText(this, getString(string.languageENG), Toast.LENGTH_SHORT).show()
+                        setLocale(this,"en")
+                        flagLanguage = true;
+//                        recreate()
+
+                    }
+
+
+
                     true
                 }
                 id.mode -> {
@@ -128,6 +150,8 @@ class MainActivity : AppCompatActivity() {
     }
 
 
+
+
     private fun observeOffers() {
         viewModel.offersResponse.observe(this, Observer { response ->
             if (response.isSuccessful) {
@@ -143,30 +167,23 @@ class MainActivity : AppCompatActivity() {
         viewModel.getOffers()
     }
 
-    private fun loadLocate() {
-        val sharedPreferences = getSharedPreferences("Settings", Activity.MODE_PRIVATE)
-        val language = sharedPreferences.getString("My_Lang", "")
-        if (language != null) {
-            setLocate(language)
-        }
-    }
+//    private fun loadLocate() {
+//        val sharedPreferences = getSharedPreferences("Settings", Activity.MODE_PRIVATE)
+//        val language = sharedPreferences.getString("My_Lang", "")
+//        if (language != null) {
+//            setLocate(language)
+//        }
+//    }
 
-    private fun setLocate(Lang: String) {
-
-        val locale = Locale(Lang)
-
+    fun setLocale(activity: Activity, languageCode: String?) {
+        val locale = Locale(languageCode)
         Locale.setDefault(locale)
-
-        val config = Configuration()
-
-        config.locale = locale
-        baseContext.resources.updateConfiguration(config, baseContext.resources.displayMetrics)
-
-        val editor = getSharedPreferences("Settings", Context.MODE_PRIVATE).edit()
-        editor.putString("My_Lang", Lang)
-        editor.apply()
+        val resources: Resources = activity.resources
+        val config: Configuration = resources.getConfiguration()
+        config.setLocale(locale)
+        resources.updateConfiguration(config, resources.getDisplayMetrics())
     }
-   private  fun changeIconNuberReservation(rezerwacje:Int){
+   private  fun changeIconNuberReservation(rezerwacje: Int){
        var badge = bottom_navigation.getOrCreateBadge(R.id.reservationFragment)
 
 // An icon only badge will be displayed unless a number is set:

@@ -4,7 +4,7 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="hint_username">Użytkownik</string>
     <string name="hint_password">Hasło</string>
-    <string name="Login">Login</string>
+    <string name="Login">Logowanie</string>
     <string name="Explore">Wyszukiwanie</string>
     <string name="Offer">Oferta</string>
     <string name="Map">Mapa</string>
@@ -53,6 +53,8 @@
     <string name="second_fragment_label">Second Fragment</string>
     <string name="next">Dalej</string>
     <string name="previous">Poprzednio</string>
+    <string name="languageENG">Language : ENG</string>
+    <string name="languagePL">Language: PL</string>
 
     <string name="hello_first_fragment">Hello first fragment</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
