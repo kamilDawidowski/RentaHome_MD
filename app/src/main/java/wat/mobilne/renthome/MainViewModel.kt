@@ -6,6 +6,8 @@ import androidx.lifecycle.viewModelScope
 import com.wat.rentahome.models.*
 import com.wat.rentahome.repository.Repository
 import kotlinx.coroutines.launch
+import okhttp3.MultipartBody
+import okhttp3.ResponseBody
 import retrofit2.Response
 import wat.mobilne.renthome.models.Reservation
 
@@ -64,6 +66,14 @@ class MainViewModel(private val repository: Repository): ViewModel() {
         viewModelScope.launch {
             val response = repository.createOffer(offer)
             createOfferResponse.value = response
+        }
+    }
+
+    val uploadImageResponse: MutableLiveData<Response<ResponseBody>> = MutableLiveData()
+    fun uploadImage(image: MultipartBody, contentType: String) {
+        viewModelScope.launch {
+            val response = repository.uploadImage(image, contentType)
+            uploadImageResponse.value = response
         }
     }
 

@@ -38,28 +38,12 @@ class ItemDetailFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-
-        var long = args.long
-        var lat = args.lat
-
-        var city=getAddress(lat.toDouble(),long.toDouble())
-//Przekazywanie parametrów zadaeklarowanych wczesniej w naawigacji
-        textLocalization.text=city
-        textTitle.text = "tytuljack."//args.title
-        textDescription.text = args.description
-        textCash.text = args.price.toString()
-
-
-
-
-
+        initData()
 
         btnReservation.setOnClickListener {
 
             val action=ItemDetailFragmentDirections.actionItemDetailFragmentToItemReservationDetailFragment(args.price)
             findNavController().navigate(action)
-
-
         }
 
 
@@ -108,6 +92,14 @@ class ItemDetailFragment : Fragment() {
             result.append("brak dokładnego adresu ")
         }
         return result.toString()
+    }
+
+    private fun initData() {
+        val city = getAddress(args.lat.toDouble(),args.long.toDouble())
+        textLocalization.text= city
+        textTitle.text = args.title
+        textDescription.text = args.description
+        textCash.text = args.price.toString()
     }
 
 

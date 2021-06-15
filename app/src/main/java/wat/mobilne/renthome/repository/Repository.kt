@@ -3,6 +3,8 @@ package com.wat.rentahome.repository
 import com.wat.rentahome.api.UnauthorizedRetrofitInstance
 import com.wat.rentahome.api.RetrofitInstance
 import com.wat.rentahome.models.*
+import okhttp3.MultipartBody
+import okhttp3.ResponseBody
 import retrofit2.Response
 import wat.mobilne.renthome.models.Reservation
 
@@ -34,5 +36,9 @@ class Repository {
 
     suspend fun createOffer(offer: Offer): Response<Offer> {
         return RetrofitInstance.api.createOffer(offer)
+    }
+
+    suspend fun uploadImage(image: MultipartBody, contentType: String): Response<ResponseBody> {
+        return RetrofitInstance.api.uploadImage(image, contentType)
     }
 }
