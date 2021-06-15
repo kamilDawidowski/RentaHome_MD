@@ -99,7 +99,6 @@ class ItemDetailFragment : Fragment() {
 
             }
 
-
         } catch (e: IOException) {
             Log.e("tag","mApaaaaaaaaaaaaa")
         }

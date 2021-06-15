@@ -10,11 +10,8 @@ import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
-import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.NavController
-import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
 import com.wat.rentahome.MainViewModel
 import com.wat.rentahome.MainViewModelFactory
@@ -24,10 +21,8 @@ import kotlinx.android.synthetic.main.activity_main.*
 import wat.mobilne.renthome.R.*
 import wat.mobilne.renthome.utils.Preferences
 import java.util.*
-
 class MainActivity : AppCompatActivity() {
     lateinit var viewModel: MainViewModel
-
 
     var offers: List<Offer>? = null
 
