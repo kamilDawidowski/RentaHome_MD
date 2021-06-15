@@ -6,13 +6,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import wat.mobilne.renthome.models.Registration
 import kotlinx.android.synthetic.main.fragment_regiser.*
 import kotlinx.android.synthetic.main.fragment_regiser.inputPassword
 import wat.mobilne.renthome.MainActivity
 import wat.mobilne.renthome.R
+import wat.mobilne.renthome.fragments.offer.ExploreFragmentDirections
 
 
 class RegiserFragment : Fragment() {
@@ -27,6 +27,7 @@ class RegiserFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         observeRegister()
+        (activity as MainActivity).hideBootomMenu()
 
         button_Register.setOnClickListener {
 
@@ -55,7 +56,6 @@ class RegiserFragment : Fragment() {
             inputPasswordConfirm.setText("")
             inputEmail.setText("")
 
-
         }
         else
         {
@@ -64,12 +64,11 @@ class RegiserFragment : Fragment() {
                R.string.hintincorecpasssword,
                 Toast.LENGTH_SHORT
             ).show()
-
         }
-
     }
 
     private fun navigateToLogin() {
+        findNavController().navigate(R.id.loginFragment)
 
     }
 

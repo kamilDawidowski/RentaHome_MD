@@ -45,7 +45,7 @@
         android:layout_height="50dp"
         android:layout_marginBottom="200dp"
         app:startIconDrawable="@android:drawable/ic_secure"
-        android:hint="@string/hint_password"
+        android:hint="@string/Password"
         app:errorEnabled="true"
         app:layout_constraintBottom_toTopOf="@+id/loginButton"
         app:layout_constraintEnd_toEndOf="parent"

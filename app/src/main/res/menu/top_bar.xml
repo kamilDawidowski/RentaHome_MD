@@ -9,10 +9,15 @@
 <!--        app:showAsAction="ifRoom" />-->
 
             <item
-                android:id="@+id/language"
-                android:icon="@drawable/ic_language"
+                android:id="@+id/languagePL"
+                android:fontFamily="@font/font_3"
                 app:showAsAction="ifRoom"
-                android:title="@string/language"></item>
+                android:title="PL"></item>
+    <item
+        android:id="@+id/languageENG"
+        android:fontFamily="@font/font_3"
+        app:showAsAction="ifRoom"
+        android:title="ENG"></item>
             <item
                 android:id="@+id/mode"
                 android:icon="@drawable/ic_dark_mode"

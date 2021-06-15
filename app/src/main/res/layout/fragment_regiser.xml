@@ -131,6 +131,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/register"
+        android:fontFamily="@font/font_2"
         android:textSize="30sp"
         app:layout_constraintBottom_toTopOf="@+id/textInputEmail"
         app:layout_constraintEnd_toEndOf="parent"

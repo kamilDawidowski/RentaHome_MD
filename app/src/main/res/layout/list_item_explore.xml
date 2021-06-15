@@ -34,6 +34,7 @@
             android:layout_marginStart="44dp"
             android:layout_marginTop="16dp"
             android:text="TextView"
+            android:fontFamily="@font/font_2"
             android:textSize="18sp"
             android:textStyle="bold|italic"
             app:layout_constraintEnd_toEndOf="parent"
