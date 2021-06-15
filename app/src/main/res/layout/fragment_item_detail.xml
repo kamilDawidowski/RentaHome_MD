@@ -24,6 +24,7 @@
         android:layout_height="50dp"
         android:layout_marginTop="16dp"
         android:text="TextView"
+        android:fontFamily="@font/font_2"
         android:textAlignment="center"
         android:textSize="30sp"
         android:textStyle="bold|italic"
@@ -42,10 +43,12 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
+
         app:layout_constraintTop_toBottomOf="@+id/image">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
+            android:background="@color/primaryLightColor"
             android:layout_height="match_parent">
 
             <TextView
@@ -55,6 +58,7 @@
                 android:layout_marginStart="10dp"
                 android:layout_marginEnd="10dp"
                 android:text="TextView"
+
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -75,6 +79,7 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
+            android:background="@color/primaryLightColor"
             android:layout_height="174dp">
 
             <ImageView
@@ -112,6 +117,7 @@
                 android:id="@+id/btnReservation"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:background="@color/primaryColor"
                 android:text="@string/Reservation"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -121,6 +127,7 @@
                 android:id="@+id/btnCancel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:background="@color/primaryLigtColor2"
                 android:text="@android:string/cancel"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -131,6 +138,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="50dp"
                 android:text="TextView"
+                android:fontFamily="@font/font_3"
                 app:layout_constraintStart_toEndOf="@+id/imageViewLocalization"
                 app:layout_constraintTop_toTopOf="@+id/imageViewLocalization" />
 
@@ -139,6 +147,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="50dp"
                 android:text="TextView"
+                android:fontFamily="@font/font_3"
                 app:layout_constraintStart_toEndOf="@+id/imageView8"
                 app:layout_constraintTop_toTopOf="@+id/imageView8" />
 
@@ -147,6 +156,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="50dp"
                 android:text="TextView"
+                android:fontFamily="@font/font_3"
                 app:layout_constraintStart_toEndOf="@+id/imageViewUser"
                 app:layout_constraintTop_toBottomOf="@+id/imageView8" />
         </androidx.constraintlayout.widget.ConstraintLayout>
