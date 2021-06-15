@@ -78,6 +78,9 @@ dependencies {
     //Round image view
     implementation 'de.hdodenhof:circleimageview:2.2.0'
 
+    // get localization
+    implementation 'com.schibstedspain.android:leku:8.0.0'
+
 
 
 

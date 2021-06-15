@@ -11,15 +11,26 @@ import kotlinx.android.synthetic.main.list_item_explore.view.*
 import wat.mobilne.renthome.R
 
 class AdapterExplore (
-
     // Lista naszych elementów do wyswietlenia
     private val itemList: List<Offer>,
     private val listener: OnItemClickListener,
 
-
-
     ) :
     RecyclerView.Adapter<AdapterExplore.ExampleViewHolder>() {
+    var itemFilterList: List<Offer>
+
+
+        override fun getItemCount() = itemFilterList.size
+
+
+    init {
+        itemFilterList=itemList
+    }
+
+
+
+
+
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ExampleViewHolder {
@@ -30,19 +41,23 @@ class AdapterExplore (
         return ExampleViewHolder(itemView)
     }
 
-
-
-
     override fun onBindViewHolder(holder: ExampleViewHolder, position: Int) {
         val currentItem = itemList[position]
         holder.imageView.setImageResource(R.drawable.ic_explore)
         holder.itemCash.text = currentItem.price.toString()
         holder.itemTitle.text = currentItem.title
+
+
+        val ofetHolder=holder as ExampleViewHolder
+
+
 //        holder.textView3.text = currentItem.decribe
     }
 
 
-    override fun getItemCount() = itemList.size
+
+
+
     inner class ExampleViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView),
         View.OnClickListener {
         val imageView: ImageView = itemView.itemImage
@@ -52,6 +67,7 @@ class AdapterExplore (
         //        val textView3: TextView = itemView.textView_DescriptionRow
         init {
             itemView.setOnClickListener(this)
+
         }
 
         override fun onClick(v: View?) {

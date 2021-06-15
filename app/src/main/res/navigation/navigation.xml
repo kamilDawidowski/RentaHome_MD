@@ -127,4 +127,9 @@
             android:name="long"
             app:argType="float" />
     </fragment>
+    <fragment
+        android:id="@+id/mapFragmentLocation"
+        android:name="wat.mobilne.renthome.fragments.MapFragmentLocation"
+        android:label="fragment_map_location"
+        tools:layout="@layout/fragment_map_location" />
 </navigation>

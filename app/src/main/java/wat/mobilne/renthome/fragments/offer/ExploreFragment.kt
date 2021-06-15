@@ -51,7 +51,7 @@ class ExploreFragment : Fragment(), AdapterExplore.OnItemClickListener {
         val latitude = currentItem.latitude.toFloat()
         val longitude = currentItem.longitude.toFloat()
         val action = ExploreFragmentDirections.actionExploreFragmentToItemDetailFragment(
-            currentItem
+
         )
         findNavController().navigate(action)
     }
