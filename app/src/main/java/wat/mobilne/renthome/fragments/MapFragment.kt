@@ -1,29 +1,30 @@
 package wat.mobilne.renthome.fragments
 
-import android.Manifest.permission.ACCESS_FINE_LOCATION
 import android.annotation.SuppressLint
+import android.content.Context
 import android.content.pm.PackageManager
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
+import android.graphics.Canvas
 import android.location.Location
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.app.ActivityCompat
+import androidx.annotation.DrawableRes
 import androidx.core.content.ContextCompat
-import androidx.navigation.fragment.navArgs
-import com.google.android.gms.maps.CameraUpdateFactory
+import androidx.fragment.app.Fragment
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
+import com.google.android.gms.maps.model.BitmapDescriptor
 import com.google.android.gms.maps.model.BitmapDescriptorFactory
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
 import kotlinx.android.synthetic.main.fragment_map.*
 import wat.mobilne.renthome.MainActivity
 import wat.mobilne.renthome.R
-import wat.mobilne.renthome.fragments.offer.ItemDetailFragmentArgs
-import java.util.jar.Manifest
+
 
 // TODO: Rename parameter arguments, choose names that match
 
@@ -37,7 +38,8 @@ class MapFragment : Fragment(), GoogleMap.OnMyLocationButtonClickListener,
     private fun isPermissionGranted() : Boolean {
         return ContextCompat.checkSelfPermission(
             activity as MainActivity,
-            android.Manifest.permission.ACCESS_FINE_LOCATION)==PackageManager.PERMISSION_GRANTED
+            android.Manifest.permission.ACCESS_FINE_LOCATION
+        )==PackageManager.PERMISSION_GRANTED
     }
 
 
@@ -59,11 +61,19 @@ class MapFragment : Fragment(), GoogleMap.OnMyLocationButtonClickListener,
         if (offers != null) {
             offers.forEach() {
                 val point = LatLng(it.latitude, it.longitude)
+                val icon = BitmapFactory.decodeResource(
+                    context?.resources,
+                    R.drawable.ic_home
+                )
 
 
                 googleMap.addMarker(
-                    MarkerOptions().position(point).title(it.title).snippet("Cena: "+it.price.toString()).icon(
-                        BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_ORANGE))
+                    MarkerOptions().position(point).title(it.title)
+                        .snippet("Cena: " + it.price.toString()).icon(context?.let { it1 ->
+                            bitmapDescriptorFromVector(
+                                it1,R.drawable.ic_home)
+                        }
+                        )
                 )
     //
             }
@@ -77,6 +87,16 @@ class MapFragment : Fragment(), GoogleMap.OnMyLocationButtonClickListener,
 
 
     }
+
+
+private fun bitmapDescriptorFromVector(context: Context, vectorResId: Int): BitmapDescriptor? {
+    return ContextCompat.getDrawable(context, vectorResId)?.run {
+        setBounds(0, 0, intrinsicWidth, intrinsicHeight)
+        val bitmap = Bitmap.createBitmap(intrinsicWidth, intrinsicHeight, Bitmap.Config.ARGB_8888)
+        draw(Canvas(bitmap))
+        BitmapDescriptorFactory.fromBitmap(bitmap)
+    }
+}
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -118,6 +138,7 @@ class MapFragment : Fragment(), GoogleMap.OnMyLocationButtonClickListener,
     override fun onMyLocationButtonClick(): Boolean {
         TODO("Not yet implemented")
     }
+
 
 
 }
