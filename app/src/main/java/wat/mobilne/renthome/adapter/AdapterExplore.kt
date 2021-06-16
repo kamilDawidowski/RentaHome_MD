@@ -45,7 +45,7 @@ class AdapterExplore (
 
     override fun onBindViewHolder(holder: ExampleViewHolder, position: Int) {
         val currentItem = itemList[position]
-        holder.imageView.setImageResource(R.drawable.kom)
+        holder.imageView.setImageResource(R.drawable.ic_home)
         holder.itemCash.text = currentItem.price.toString()
         holder.itemTitle.text = currentItem.title
 
