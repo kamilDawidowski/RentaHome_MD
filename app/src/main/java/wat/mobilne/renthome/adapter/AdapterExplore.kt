@@ -14,15 +14,10 @@ class AdapterExplore (
     // Lista naszych elementów do wyswietlenia
     private val itemList: List<Offer>,
     private val listener: OnItemClickListener,
-
     ) :
     RecyclerView.Adapter<AdapterExplore.ExampleViewHolder>() {
     var itemFilterList: List<Offer>
-
-
         override fun getItemCount() = itemFilterList.size
-
-
     init {
         itemFilterList=itemList
     }
@@ -41,11 +36,20 @@ class AdapterExplore (
         return ExampleViewHolder(itemView)
     }
 
+
+
+
+
+
+
+
     override fun onBindViewHolder(holder: ExampleViewHolder, position: Int) {
         val currentItem = itemList[position]
-        holder.imageView.setImageResource(R.drawable.ic_explore)
+        holder.imageView.setImageResource(R.drawable.kom)
         holder.itemCash.text = currentItem.price.toString()
         holder.itemTitle.text = currentItem.title
+
+
 
 
         val ofetHolder=holder as ExampleViewHolder
