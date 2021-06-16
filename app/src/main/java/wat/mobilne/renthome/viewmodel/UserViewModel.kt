@@ -45,4 +45,12 @@ class UserViewModel: ViewModel() {
             uploadImageResponse.value = response
         }
     }
+
+    val changePasswordResponse: MutableLiveData<Response<User>> = MutableLiveData()
+    fun changePassword(oldPassword: String, newPassword: String) {
+        viewModelScope.launch {
+            val response = userRepository.changePassword(oldPassword, newPassword)
+            changePasswordResponse.value = response
+        }
+    }
 }

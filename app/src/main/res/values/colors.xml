@@ -1,25 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="purple_200">#FFBB86FC</color>
-    <color name="purple_500">#FF6200EE</color>
-    <color name="purple_700">#FF3700B3</color>
-    <color name="teal_200">#FF03DAC5</color>
-    <color name="teal_700">#FF018786</color>
-    <color name="black">#FF000000</color>
-    <color name="white">#FFFFFFFF</color>
-    <color name="colorPrimary">@color/purple_500</color>
-    <color name="colorPrimaryVariant">#FFCC80</color>
-    <color name="colorOnPrimary">@color/black</color>
-    <color name="colorSecondary">@color/teal_200</color>
-    <color name="colorSecondaryVariant">@color/teal_700</color>
-    <color name="colorOnSecondary">@color/white</color>
-    <color name="primaryColor">#FF9800</color>
-    <color name="primaryLightColor">#FFC107</color>
-    <color name="primaryLigtColor2">#B3963F</color>
-    <color name="primaryDarkColor">#FF5722</color>
-    <color name="secondaryColor">#3F51B5</color>
-    <color name="secondaryLightColor">#F44336</color>
-    <color name="secondaryDarkColor">#673AB7</color>
+<!--           Light theme                                     -->
+    <color name="colorPrimaryLight">#FF9800</color>
+    <color name="colorPrimaryVariantLight">#FFC107</color>
+    <color name="colorOnPrimaryLight">#B3963F</color>
+
+    <color name="colorSecondaryLight">#FF5722</color>
+    <color name="secondaryVariantLight">#3F51B5</color>
+    <color name="colorOnSecondaryLight">#F44336</color>
+
+    <!--           Dark                                    -->
+    <color name="colorPrimaryDark">#FF9800</color>
+    <color name="colorPrimaryVariantDark">#FFC107</color>
+    <color name="colorOnPrimaryDark">#B3963F</color>
+
+    <color name="colorSecondaryDark">#FF5722</color>
+    <color name="secondaryVariantDark">#3F51B5</color>
+    <color name="colorOnSecondaryDark">#F44336</color>
+
+
+
+
+
     <color name="primaryTextColor">#000000</color>
     <color name="secondaryTextColor">#ffffff</color>
+
 </resources>

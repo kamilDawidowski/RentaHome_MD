@@ -20,17 +20,12 @@ import androidx.navigation.fragment.NavHostFragment
 import com.google.android.gms.tasks.OnCompleteListener
 import com.google.firebase.messaging.FirebaseMessaging
 import wat.mobilne.renthome.models.Offer
-import wat.mobilne.renthome.repository.Repository
 import kotlinx.android.synthetic.main.activity_main.*
 import wat.mobilne.renthome.R.*
 import wat.mobilne.renthome.utils.Preferences
 import java.util.*
 
 class MainActivity : AppCompatActivity() {
-    lateinit var viewModel: MainViewModel
-
-    var offers: MutableLiveData<List<Offer>> = MutableLiveData()
-
     @Override
     override fun onCreateView(name: String, context: Context, attrs: AttributeSet): View? {
 
@@ -41,8 +36,6 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         Preferences.setup(applicationContext)
-        initViewModel()
-        observeOffers()
         loadLocate()
         setContentView(layout.activity_main)
         var flag = true
@@ -133,25 +126,6 @@ class MainActivity : AppCompatActivity() {
             }
         }
     }
-
-    private fun initViewModel() {
-        val repository = Repository()
-        val viewModelFactory = MainViewModelFactory(repository)
-        viewModel = ViewModelProvider(this, viewModelFactory).get(MainViewModel::class.java)
-    }
-
-
-    private fun observeOffers() {
-        viewModel.offersResponse.observe(this, { response ->
-            if (response.isSuccessful) {
-                offers.value = response.body()
-                Log.d("Offers", "Offers: " + response.body().toString())
-            } else {
-                // #TODO: Handle server exception
-            }
-        })
-    }
-
     private fun loadLocate() {
         val sharedPreferences = getSharedPreferences("Settings", Activity.MODE_PRIVATE)
         val language = sharedPreferences.getString("My_Lang", "")

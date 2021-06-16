@@ -49,7 +49,7 @@ class ItemReservationDetailFragment : Fragment() {
 
         val dataPicker=MaterialDatePicker.Builder.dateRangePicker().setTitleText("Pick your reservation Data").build()
         textCashSummary.text = args.price.toString()
-        //var data=textSelectedData.setText(dataPicker.headerText);
+
         var pricr=args.price.toString()
 
         btnConfirm.setOnClickListener {

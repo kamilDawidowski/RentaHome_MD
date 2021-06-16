@@ -90,7 +90,6 @@ class AddOfferFragment : Fragment() {
         }
     }
     private fun createOffer() {
-        val mainActivity = activity as MainActivity
         val offer = Offer(
             null,
             Preferences.user,
@@ -101,7 +100,7 @@ class AddOfferFragment : Fragment() {
             2.0,
         )
         Log.d("Offer", offer.toString())
-        mainActivity.viewModel.createOffer(offer)
+        offerViewModel.createOffer(offer)
     }
 
 }

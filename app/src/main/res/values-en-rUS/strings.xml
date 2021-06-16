@@ -18,7 +18,7 @@
     <string name="mode">Mode</string>
     <string name="language_is_changed">Language is changed</string>
     <string name="mode_is_changed">Mode is changed</string>
-    <string name="mode_is_changed_dark">Mode is chanched to Dark</string>
+    <string name="mode_is_changed_dark">Mode is changed to Dark</string>
     <string name="mode_is_changed_light">Mode is changed to Light</string>
     <string name="register">Register</string>
     <string name="do_you_have_an_account">Do you have an  account ?</string>
@@ -27,13 +27,14 @@
     <string name="don_t_have_an_account">Do not have an account ?</string>
     <string name="confirm_password">Confirm Password</string>
     <string name="Password">Password</string>
+    <string name="old_password">Old Password</string>
     <string name="Reservation">Reservation</string>
     <string name="select_travel_data">Select travel data</string>
     <string name="confirm">Confirm</string>
     <string name="summary">Summary</string>
     <string name="change_password">Change password</string>
-    <string name="update_information">Update information</string>
-    <string name="add_profile_picture">Add profile picture</string>
+    <string name="update_information">Update</string>
+    <string name="add_profile_picture">Picture</string>
     <string name="username">Username:</string>
     <string name="email">Email:</string>
     <string name="name">Name:</string>

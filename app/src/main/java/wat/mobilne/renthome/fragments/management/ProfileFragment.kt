@@ -12,6 +12,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import kotlinx.android.synthetic.main.fragment_profile.*
 import okhttp3.MediaType
 import okhttp3.MultipartBody
@@ -65,8 +66,8 @@ class ProfileFragment : Fragment() {
         }
 
         btnChangePassword.setOnClickListener {
-//            val action = ProfileFragmentDirections.actionProfileFragmentToChangePasswordFragment()
-//            findNavController().navigate(action)
+            val action = ProfileFragmentDirections.actionProfileFragmentToChangePasswordFragment()
+            findNavController().navigate(action)
         }
 
         btnLogout.setOnClickListener {
@@ -136,8 +137,8 @@ class ProfileFragment : Fragment() {
             //  Handle image and upload to backend
 //            val file = savebitmap(bmp)
 //            val filePart = MultipartBody.Part.createFormData(
-//                "photo", file!!.name, RequestBody.create(
-//                    MediaType.parse("image/*"), file
+//                "image", file!!.name, RequestBody.create(
+//                    MediaType.parse("image/jpg"), file
 //                )
 //            )
 //            userViewModel.uploadImage(filePart)
