@@ -214,6 +214,7 @@ class MainActivity : AppCompatActivity() {
 
             // Get new FCM registration token
             val token = task.result
+            Preferences.fcmToken = token
 
             // Log and toast
             Log.d("Token", "Token: ${token}")

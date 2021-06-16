@@ -13,8 +13,8 @@ interface BasicApi {
     @GET("user")
     suspend fun getUsers() : Response<List<User>>
 
-    @GET("user/login")
-    suspend fun getUser(@Header("Content-Type") contentType: String="application/json") : Response<User>
+    @PUT("user/login")
+    suspend fun getUser(@Query("fcmToken") fcmToken: String?) : Response<User>
 
     @PUT("user")
     suspend fun updateUser(

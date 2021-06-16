@@ -44,7 +44,6 @@ class ItemDetailFragment : Fragment() {
         Log.d("Safeargs", args.offer.toString())
 
         btnReservation.setOnClickListener {
-            makeReservation()
             val action=ItemDetailFragmentDirections.actionItemDetailFragmentToItemReservationDetailFragment(args.price, args.offer)
             findNavController().navigate(action)
         }
@@ -84,7 +83,6 @@ class ItemDetailFragment : Fragment() {
 
                     result.append(address.countryName)
                 }
-
             }
 
         } catch (e: IOException) {

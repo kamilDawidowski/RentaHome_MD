@@ -26,6 +26,8 @@ import java.util.*
 class ItemReservationDetailFragment : Fragment() {
     private val args: ItemReservationDetailFragmentArgs by navArgs()
     lateinit var reservationViewModel: ReservationViewModel
+    var startDate: String? = null
+    var endDate: String? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -49,6 +51,7 @@ class ItemReservationDetailFragment : Fragment() {
         var pricr=args.price.toString()
 
         btnConfirm.setOnClickListener {
+            makeReservation()
             findNavController().navigate(R.id.exploreFragment)
         }
 
@@ -64,14 +67,16 @@ class ItemReservationDetailFragment : Fragment() {
         dataPicker.addOnPositiveButtonClickListener {
             textSelectedData.text = dataPicker.headerText
             val sdf = SimpleDateFormat("dd/MM/yyyy")
-            makeReservation(sdf.format(Date(it.first)), sdf.format(Date(it.second)))
+            startDate = sdf.format(Date(it.first))
+            endDate = sdf.format(Date(it.second))
         }
     }
 
-    private fun makeReservation(startDate: String, endDate: String) {
-
-        val reservation = Reservation(args.offer, Preferences.user, startDate, endDate)
-        reservationViewModel.makeReservation(reservation)
+    private fun makeReservation() {
+        if (startDate != null && endDate != null) {
+            val reservation = Reservation(args.offer, Preferences.user, startDate!!, endDate!!)
+            reservationViewModel.makeReservation(reservation)
+        }
     }
 
     private fun observeReservation() {

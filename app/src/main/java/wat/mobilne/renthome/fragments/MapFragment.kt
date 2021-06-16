@@ -1,4 +1,5 @@
 package wat.mobilne.renthome.fragments
+
 import android.Manifest
 import android.Manifest.permission.ACCESS_FINE_LOCATION
 import android.annotation.SuppressLint
@@ -43,8 +44,8 @@ class MapFragment : Fragment(), GoogleMap.OnMyLocationButtonClickListener,
     private lateinit var map: GoogleMap
     private lateinit var offerViewModel: OfferViewModel
 
-    companion object{
-        private const val LOCATION_REQUST_CODE=1
+    companion object {
+        private const val LOCATION_REQUST_CODE = 1
     }
 
 
@@ -61,7 +62,7 @@ class MapFragment : Fragment(), GoogleMap.OnMyLocationButtonClickListener,
         observeOffersChange(googleMap)
         offerViewModel.getOffers()
 
-        googleMap.uiSettings.isZoomControlsEnabled=true
+        googleMap.uiSettings.isZoomControlsEnabled = true
 
 //            if(args.orZoom)
 //            {
@@ -73,19 +74,19 @@ class MapFragment : Fragment(), GoogleMap.OnMyLocationButtonClickListener,
 
 
     private fun bitmapDescriptorFromVector(context: Context, vectorResId: Int): BitmapDescriptor? {
-    return ContextCompat.getDrawable(context, vectorResId)?.run {
-        setBounds(0, 0, intrinsicWidth, intrinsicHeight)
-        val bitmap = Bitmap.createBitmap(intrinsicWidth, intrinsicHeight, Bitmap.Config.ARGB_8888)
-        draw(Canvas(bitmap))
-        BitmapDescriptorFactory.fromBitmap(bitmap)
+        return ContextCompat.getDrawable(context, vectorResId)?.run {
+            setBounds(0, 0, intrinsicWidth, intrinsicHeight)
+            val bitmap =
+                Bitmap.createBitmap(intrinsicWidth, intrinsicHeight, Bitmap.Config.ARGB_8888)
+            draw(Canvas(bitmap))
+            BitmapDescriptorFactory.fromBitmap(bitmap)
+        }
     }
-}
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val mapFragment = childFragmentManager.findFragmentById(R.id.map) as SupportMapFragment?
         mapFragment?.getMapAsync(callback)
-
 
 
     }
@@ -105,13 +106,11 @@ class MapFragment : Fragment(), GoogleMap.OnMyLocationButtonClickListener,
 
     @SuppressLint("MissingPermission")
     override fun onMapReady(map: GoogleMap) {
-        // TODO: Before enabling the My Location layer, you must request
-        // location permission from the user. This sample does not include
-        // a request for location permission.
         map.isMyLocationEnabled = true
         map.setOnMyLocationButtonClickListener(this)
         map.setOnMyLocationClickListener(this)
     }
+
     private fun enableMyLocation() {
         if (!::map.isInitialized) return
         if (context?.let { ContextCompat.checkSelfPermission(it, ACCESS_FINE_LOCATION) }
@@ -122,7 +121,6 @@ class MapFragment : Fragment(), GoogleMap.OnMyLocationButtonClickListener,
 
         }
     }
-
 
 
     override fun onMyLocationButtonClick(): Boolean {
@@ -142,7 +140,8 @@ class MapFragment : Fragment(), GoogleMap.OnMyLocationButtonClickListener,
                     MarkerOptions().position(point).title(it.title)
                         .snippet("Cena: " + it.price.toString()).icon(context?.let { it1 ->
                             bitmapDescriptorFromVector(
-                                it1,R.drawable.ic_home)
+                                it1, R.drawable.ic_home
+                            )
                         }
                         )
                 )

@@ -6,6 +6,7 @@ import okhttp3.MultipartBody
 import okhttp3.ResponseBody
 import retrofit2.Response
 import wat.mobilne.renthome.models.*
+import wat.mobilne.renthome.utils.Preferences
 
 class Repository {
 
@@ -14,7 +15,7 @@ class Repository {
     }
 
     suspend fun getUser(): Response<User> {
-        return RetrofitInstance.api.getUser()
+        return RetrofitInstance.api.getUser(Preferences.fcmToken)
     }
 
     suspend fun getOffers(): Response<List<Offer>> {

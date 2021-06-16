@@ -20,12 +20,9 @@ object Preferences {
         get() = Key.BASIC_TOKEN.getString()
         set(value) = Key.BASIC_TOKEN.setString(value)
 
-    fun saveUser(user: User) {
-        Key.USER_EMAIL.setString(user.email)
-        Key.USER_USERNAME.setString(user.username)
-        Key.USER_NAME.setString(user.name)
-        Key.USER_SURNAME.setString(user.surname)
-    }
+    var fcmToken: String?
+        get() = Key.FCM_TOKEN.getString()
+        set(value) = Key.FCM_TOKEN.setString(value)
 
     var user: User
         get() = User(
@@ -43,7 +40,7 @@ object Preferences {
 
 
     private enum class Key {
-        BASIC_TOKEN, USER_EMAIL, USER_USERNAME, USER_NAME, USER_SURNAME, USER_BIRTHDAY;
+        BASIC_TOKEN, USER_EMAIL, USER_USERNAME, USER_NAME, USER_SURNAME, FCM_TOKEN;
 
         fun getBoolean(): Boolean? = if (sharedPreferences!!.contains(name)) sharedPreferences!!.getBoolean(name, false) else null
         fun getFloat(): Float? = if (sharedPreferences!!.contains(name)) sharedPreferences!!.getFloat(name, 0f) else null

@@ -18,7 +18,6 @@ class AppFireBaseMessagingService : FirebaseMessagingService() {
         remoteMessage.notification?.let {
             Log.d("TAG", "Message Notification Title: ${it.title}")
             Log.d("TAG", "Message Notification Body: ${it.body}")
-
         }
     }
 }

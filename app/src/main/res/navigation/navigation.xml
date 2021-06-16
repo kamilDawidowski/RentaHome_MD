@@ -125,7 +125,7 @@
         android:id="@+id/mapZoomFragment"
         android:name="wat.mobilne.renthome.fragments.MapZoomFragment"
         android:label="fragment_map_zoom"
-        tools:layout="@layout/fragment_map_zoom" >
+        tools:layout="@layout/fragment_map_zoom">
         <argument
             android:name="lat"
             app:argType="float" />
