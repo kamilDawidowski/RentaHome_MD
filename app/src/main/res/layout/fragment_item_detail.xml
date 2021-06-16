@@ -169,6 +169,7 @@
                 android:clickable="true"
                 android:src="@drawable/ic_near_me"
                 app:layout_constraintBottom_toTopOf="@+id/btnReservation"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="@+id/btnReservation" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
