@@ -64,16 +64,15 @@ class ItemReservationDetailFragment : Fragment() {
         }
         dataPicker.addOnPositiveButtonClickListener {
             textSelectedData.text = dataPicker.headerText
-            val startDate: LocalDate =
-                Instant.ofEpochMilli(it.first).atZone(ZoneId.systemDefault()).toLocalDate()
-            val endDate: LocalDate =
-                Instant.ofEpochMilli(it.first).atZone(ZoneId.systemDefault()).toLocalDate()
+            val startDate = Instant.ofEpochMilli(it.first).atZone(ZoneId.systemDefault()).toLocalDate()
+            val endDate = Instant.ofEpochMilli(it.second).atZone(ZoneId.systemDefault()).toLocalDate()
             makeReservation(startDate, endDate)
         }
     }
 
     private fun makeReservation(startDate: LocalDate, endDate: LocalDate) {
-        val reservation = Reservation(args.offer, Preferences.user, startDate,endDate,null)//startDate, endDate, null)
+
+        val reservation = Reservation(args.offer, Preferences.user, startDate, endDate,null)
         reservationViewModel.makeReservation(reservation)
     }
 

@@ -5,6 +5,7 @@ import okhttp3.ResponseBody
 import retrofit2.Response
 import retrofit2.http.*
 import wat.mobilne.renthome.models.*
+import java.time.LocalDate
 
 interface BasicApi {
 
@@ -36,7 +37,9 @@ interface BasicApi {
     suspend fun getReservations(): Response<List<Reservation>>
 
     @POST("reservation")
-    suspend fun makeReservation(@Body reservation: Reservation): Response<Reservation>
+    suspend fun makeReservation(@Query("offer") offer: Offer,
+                                @Query("startDate") startDate: LocalDate?,
+                                @Query("endDate") endDate: LocalDate?): Response<Reservation>
 
 
     //  Registration

@@ -92,6 +92,7 @@ class AddOfferFragment : Fragment() {
     private fun createOffer() {
         val mainActivity = activity as MainActivity
         val offer = Offer(
+            null,
             Preferences.user,
             addTitileOfert.text.toString(),
             addDescriptionOfert.text.toString(),

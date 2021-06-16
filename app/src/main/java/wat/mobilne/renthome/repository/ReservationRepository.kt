@@ -10,7 +10,7 @@ class ReservationRepository {
     }
 
     suspend fun makeReservation(reservation: Reservation): Response<Reservation> {
-        return RetrofitInstance.api.makeReservation(reservation)
+        return RetrofitInstance.api.makeReservation(reservation.offerDto, reservation.startDate, reservation.endDate)
     }
 //
 //    suspend fun acceptReservation(): Response<List<Reservation>> {

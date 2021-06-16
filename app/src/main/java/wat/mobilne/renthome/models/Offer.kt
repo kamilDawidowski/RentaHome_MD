@@ -6,6 +6,7 @@ import java.util.*
 
 @Parcelize
 data class Offer(
+    val id: Long?,
     val userDto: User,
     val title: String,
     val description: String,
