@@ -6,13 +6,13 @@
         <item name="android:windowActionBar">false</item>
         <item name="android:windowFullscreen">true</item>
 
-        <item name="colorPrimary">@color/primaryLightColor</item>
-        <item name="colorPrimaryVariant">@color/primaryLigtColor2</item>
-        <!--        <item name="colorOnPrimary">@color/white</item>-->
+        <item name="colorPrimary">@color/colorPrimaryLight</item>
+        <item name="colorPrimaryVariant">@color/colorPrimaryVariantLight</item>
+        <item name="colorOnPrimary">@color/colorOnPrimaryLight</item>
         <!-- Secondary brand color. -->
-        <item name="colorSecondary">@color/secondaryLightColor</item>
-        <item name="colorSecondaryVariant">@color/colorSecondaryVariant</item>
-        <item name="colorOnSecondary">@color/black</item>
+        <item name="colorSecondary">@color/colorSecondaryLight</item>
+        <item name="colorSecondaryVariant">@color/secondaryVariantLight</item>
+        <item name="colorOnSecondary">@color/colorOnSecondaryLight</item>
 
 
         <!-- Status bar color. -->

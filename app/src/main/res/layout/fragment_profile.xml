@@ -38,7 +38,7 @@
                         android:id="@+id/view"
                         android:layout_width="match_parent"
                         android:layout_height="200dp"
-                        android:background="@color/primaryLightColor"
+                        android:background="@color/colorPrimaryVariantLight"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
 
