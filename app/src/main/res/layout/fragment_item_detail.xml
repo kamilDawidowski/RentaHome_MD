@@ -127,7 +127,7 @@
                 android:id="@+id/btnCancel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@color/primaryLigtColor2"
+                android:background="@color/colorPrimaryVariant"
                 android:text="@android:string/cancel"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"

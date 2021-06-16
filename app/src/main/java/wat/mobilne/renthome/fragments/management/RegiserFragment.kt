@@ -30,7 +30,6 @@ class RegiserFragment : Fragment() {
         (activity as MainActivity).hideBootomMenu()
 
         button_Register.setOnClickListener {
-
             onRegisterButtonClick()
         }
 
@@ -45,7 +44,6 @@ class RegiserFragment : Fragment() {
     }
 
     private fun onRegisterButtonClick() {
-
         if(validateForm(inputEmail.text.toString(),inputPassword.text.toString(),inputPasswordConfirm.text.toString(),inpuUsername.text.toString()))
         {
             tryRegister()

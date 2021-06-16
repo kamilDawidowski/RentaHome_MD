@@ -1,24 +1,26 @@
 package wat.mobilne.renthome.fragments.reservation
 
+import android.os.Build
 import android.os.Bundle
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.annotation.RequiresApi
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.google.android.material.datepicker.MaterialDatePicker
 import kotlinx.android.synthetic.main.fragment_explore.*
 import kotlinx.android.synthetic.main.fragment_item_reservation_detail.*
-import wat.mobilne.renthome.MainViewModel
 import wat.mobilne.renthome.R
-import wat.mobilne.renthome.adapter.AdapterExplore
 import wat.mobilne.renthome.models.Reservation
 import wat.mobilne.renthome.utils.Preferences
-import wat.mobilne.renthome.viewmodel.OfferViewModel
 import wat.mobilne.renthome.viewmodel.ReservationViewModel
+import java.time.Instant
+import java.time.LocalDate
+import java.time.ZoneId
 import java.util.*
 
 
@@ -34,9 +36,10 @@ class ItemReservationDetailFragment : Fragment() {
         return inflater.inflate(R.layout.fragment_item_reservation_detail, container, false)
     }
 
+    @RequiresApi(Build.VERSION_CODES.O)
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        Log.d("Safeargs", args.offer.toString())
+//        Log.d("Safeargs", args.offer.toString())
 
         reservationViewModel = ViewModelProvider(this).get(ReservationViewModel::class.java)
         observeReservation()
@@ -61,12 +64,16 @@ class ItemReservationDetailFragment : Fragment() {
         }
         dataPicker.addOnPositiveButtonClickListener {
             textSelectedData.text = dataPicker.headerText
-            makeReservation(Date(it.first), Date(it.second))
+            val startDate: LocalDate =
+                Instant.ofEpochMilli(it.first).atZone(ZoneId.systemDefault()).toLocalDate()
+            val endDate: LocalDate =
+                Instant.ofEpochMilli(it.first).atZone(ZoneId.systemDefault()).toLocalDate()
+            makeReservation(startDate, endDate)
         }
     }
 
-    private fun makeReservation(startDate: Date, endDate: Date) {
-        val reservation = Reservation(args.offer, Preferences.user, null,null,null)//startDate, endDate, null)
+    private fun makeReservation(startDate: LocalDate, endDate: LocalDate) {
+        val reservation = Reservation(args.offer, Preferences.user, startDate,endDate,null)//startDate, endDate, null)
         reservationViewModel.makeReservation(reservation)
     }
 

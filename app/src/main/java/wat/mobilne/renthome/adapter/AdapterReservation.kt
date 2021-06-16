@@ -8,11 +8,12 @@ import kotlinx.android.synthetic.main.fragment_list_item_reservation.view.*
 import wat.mobilne.renthome.R
 import wat.mobilne.renthome.models.ItemDataReservation
 import wat.mobilne.renthome.fragments.reservation.ReservationFragment
+import wat.mobilne.renthome.models.Reservation
 
 class AdapterReservation(
 
     // Lista naszych elementów do wyswietlenia
-    private val itemList: List<ItemDataReservation>,
+    private val itemList: List<Reservation>,
     private val listener: ReservationFragment,
 
 
@@ -55,13 +56,13 @@ class AdapterReservation(
     }
 
     interface OnItemClickListener {
-        fun onItemClick(position: Int, currentItem: ItemDataReservation)
+        fun onItemClick(position: Int, currentItem: Reservation)
     }
 
     override fun onBindViewHolder(holder: AdapterReservation.ExampleViewHolder, position: Int) {
         val currentItem = itemList[position]
-        holder.itemData.text = currentItem.data
-        holder.itemUser.text = currentItem.user
+        holder.itemData.text = currentItem.endDate.toString()
+        holder.itemUser.text = currentItem.userDto.username.toString()
 
     }
 
