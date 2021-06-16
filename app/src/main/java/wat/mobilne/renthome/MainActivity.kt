@@ -190,14 +190,14 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-    fun hideBootomMenu() {
+    fun hideBottomMenu() {
         bottom_navigation.menu.findItem(id.mapFragment).isVisible = false
         bottom_navigation.menu.findItem(id.reservationFragment).isVisible = false
         bottom_navigation.menu.findItem(id.profileFragment).isVisible = false
         bottom_navigation.menu.findItem(id.exploreFragment).isVisible = false
     }
 
-    fun showBootomMenu() {
+    fun showBottomMenu() {
 
         bottom_navigation.menu.findItem(id.mapFragment).isVisible = true
         bottom_navigation.menu.findItem(id.reservationFragment).isVisible = true
@@ -205,10 +205,11 @@ class MainActivity : AppCompatActivity() {
         bottom_navigation.menu.findItem(id.exploreFragment).isVisible = true
     }
 
-    fun observeToken() {
+    private fun observeToken() {
         FirebaseMessaging.getInstance().token.addOnCompleteListener(OnCompleteListener { task ->
             if (!task.isSuccessful) {
                 Log.w(TAG, "Fetching FCM registration token failed", task.exception)
+                FirebaseMessaging.getInstance().subscribeToTopic("Main");
                 return@OnCompleteListener
             }
 

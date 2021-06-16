@@ -14,7 +14,9 @@ import androidx.navigation.fragment.navArgs
 import com.google.android.material.datepicker.MaterialDatePicker
 import kotlinx.android.synthetic.main.fragment_explore.*
 import kotlinx.android.synthetic.main.fragment_item_reservation_detail.*
+import kotlinx.android.synthetic.main.fragment_list_item_reservation.*
 import wat.mobilne.renthome.R
+import wat.mobilne.renthome.fragments.offer.ItemDetailFragmentDirections
 import wat.mobilne.renthome.models.Reservation
 import wat.mobilne.renthome.utils.Preferences
 import wat.mobilne.renthome.viewmodel.ReservationViewModel

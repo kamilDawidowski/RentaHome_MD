@@ -65,6 +65,11 @@ class ItemDetailFragment : Fragment() {
             intent.putExtra("bb",args.long)
             startActivity(intent);
         }
+
+        imageViewUser.setOnClickListener {
+            val action = ItemDetailFragmentDirections.actionItemDetailFragmentToUserProfileFragment(args.offer.userDto)
+            findNavController().navigate(action)
+        }
     }
 
     private fun getAddress(latitude: Double, longitude: Double): String {

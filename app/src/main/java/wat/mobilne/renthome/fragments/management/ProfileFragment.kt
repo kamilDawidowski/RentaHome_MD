@@ -3,6 +3,7 @@ package wat.mobilne.renthome.fragments.management
 import android.content.Intent
 import android.graphics.Bitmap
 import android.os.Bundle
+import android.os.Environment
 import android.provider.MediaStore
 import android.util.Log
 import android.view.LayoutInflater
@@ -10,7 +11,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import kotlinx.android.synthetic.main.fragment_profile.*
 import okhttp3.MediaType
@@ -20,8 +20,10 @@ import wat.mobilne.renthome.MainActivity
 import wat.mobilne.renthome.R
 import wat.mobilne.renthome.utils.ImageProcesser
 import wat.mobilne.renthome.utils.Preferences
-import wat.mobilne.renthome.viewmodel.OfferViewModel
 import wat.mobilne.renthome.viewmodel.UserViewModel
+import java.io.File
+import java.io.FileOutputStream
+import java.io.OutputStream
 
 
 private const val REQUESTE_CODE=42
@@ -65,6 +67,13 @@ class ProfileFragment : Fragment() {
         btnChangePassword.setOnClickListener {
 //            val action = ProfileFragmentDirections.actionProfileFragmentToChangePasswordFragment()
 //            findNavController().navigate(action)
+        }
+
+        btnLogout.setOnClickListener {
+            activity?.intent?.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+            activity?.intent?.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+            Preferences.basicToken = null
+            startActivity(activity?.intent)
         }
 
 
@@ -123,36 +132,36 @@ class ProfileFragment : Fragment() {
         {
             var bmp=data?.extras?.get("data") as Bitmap
             profileImage.setImageBitmap(bmp)
-//            uploadImage(bmp)
+
+            //  Handle image and upload to backend
+//            val file = savebitmap(bmp)
+//            val filePart = MultipartBody.Part.createFormData(
+//                "photo", file!!.name, RequestBody.create(
+//                    MediaType.parse("image/*"), file
+//                )
+//            )
+//            userViewModel.uploadImage(filePart)
         }
     }
-
-    private fun uploadImage(imageBmp: Bitmap) {
-        val image = context?.let { ImageProcesser.bitmapToFile(imageBmp, "profileImage", it) }
-        val fileBody: RequestBody =
-            RequestBody.create(MediaType.parse("multipart/form-data"), image)
-        val body = MultipartBody.Builder().addFormDataPart("file-type", "profile")
-            .addFormDataPart("photo", "image.png", fileBody)
-            .build()
-//        val requestFile: RequestBody =
-//            RequestBody.create(MediaType.parse("multipart/form-data"), image)
-//        val fileBody = MultipartBody.Part.createFormData("imageFile", image?.name, requestFile)
-        Log.d("image", fileBody.toString())
-        val mainActivity = activity as MainActivity
-        mainActivity.viewModel.uploadImage(body, "multipart/form-data; boundary=" + body.boundary())
-    }
-
-    private fun observeUploadImage() {
-        val mainActivity = activity as MainActivity
-        mainActivity.viewModel.uploadImageResponse.observe(viewLifecycleOwner, { response ->
-            if (response.isSuccessful) {
-                val responseBody = response.body()
-                Log.d("Upload", "Uploaded image" + responseBody.toString())
-            } else {
-                Toast.makeText(context, "ERROR: " + response.code(), Toast.LENGTH_SHORT).show()
-                // #TODO: Handle server exception
-            }
-        })
+    private fun savebitmap(bmp: Bitmap): File? {
+        val extStorageDirectory: String = activity?.getExternalFilesDir(Environment.DIRECTORY_PICTURES).toString()
+        var outStream: OutputStream? = null
+        // String temp = null;
+        var file = File(extStorageDirectory, "temp.png")
+        if (file.exists()) {
+            file.delete()
+            file = File(extStorageDirectory, "temp.png")
+        }
+        try {
+            outStream = FileOutputStream(file)
+            bmp.compress(Bitmap.CompressFormat.PNG, 100, outStream)
+            outStream.flush()
+            outStream.close()
+        } catch (e: Exception) {
+            e.printStackTrace()
+            return null
+        }
+        return file
     }
 }
 

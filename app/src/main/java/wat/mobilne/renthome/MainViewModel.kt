@@ -70,9 +70,9 @@ class MainViewModel(private val repository: Repository): ViewModel() {
     }
 
     val uploadImageResponse: MutableLiveData<Response<ResponseBody>> = MutableLiveData()
-    fun uploadImage(image: MultipartBody, contentType: String) {
+    fun uploadImage(image: MultipartBody.Part) {
         viewModelScope.launch {
-            val response = repository.uploadImage(image, contentType)
+            val response = repository.uploadImage(image)
             uploadImageResponse.value = response
         }
     }

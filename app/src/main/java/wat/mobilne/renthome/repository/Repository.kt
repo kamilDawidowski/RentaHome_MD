@@ -38,7 +38,7 @@ class Repository {
         return RetrofitInstance.api.createOffer(offer)
     }
 
-    suspend fun uploadImage(image: MultipartBody, contentType: String): Response<ResponseBody> {
-        return RetrofitInstance.api.uploadImage(image, contentType)
+    suspend fun uploadImage(image: MultipartBody.Part): Response<ResponseBody> {
+        return RetrofitInstance.api.uploadImage(image)
     }
 }

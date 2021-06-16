@@ -30,4 +30,11 @@ class ReservationViewModel: ViewModel() {
             makeReservationResponse.value = response
         }
     }
+
+    fun acceptReservation(reservation: Reservation) {
+        viewModelScope.launch {
+            val response = reservationRepository.acceptReservation(reservation)
+            acceptReservationResponse.value = response
+        }
+    }
 }

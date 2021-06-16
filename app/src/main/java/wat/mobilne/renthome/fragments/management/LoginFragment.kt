@@ -1,7 +1,6 @@
 package wat.mobilne.renthome.fragments.management
 
 import android.Manifest
-import android.content.Intent
 import android.content.pm.PackageManager
 import android.location.LocationManager
 import android.os.Bundle
@@ -22,7 +21,6 @@ import kotlinx.android.synthetic.main.fragment_login.*
 import okhttp3.Credentials
 import wat.mobilne.renthome.MainActivity
 import wat.mobilne.renthome.R
-import wat.mobilne.renthome.fragments.MapActivity
 import wat.mobilne.renthome.utils.Preferences
 import wat.mobilne.renthome.viewmodel.UserViewModel
 
@@ -50,7 +48,6 @@ class LoginFragment : Fragment() {
         observeLogin()
 
         loginButton.setOnClickListener {
-
             if(validateForm(inputUsername.text.toString(), inputPassword.text.toString())) {
                 onLoginButtonClick()
             }
@@ -71,9 +68,6 @@ class LoginFragment : Fragment() {
 
     private fun onLoginButtonClick() {
         tryLogin()
-
-
-
     }
 
     private fun tryLogin() {

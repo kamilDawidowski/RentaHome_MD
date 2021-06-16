@@ -4,6 +4,8 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.launch
+import okhttp3.MultipartBody
+import okhttp3.ResponseBody
 import retrofit2.Response
 import wat.mobilne.renthome.models.User
 import wat.mobilne.renthome.repository.UserRepository
@@ -33,6 +35,14 @@ class UserViewModel: ViewModel() {
         viewModelScope.launch {
             val response = userRepository.updateUser(username, name, surname, description)
             updateUserResponse.value = response
+        }
+    }
+
+    val uploadImageResponse: MutableLiveData<Response<ResponseBody>> = MutableLiveData()
+    fun uploadImage(image: MultipartBody.Part) {
+        viewModelScope.launch {
+            val response = userRepository.uploadImage(image)
+            uploadImageResponse.value = response
         }
     }
 }
