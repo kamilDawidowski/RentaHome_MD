@@ -6,7 +6,6 @@ import java.util.*
 data class Reservation(
     val offerDto: Offer,
     val userDto: User,
-    val startDate: LocalDate?,
-    val endDate: LocalDate?,
-    val dateOfCreate: LocalDate?
+    val startDate: String,
+    val endDate: String,
 )

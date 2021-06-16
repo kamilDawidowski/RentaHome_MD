@@ -25,7 +25,6 @@ object Preferences {
         Key.USER_USERNAME.setString(user.username)
         Key.USER_NAME.setString(user.name)
         Key.USER_SURNAME.setString(user.surname)
-        Key.USER_BIRTHDAY.setString(user.dateOfBirth.toString())
     }
 
     var user: User
@@ -34,14 +33,12 @@ object Preferences {
             Key.USER_NAME.getString()!!,
             Key.USER_SURNAME.getString()!!,
             Key.USER_EMAIL.getString()!!,
-            null,
-            null)
+        )
         set(value: User) {
             Key.USER_EMAIL.setString(value.email)
             Key.USER_USERNAME.setString(value.username)
             Key.USER_NAME.setString(value.name)
             Key.USER_SURNAME.setString(value.surname)
-            Key.USER_BIRTHDAY.setString(value.dateOfBirth.toString())
         }
 
 

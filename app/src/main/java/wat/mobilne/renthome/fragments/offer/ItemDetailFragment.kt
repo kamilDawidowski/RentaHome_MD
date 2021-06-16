@@ -105,11 +105,4 @@ class ItemDetailFragment : Fragment() {
         textDescription.text = args.description
         textCash.text = args.price.toString()
     }
-
-    private fun makeReservation() {
-    }
-
-
-
-
 }

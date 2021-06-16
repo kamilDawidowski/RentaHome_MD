@@ -92,13 +92,13 @@ class AddOfferFragment : Fragment() {
     private fun createOffer() {
         val mainActivity = activity as MainActivity
         val offer = Offer(
+            null,
             Preferences.user,
             addTitileOfert.text.toString(),
             addDescriptionOfert.text.toString(),
             2.0,
             2.0,
             2.0,
-            null
         )
         Log.d("Offer", offer.toString())
         mainActivity.viewModel.createOffer(offer)

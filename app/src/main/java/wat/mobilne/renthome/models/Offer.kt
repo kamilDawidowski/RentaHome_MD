@@ -6,11 +6,11 @@ import java.util.*
 
 @Parcelize
 data class Offer(
+    val id: Long?,
     val userDto: User,
     val title: String,
     val description: String,
     val latitude: Double,
     val longitude: Double,
     val price: Double,
-    val dateOfCreate: Date?
 ): Parcelable
