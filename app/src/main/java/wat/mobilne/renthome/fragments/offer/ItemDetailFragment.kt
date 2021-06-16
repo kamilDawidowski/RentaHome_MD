@@ -53,6 +53,11 @@ class ItemDetailFragment : Fragment() {
 //            val action=ItemDetailFragmentDirections.actionItemDetailFragmentToExploreFragment()
 //            findNavController().navigate(action)
         }
+        imageViewLocalization.setOnClickListener {
+            val action=ItemDetailFragmentDirections.actionItemDetailFragmentToMapZoomFragment(args.lat.toFloat(),args.long.toFloat())
+            findNavController().navigate(action)
+
+        }
     }
 
     private fun getAddress(latitude: Double, longitude: Double): String {
