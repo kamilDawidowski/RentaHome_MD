@@ -30,23 +30,25 @@ object Preferences {
             Key.USER_NAME.getString()!!,
             Key.USER_SURNAME.getString()!!,
             Key.USER_EMAIL.getString()!!,
+            Key.DESCRIPTION.getString()!!,
         )
         set(value: User) {
             Key.USER_EMAIL.setString(value.email)
             Key.USER_USERNAME.setString(value.username)
             Key.USER_NAME.setString(value.name)
             Key.USER_SURNAME.setString(value.surname)
+            Key.DESCRIPTION.setString(value.description)
         }
 
 
     private enum class Key {
-        BASIC_TOKEN, USER_EMAIL, USER_USERNAME, USER_NAME, USER_SURNAME, FCM_TOKEN;
+        BASIC_TOKEN, USER_EMAIL, USER_USERNAME, USER_NAME, USER_SURNAME, DESCRIPTION, FCM_TOKEN;
 
         fun getBoolean(): Boolean? = if (sharedPreferences!!.contains(name)) sharedPreferences!!.getBoolean(name, false) else null
         fun getFloat(): Float? = if (sharedPreferences!!.contains(name)) sharedPreferences!!.getFloat(name, 0f) else null
         fun getInt(): Int? = if (sharedPreferences!!.contains(name)) sharedPreferences!!.getInt(name, 0) else null
         fun getLong(): Long? = if (sharedPreferences!!.contains(name)) sharedPreferences!!.getLong(name, 0) else null
-        fun getString(): String? = if (sharedPreferences!!.contains(name)) sharedPreferences!!.getString(name, "") else null
+        fun getString(): String? = if (sharedPreferences!!.contains(name)) sharedPreferences!!.getString(name, "a") else "s"
 
         fun setBoolean(value: Boolean?) = value?.let { sharedPreferences!!.edit { putBoolean(name, value) } } ?: remove()
         fun setFloat(value: Float?) = value?.let { sharedPreferences!!.edit { putFloat(name, value) } } ?: remove()

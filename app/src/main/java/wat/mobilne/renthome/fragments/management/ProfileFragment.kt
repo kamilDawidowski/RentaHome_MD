@@ -1,5 +1,6 @@
 package wat.mobilne.renthome.fragments.management
 
+import android.app.Activity.RESULT_OK
 import android.content.Intent
 import android.graphics.Bitmap
 import android.os.Bundle
@@ -134,16 +135,23 @@ class ProfileFragment : Fragment() {
             var bmp=data?.extras?.get("data") as Bitmap
             profileImage.setImageBitmap(bmp)
 
+            val intent = Intent()
+            intent.setType("image/*")
+            intent.setAction(Intent.ACTION_GET_CONTENT)
+            startActivityForResult(intent, 21)
+
             //  Handle image and upload to backend
-//            val file = savebitmap(bmp)
-//            val filePart = MultipartBody.Part.createFormData(
-//                "image", file!!.name, RequestBody.create(
-//                    MediaType.parse("image/jpg"), file
-//                )
-//            )
-//            userViewModel.uploadImage(filePart)
+            val file = savebitmap(bmp)
+            val filePart = MultipartBody.Part.createFormData(
+                "image", file!!.name, RequestBody.create(
+                    MediaType.parse("image/*"), file
+                )
+            )
+            Log.d("Image", filePart.body().toString() + " " + filePart.headers().toString())
+            userViewModel.uploadImage(filePart)
         }
     }
+
     private fun savebitmap(bmp: Bitmap): File? {
         val extStorageDirectory: String = activity?.getExternalFilesDir(Environment.DIRECTORY_PICTURES).toString()
         var outStream: OutputStream? = null

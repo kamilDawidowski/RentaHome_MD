@@ -51,7 +51,6 @@ interface BasicApi {
     suspend fun register(@Body registration: Registration): Response<RegistrationResponse>
 
     //  Image
-    @Headers("Content-Type: multipart/form-data")
     @Multipart
     @POST("image")
     suspend fun uploadImage(@Part image: MultipartBody.Part): Response<ResponseBody>

@@ -95,7 +95,4 @@ class LoginFragment : Fragment() {
         val isValidPassword = password != null && password.isNotBlank() && password.length >= 6
         return isValidEmail && isValidPassword
     }
-
-
-
 }

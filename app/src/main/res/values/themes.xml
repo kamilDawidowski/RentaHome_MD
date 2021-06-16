@@ -7,12 +7,12 @@
         <item name="android:windowFullscreen">true</item>
 
         <item name="colorPrimary">@color/colorPrimaryLight</item>
-        <item name="colorPrimaryVariant">@color/colorPrimaryVariantLight</item>
-        <item name="colorOnPrimary">@color/colorOnPrimaryLight</item>
+        <item name="colorPrimaryVariant">#FFE082</item>
+        <item name="colorOnPrimary">#FFFFFF</item>
         <!-- Secondary brand color. -->
-        <item name="colorSecondary">@color/colorSecondaryLight</item>
-        <item name="colorSecondaryVariant">@color/secondaryVariantLight</item>
-        <item name="colorOnSecondary">@color/colorOnSecondaryLight</item>
+        <item name="colorSecondary">#7CB342</item>
+        <item name="colorSecondaryVariant">#9CCC65</item>
+        <item name="colorOnSecondary">#43A047</item>
 
 
         <!-- Status bar color. -->
