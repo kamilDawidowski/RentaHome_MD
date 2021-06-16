@@ -4,7 +4,8 @@
     <item
         android:id="@+id/ligthmode"
         android:icon="@drawable/ic_light_mode"
-        android:title="Light"></item>
+        android:title="Light"
+        app:showAsAction="ifRoom"></item>
     <item
         android:id="@+id/darkmode"
         android:icon="@drawable/ic_dark_mode"
