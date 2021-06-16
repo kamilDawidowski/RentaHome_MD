@@ -1,5 +1,6 @@
 package wat.mobilne.renthome.fragments.offer
 
+import android.content.Intent
 import android.location.Geocoder
 import android.os.Bundle
 import android.util.Log
@@ -12,12 +13,20 @@ import androidx.navigation.fragment.navArgs
 import kotlinx.android.synthetic.main.fragment_item_detail.*
 import wat.mobilne.renthome.MainActivity
 import wat.mobilne.renthome.R
+import wat.mobilne.renthome.fragments.MapActivity
 import java.io.IOException
 import java.lang.IllegalArgumentException
 import java.util.*
 
 class ItemDetailFragment : Fragment() {
     private val args: ItemDetailFragmentArgs by navArgs()
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        arguments?.let {
+
+        }
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -49,6 +58,12 @@ class ItemDetailFragment : Fragment() {
             val action=ItemDetailFragmentDirections.actionItemDetailFragmentToMapZoomFragment(args.lat.toFloat(),args.long.toFloat())
             findNavController().navigate(action)
 
+        }
+        btnNavigateTo.setOnClickListener {
+            val intent= Intent(getActivity(), MapActivity::class.java);
+            intent.putExtra("aa",args.lat)
+            intent.putExtra("bb",args.long)
+            startActivity(intent);
         }
 
         imageViewUser.setOnClickListener {
