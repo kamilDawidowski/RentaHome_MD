@@ -123,10 +123,12 @@
                 android:id="@+id/imageView16"
                 android:layout_width="144dp"
                 android:layout_height="114dp"
+                android:layout_marginBottom="16dp"
                 android:src="@drawable/ic_shop"
+                app:layout_constraintBottom_toTopOf="@+id/btnConfirm"
                 app:layout_constraintEnd_toEndOf="@+id/btnConfirm"
-                app:layout_constraintStart_toStartOf="@+id/btnConfirm"
-                tools:layout_editor_absoluteY="502dp" />
+                app:layout_constraintHorizontal_bias="0.604"
+                app:layout_constraintStart_toStartOf="@+id/btnConfirm" />
 
             <ImageView
                 android:id="@+id/imageView17"
