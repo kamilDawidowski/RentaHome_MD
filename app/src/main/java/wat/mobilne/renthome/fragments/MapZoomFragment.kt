@@ -38,6 +38,7 @@ class MapZoomFragment : Fragment() , GoogleMap.OnMyLocationButtonClickListener,
                         BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_ORANGE)
                     )
                 )
+        googleMap.uiSettings.isZoomControlsEnabled=true
         val cameraPosition = CameraPosition.Builder()
             .target(pointZoom)
             .zoom(7f).build()
