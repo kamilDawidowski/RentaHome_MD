@@ -41,8 +41,9 @@
             android:layout_marginStart="20dp"
             android:fontFamily="@font/font_3"
             android:text="TextView"
-            android:textSize="30sp"
+            android:textSize="24sp"
             app:layout_constraintBottom_toBottomOf="@+id/imageView12"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/imageView12"
             app:layout_constraintTop_toTopOf="@+id/imageView12" />
 
