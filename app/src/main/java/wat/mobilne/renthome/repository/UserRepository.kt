@@ -23,4 +23,8 @@ class UserRepository {
     suspend fun uploadImage(image: MultipartBody.Part): Response<ResponseBody> {
         return RetrofitInstance.api.uploadImage(image)
     }
+
+    suspend fun changePassword(oldPassword: String, newPassword: String): Response<User> {
+        return RetrofitInstance.api.changePassword(oldPassword, newPassword)
+    }
 }

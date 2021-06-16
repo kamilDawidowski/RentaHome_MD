@@ -6,16 +6,19 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import wat.mobilne.renthome.models.Registration
 import kotlinx.android.synthetic.main.fragment_regiser.*
 import kotlinx.android.synthetic.main.fragment_regiser.inputPassword
 import wat.mobilne.renthome.MainActivity
 import wat.mobilne.renthome.R
+import wat.mobilne.renthome.viewmodel.RegisterViewModel
+import wat.mobilne.renthome.viewmodel.UserViewModel
 
 
 class RegiserFragment : Fragment() {
-
+    lateinit var registerViewModel: RegisterViewModel
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -25,6 +28,7 @@ class RegiserFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        registerViewModel = ViewModelProvider(this).get(RegisterViewModel::class.java)
         observeRegister()
         (activity as MainActivity).hideBottomMenu()
 
@@ -68,19 +72,9 @@ class RegiserFragment : Fragment() {
 
     }
 
-    private fun observeRegister() {
-        val mainActivity = activity as MainActivity
-        mainActivity.viewModel.registerResponse.observe(mainActivity, { response ->
-            if (response.isSuccessful) {
-                navigateToLogin()
-            } else {
-                // #TODO: Handle server exception
-            }
-        })
-    }
+
 
     private fun tryRegister() {
-        val mainActivity = activity as MainActivity
         val registrationData = Registration(
             inpuUsername.text.toString(),
             inpuUsername.text.toString(),
@@ -88,7 +82,17 @@ class RegiserFragment : Fragment() {
             inputEmail.text.toString(),
             inputPassword.text.toString())
 
-        mainActivity.viewModel.register(registrationData)
+        registerViewModel.register(registrationData)
+    }
+    private fun observeRegister() {
+        registerViewModel.registerResponse.observe(viewLifecycleOwner, { response ->
+            if (response.isSuccessful) {
+                navigateToLogin()
+            } else {
+                Toast.makeText(context, "ERROR: " + response.code(), Toast.LENGTH_SHORT).show()
+                // #TODO: Handle server exception
+            }
+        })
     }
 
     private fun validateForm(email: String?, password: String?,passwordConfirm:String?,username:String?): Boolean {

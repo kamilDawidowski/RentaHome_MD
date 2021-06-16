@@ -39,6 +39,7 @@
     <string name="name">Name:</string>
     <string name="surname">Surname:</string>
     <string name="new_password">New Password</string>
+    <string name="old_password">Old Password</string>
     <string name="cancel">cancel</string>
     <string name="title">Title</string>
     <string name="price_for_one_day">Price for one day</string>
