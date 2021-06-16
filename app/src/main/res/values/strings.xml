@@ -67,4 +67,5 @@
     <string name="incorrect_data">Incorrect data!!!</string>
     <string name="password_musst_be_identicial">Passwords must be identical!</string>
     <string name="title_activity_map">MapActivity</string>
+    <string name="lokalization_is_granted">\"Lokalizacja została pomyslnie wyswietlona \"</string>
 </resources>

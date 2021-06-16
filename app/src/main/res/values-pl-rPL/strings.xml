@@ -60,4 +60,8 @@
     <string name="hello_first_fragment">Hello first fragment</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
     <string name="my_reservation">Moja rezerwacja</string>
+    <string name="lokalization_is_granted">\"Lokalizacja została pomyslnie wyswietlona \"</string>
+    <string name="your_choice">Twój wybór</string>
+    <string name="incorrect_data">Dane niepoprawne!</string>
+    <string name="password_musst_be_identicial">Hasło musi być identyczne !</string>
 </resources>

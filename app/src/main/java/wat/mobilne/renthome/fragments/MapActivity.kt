@@ -94,8 +94,9 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMarkerC
             }
             else
             {
-                Toast.makeText(this,"dddd", Toast.LENGTH_LONG).show()
+                Toast.makeText(this,"Brak", Toast.LENGTH_LONG).show()
             }
+            Toast.makeText(this,getString(R.string.lokalization_is_granted), Toast.LENGTH_LONG).show()
         }
     }
 
