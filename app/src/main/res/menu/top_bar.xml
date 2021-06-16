@@ -2,28 +2,26 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
-        android:id="@+id/ligth"
+        android:id="@+id/ligthmode"
         android:icon="@drawable/ic_light_mode"
-        android:title="Light"
-        app:showAsAction="always|collapseActionView"
-        app:actionViewClass="android.widget.SearchView" />
+        android:title="Light"></item>
     <item
-        android:id="@+id/mode"
+        android:id="@+id/darkmode"
         android:icon="@drawable/ic_dark_mode"
-        app:showAsAction="ifRoom"
-        android:title="@string/mode"></item>
+        android:title="@string/mode"
+        app:showAsAction="ifRoom"></item>
 
 
     <item
         android:id="@+id/languagePL"
         android:fontFamily="@font/font_3"
-        app:showAsAction="ifRoom"
-        android:title="PL"></item>
+        android:title="PL"
+        app:showAsAction="ifRoom"></item>
     <item
         android:id="@+id/languageENG"
         android:fontFamily="@font/font_3"
-        app:showAsAction="ifRoom"
-        android:title="ENG"></item>
+        android:title="ENG"
+        app:showAsAction="ifRoom"></item>
 
 
 </menu>

@@ -73,29 +73,23 @@ class MainActivity : AppCompatActivity() {
                     recreate()
                     true
                 }
-                id.mode -> {
-
-
-                        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+                id.darkmode -> {
+                        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
                         Toast.makeText(
                             this,
                             getString(string.mode_is_changed_dark),
                             Toast.LENGTH_SHORT
-                        ).show()
-
-
-
+                        ).show();
 
                     true
                 }
-                id.light -> {
-                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+                id.ligthmode -> {
+                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
                     Toast.makeText(
                         this,
                         getString(string.mode_is_changed_light),
                         Toast.LENGTH_SHORT
-                    ).show()
-
+                    ).show();
 
 
 
