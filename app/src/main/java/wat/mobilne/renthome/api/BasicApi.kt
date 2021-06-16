@@ -37,9 +37,7 @@ interface BasicApi {
     suspend fun getReservations(): Response<List<Reservation>>
 
     @POST("reservation")
-    suspend fun makeReservation(@Query("offer") offer: Offer,
-                                @Query("startDate") startDate: LocalDate?,
-                                @Query("endDate") endDate: LocalDate?): Response<Reservation>
+    suspend fun makeReservation(@Body reservation: Reservation): Response<Reservation>
 
 
     //  Registration

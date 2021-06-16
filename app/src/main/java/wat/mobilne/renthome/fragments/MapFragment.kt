@@ -16,6 +16,7 @@ import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
 import com.google.android.gms.maps.CameraUpdateFactory
@@ -26,8 +27,11 @@ import com.google.android.gms.maps.model.BitmapDescriptor
 import com.google.android.gms.maps.model.BitmapDescriptorFactory
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
+import kotlinx.android.synthetic.main.fragment_explore.*
 import wat.mobilne.renthome.MainActivity
 import wat.mobilne.renthome.R
+import wat.mobilne.renthome.adapter.AdapterExplore
+import wat.mobilne.renthome.viewmodel.OfferViewModel
 
 
 // TODO: Rename parameter arguments, choose names that match
@@ -37,6 +41,7 @@ class MapFragment : Fragment(), GoogleMap.OnMyLocationButtonClickListener,
     OnMapReadyCallback, ActivityCompat.OnRequestPermissionsResultCallback {
 
     private lateinit var map: GoogleMap
+    private lateinit var offerViewModel: OfferViewModel
 
     companion object{
         private const val LOCATION_REQUST_CODE=1
@@ -45,43 +50,24 @@ class MapFragment : Fragment(), GoogleMap.OnMyLocationButtonClickListener,
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
         arguments?.let {
         }
     }
 
     private val callback = OnMapReadyCallback { googleMap ->
 
-
-        val menuActivity = activity as MainActivity
-        val offers = menuActivity.offers
+        offerViewModel = ViewModelProvider(this).get(OfferViewModel::class.java)
+        observeOffersChange(googleMap)
+        offerViewModel.getOffers()
 
         googleMap.uiSettings.isZoomControlsEnabled=true
 
-        if (offers != null) {
-            offers.value?.forEach {
-                val point = LatLng(it.latitude, it.longitude)
-                val icon = BitmapFactory.decodeResource(
-                    context?.resources,
-                    R.drawable.ic_home
-                )
-
-
-                googleMap.addMarker(
-                    MarkerOptions().position(point).title(it.title)
-                        .snippet("Cena: " + it.price.toString()).icon(context?.let { it1 ->
-                            bitmapDescriptorFromVector(
-                                it1,R.drawable.ic_home)
-                        }
-                        )
-                )
-            }
 //            if(args.orZoom)
 //            {
 //                val pointZoom=LatLng(args.lat.toDouble(),args.long.toDouble())
 //                googleMap.moveCamera(CameraUpdateFactory.newLatLng(pointZoom))
 //            }
-
-        }
 
     }
 
@@ -141,6 +127,27 @@ class MapFragment : Fragment(), GoogleMap.OnMyLocationButtonClickListener,
 
     override fun onMyLocationButtonClick(): Boolean {
         TODO("Not yet implemented")
+    }
+
+    private fun observeOffersChange(googleMap: GoogleMap) {
+        offerViewModel.getOffersResponse.observe(viewLifecycleOwner, { offers ->
+            offers.body()?.forEach {
+                val point = LatLng(it.latitude, it.longitude)
+                val icon = BitmapFactory.decodeResource(
+                    context?.resources,
+                    R.drawable.ic_home
+                )
+
+                googleMap.addMarker(
+                    MarkerOptions().position(point).title(it.title)
+                        .snippet("Cena: " + it.price.toString()).icon(context?.let { it1 ->
+                            bitmapDescriptorFromVector(
+                                it1,R.drawable.ic_home)
+                        }
+                        )
+                )
+            }
+        })
     }
 
 

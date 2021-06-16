@@ -99,7 +99,6 @@ class AddOfferFragment : Fragment() {
             2.0,
             2.0,
             2.0,
-            null
         )
         Log.d("Offer", offer.toString())
         mainActivity.viewModel.createOffer(offer)

@@ -40,6 +40,7 @@ class ReservationFragment : Fragment(),AdapterReservation.OnItemClickListener  {
         super.onViewCreated(view, savedInstanceState)
         reservationViewModel = ViewModelProvider(this).get(ReservationViewModel::class.java)
         observeReservation()
+        getReservations()
 
     }
     private fun generateList(): List<ItemDataReservation> {
@@ -67,8 +68,7 @@ class ReservationFragment : Fragment(),AdapterReservation.OnItemClickListener  {
     }
 
     private fun observeReservation() {
-        val mainActivity = activity as MainActivity
-        mainActivity.viewModel.reservationsResponse.observe(viewLifecycleOwner, { response ->
+        reservationViewModel.reservationsResponse.observe(viewLifecycleOwner, { response ->
             if (response.isSuccessful) {
                 val reservations = response.body()
                 Log.d("Reservation", "Reservations: " + reservations.toString())

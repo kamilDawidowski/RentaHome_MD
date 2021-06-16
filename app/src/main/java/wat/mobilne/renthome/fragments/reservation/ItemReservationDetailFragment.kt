@@ -18,9 +18,8 @@ import wat.mobilne.renthome.R
 import wat.mobilne.renthome.models.Reservation
 import wat.mobilne.renthome.utils.Preferences
 import wat.mobilne.renthome.viewmodel.ReservationViewModel
-import java.time.Instant
+import java.text.SimpleDateFormat
 import java.time.LocalDate
-import java.time.ZoneId
 import java.util.*
 
 
@@ -64,20 +63,19 @@ class ItemReservationDetailFragment : Fragment() {
         }
         dataPicker.addOnPositiveButtonClickListener {
             textSelectedData.text = dataPicker.headerText
-            val startDate = Instant.ofEpochMilli(it.first).atZone(ZoneId.systemDefault()).toLocalDate()
-            val endDate = Instant.ofEpochMilli(it.second).atZone(ZoneId.systemDefault()).toLocalDate()
-            makeReservation(startDate, endDate)
+            val sdf = SimpleDateFormat("dd/MM/yyyy")
+            makeReservation(sdf.format(Date(it.first)), sdf.format(Date(it.second)))
         }
     }
 
-    private fun makeReservation(startDate: LocalDate, endDate: LocalDate) {
+    private fun makeReservation(startDate: String, endDate: String) {
 
-        val reservation = Reservation(args.offer, Preferences.user, startDate, endDate,null)
+        val reservation = Reservation(args.offer, Preferences.user, startDate, endDate)
         reservationViewModel.makeReservation(reservation)
     }
 
     private fun observeReservation() {
-        reservationViewModel.reservationsResponse.observe(viewLifecycleOwner, { reservation ->
+        reservationViewModel.makeReservationResponse.observe(viewLifecycleOwner, { reservation ->
             Log.d("Reservation", reservation.toString())
         })
     }
