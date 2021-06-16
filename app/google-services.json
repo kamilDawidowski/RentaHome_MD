@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "405161562262",
+    "project_id": "rentahome-62e7c",
+    "storage_bucket": "rentahome-62e7c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:405161562262:android:20bcec589285eda1e932b7",
+        "android_client_info": {
+          "package_name": "wat.mobilne.renthome"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "405161562262-hu4knqiueodmthd6dk64lg8j2amh4j92.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCeTbgUjHSwOi9YJ7gr64VBTpHcu0kBwYo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "405161562262-hu4knqiueodmthd6dk64lg8j2amh4j92.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

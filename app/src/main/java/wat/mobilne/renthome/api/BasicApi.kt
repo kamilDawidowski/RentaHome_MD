@@ -34,7 +34,7 @@ interface BasicApi {
     suspend fun getReservations(): Response<List<Reservation>>
 
     @POST("reservation")
-    suspend fun makeReservation(): Response<Reservation>
+    suspend fun makeReservation(@Body reservation: Reservation): Response<Reservation>
 
 
     //  Registration

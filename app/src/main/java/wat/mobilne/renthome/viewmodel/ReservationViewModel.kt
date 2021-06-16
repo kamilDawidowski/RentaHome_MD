@@ -24,9 +24,9 @@ class ReservationViewModel: ViewModel() {
         }
     }
 
-    fun makeReservations(reservation: Reservation) {
+    fun makeReservation(reservation: Reservation) {
         viewModelScope.launch {
-            val response = reservationRepository.makeReservation()
+            val response = reservationRepository.makeReservation(reservation)
             makeReservationResponse.value = response
         }
     }

@@ -90,6 +90,9 @@
         <action
             android:id="@+id/action_itemDetailFragment_to_mapZoomFragment"
             app:destination="@id/mapZoomFragment" />
+        <argument
+            android:name="offer"
+            app:argType="wat.mobilne.renthome.models.Offer" />
     </fragment>
     <fragment
         android:id="@+id/itemReservationDetailFragment"
@@ -99,6 +102,9 @@
         <argument
             android:name="price"
             app:argType="float" />
+        <argument
+            android:name="offer"
+            app:argType="wat.mobilne.renthome.models.Offer" />
     </fragment>
     <fragment
         android:id="@+id/changePasswordFragment"

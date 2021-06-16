@@ -41,9 +41,11 @@ class ItemDetailFragment : Fragment() {
 
         initData()
 
+        Log.d("Safeargs", args.offer.toString())
+
         btnReservation.setOnClickListener {
             makeReservation()
-            val action=ItemDetailFragmentDirections.actionItemDetailFragmentToItemReservationDetailFragment(args.price)
+            val action=ItemDetailFragmentDirections.actionItemDetailFragmentToItemReservationDetailFragment(args.price, args.offer)
             findNavController().navigate(action)
         }
 

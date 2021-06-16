@@ -1,6 +1,7 @@
 package wat.mobilne.renthome
 
 import android.app.Activity
+import android.content.ContentValues.TAG
 import android.content.Context
 import android.content.res.Configuration
 import android.os.Bundle
@@ -14,6 +15,8 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.NavHostFragment
+import com.google.android.gms.tasks.OnCompleteListener
+import com.google.firebase.messaging.FirebaseMessaging
 import wat.mobilne.renthome.models.Offer
 import wat.mobilne.renthome.repository.Repository
 import kotlinx.android.synthetic.main.activity_main.*
@@ -41,6 +44,10 @@ class MainActivity : AppCompatActivity() {
         loadLocate()
         setContentView(layout.activity_main)
         var flag = true
+
+        observeToken()
+        val token = FirebaseMessaging.getInstance().token
+        Log.d("Token", "old token: ${token}")
 
 
         //
@@ -194,6 +201,22 @@ class MainActivity : AppCompatActivity() {
         bottom_navigation.menu.findItem(id.profileFragment).isVisible = true
         bottom_navigation.menu.findItem(id.exploreFragment).isVisible = true
     }
+
+    fun observeToken() {
+        FirebaseMessaging.getInstance().token.addOnCompleteListener(OnCompleteListener { task ->
+            if (!task.isSuccessful) {
+                Log.w(TAG, "Fetching FCM registration token failed", task.exception)
+                return@OnCompleteListener
+            }
+
+            // Get new FCM registration token
+            val token = task.result
+
+            // Log and toast
+            Log.d("Token", "Token: ${token}")
+        })
+    }
+
 }
 
 

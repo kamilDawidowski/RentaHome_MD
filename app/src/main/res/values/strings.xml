@@ -59,6 +59,14 @@
     <string name="my_reservation">My Reservation</string>
     <string name="languageENG">Language : ENG</string>
     <string name="languagePL">Language: PL</string>
+    <string name="default_notification_channel_id" translatable="false">fcm_default_channel</string>
+    <!--
+        This is the name that users will see when interacting with this channel.
+        It should describe the category of notifications that will be sent through this channel
+     -->
+    <!-- [START fcm_default_icon_string] -->
+    <string name="default_notification_channel_name" translatable="false">Weather</string>
+
     <string name="your_choice">Your choice</string>
     <string name="incorrect_data">Incorrect data!!!</string>
     <string name="password_musst_be_identicial">Passwords must be identical!</string>
