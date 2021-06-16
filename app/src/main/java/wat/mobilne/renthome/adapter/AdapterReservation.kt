@@ -5,20 +5,18 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.fragment_list_item_reservation.view.*
+import org.w3c.dom.Text
 import wat.mobilne.renthome.R
 import wat.mobilne.renthome.models.ItemDataReservation
 import wat.mobilne.renthome.fragments.reservation.ReservationFragment
 import wat.mobilne.renthome.models.Reservation
 
 class AdapterReservation(
-
     // Lista naszych elementów do wyswietlenia
     private val itemList: List<Reservation>,
     private val listener: ReservationFragment,
-
-
-
     ) :
+
     RecyclerView.Adapter<AdapterReservation.ExampleViewHolder>() {
 
 
@@ -36,7 +34,8 @@ class AdapterReservation(
     inner class ExampleViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView),
         View.OnClickListener {
 
-        val itemData: TextView = itemView.tReservatioData
+        val itemOffer: TextView = itemView.tOfferDataInReservation
+        val itemDate: TextView = itemView.tReservatioData
         val itemUser: TextView = itemView.tReservatioUser
 
         //        val textView3: TextView = itemView.textView_DescriptionRow
@@ -61,7 +60,8 @@ class AdapterReservation(
 
     override fun onBindViewHolder(holder: AdapterReservation.ExampleViewHolder, position: Int) {
         val currentItem = itemList[position]
-        holder.itemData.text = currentItem.endDate.toString()
+        holder.itemOffer.text = currentItem.offerDto.title.toString()
+        holder.itemDate.text = currentItem.endDate.toString()
         holder.itemUser.text = currentItem.userDto.username.toString()
 
     }

@@ -39,6 +39,12 @@ interface BasicApi {
     @POST("reservation")
     suspend fun makeReservation(@Body reservation: Reservation): Response<Reservation>
 
+    @PUT("reservation")
+    suspend fun acceptReservation(@Body reservation: Reservation): Response<Reservation>
+
+    @DELETE("reservation")
+    suspend fun rejectReservation(@Body reservation: Reservation): Response<Boolean>
+
 
     //  Registration
     @POST("registration")
@@ -47,5 +53,5 @@ interface BasicApi {
     //  Image
     @Multipart
     @POST("image")
-    suspend fun uploadImage(@Part("image") multipartImage: MultipartBody, contentType: String): Response<ResponseBody>
+    suspend fun uploadImage(@Part image: MultipartBody.Part): Response<ResponseBody>
 }

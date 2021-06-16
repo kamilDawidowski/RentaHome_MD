@@ -1,22 +1,15 @@
 package wat.mobilne.renthome.fragments.management
 
-import android.Manifest
-import android.content.pm.PackageManager
-import android.location.LocationManager
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.core.app.ActivityCompat
-import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
-import androidx.navigation.fragment.findNavController
 import kotlinx.android.synthetic.main.fragment_login.*
 import okhttp3.Credentials
 import wat.mobilne.renthome.MainActivity
@@ -38,7 +31,7 @@ class LoginFragment : Fragment() {
     }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        (activity as MainActivity).hideBootomMenu()
+        (activity as MainActivity).hideBottomMenu()
         val navHostFragment =
             activity?.supportFragmentManager?.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
         navController = navHostFragment.navController
@@ -83,7 +76,7 @@ class LoginFragment : Fragment() {
                 Preferences.user = response.body()!!
                 Log.d("Login", "user: " + response.body().toString())
                 navigateToExplore()
-                (activity as MainActivity).showBootomMenu()
+                (activity as MainActivity).showBottomMenu()
             } else {
                 // #TODO: Handle server exception
             }

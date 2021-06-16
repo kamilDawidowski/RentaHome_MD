@@ -5,8 +5,8 @@
         <item name="android:windowNoTitle">true</item>
         <item name="android:windowActionBar">false</item>
         <item name="android:windowFullscreen">true</item>
-        <item name="colorPrimary">@color/primaryLightColor</item>
-        <item name="colorPrimaryVariant">@color/primaryLigtColor2</item>
+        <item name="colorPrimary">#FB8C00</item>
+        <item name="colorPrimaryVariant">#F06292</item>
         <!--        <item name="colorOnPrimary">@color/white</item>-->
         <!-- Secondary brand color. -->
         <item name="colorSecondary">@color/secondaryLightColor</item>

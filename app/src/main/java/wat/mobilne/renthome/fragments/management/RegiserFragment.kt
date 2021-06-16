@@ -12,7 +12,6 @@ import kotlinx.android.synthetic.main.fragment_regiser.*
 import kotlinx.android.synthetic.main.fragment_regiser.inputPassword
 import wat.mobilne.renthome.MainActivity
 import wat.mobilne.renthome.R
-import wat.mobilne.renthome.fragments.offer.ExploreFragmentDirections
 
 
 class RegiserFragment : Fragment() {
@@ -27,7 +26,7 @@ class RegiserFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         observeRegister()
-        (activity as MainActivity).hideBootomMenu()
+        (activity as MainActivity).hideBottomMenu()
 
         button_Register.setOnClickListener {
             onRegisterButtonClick()

@@ -11,39 +11,81 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="150dp"
+        android:layout_height="181dp"
         android:layout_margin="20dp"
         android:background="@drawable/item_background">
+
+        <Button
+            android:id="@+id/btnAcceptReservation"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:layout_marginEnd="24dp"
+            android:layout_marginBottom="16dp"
+            android:background="@color/primaryDarkColor"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <Button
+            android:id="@+id/btnRejectReservation"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="24dp"
+            android:background="@color/primaryDarkColor"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
             android:id="@+id/imageView12"
             android:layout_width="60dp"
             android:layout_height="40dp"
-            android:layout_marginStart="48dp"
-            android:layout_marginTop="28dp"
+            android:layout_marginBottom="16dp"
             android:src="@drawable/ic_calender"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintBottom_toTopOf="@+id/imageView13"
+            app:layout_constraintEnd_toEndOf="@+id/imageView13"
+            app:layout_constraintStart_toStartOf="@+id/imageView13" />
 
         <ImageView
             android:id="@+id/imageView13"
             android:layout_width="60dp"
             android:layout_height="40dp"
-            android:layout_marginTop="8dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginBottom="16dp"
             android:src="@drawable/ic_profile"
-            app:layout_constraintStart_toStartOf="@+id/imageView12"
-            app:layout_constraintTop_toBottomOf="@+id/imageView12" />
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <ImageView
+            android:id="@+id/imgOfferInReservation"
+            android:layout_width="60dp"
+            android:layout_height="40dp"
+            android:layout_marginBottom="16dp"
+            android:src="@drawable/ic_message"
+            app:layout_constraintBottom_toTopOf="@+id/imageView12"
+            app:layout_constraintEnd_toEndOf="@+id/imageView12"
+            app:layout_constraintStart_toStartOf="@+id/imageView12" />
+
+        <TextView
+            android:id="@+id/tOfferDataInReservation"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_marginStart="20dp"
+            android:fontFamily="@font/font_1"
+            android:text="TextView"
+            android:textSize="24sp"
+            app:layout_constraintBottom_toBottomOf="@+id/imgOfferInReservation"
+            app:layout_constraintStart_toEndOf="@+id/imgOfferInReservation"
+            app:layout_constraintTop_toTopOf="@+id/imgOfferInReservation" />
 
         <TextView
             android:id="@+id/tReservatioData"
             android:layout_width="wrap_content"
             android:layout_height="40dp"
             android:layout_marginStart="20dp"
-            android:fontFamily="@font/font_3"
+            android:fontFamily="@font/font_1"
             android:text="TextView"
             android:textSize="24sp"
             app:layout_constraintBottom_toBottomOf="@+id/imageView12"
-            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/imageView12"
             app:layout_constraintTop_toTopOf="@+id/imageView12" />
 
@@ -52,9 +94,9 @@
             android:layout_width="wrap_content"
             android:layout_height="40dp"
             android:layout_marginStart="20dp"
-            android:text="TextView"
             android:fontFamily="@font/font_1"
-            android:textSize="30sp"
+            android:text="TextView"
+            android:textSize="24sp"
             app:layout_constraintBottom_toBottomOf="@+id/imageView13"
             app:layout_constraintStart_toEndOf="@+id/imageView13"
             app:layout_constraintTop_toTopOf="@+id/imageView13"

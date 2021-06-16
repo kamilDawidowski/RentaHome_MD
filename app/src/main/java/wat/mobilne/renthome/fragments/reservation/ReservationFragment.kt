@@ -11,6 +11,7 @@ import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
+import kotlinx.android.synthetic.main.fragment_list_item_reservation.*
 import kotlinx.android.synthetic.main.fragment_reservation.*
 import wat.mobilne.renthome.MainActivity
 import wat.mobilne.renthome.R
@@ -42,26 +43,19 @@ class ReservationFragment : Fragment(),AdapterReservation.OnItemClickListener  {
         observeReservation()
         getReservations()
 
-    }
-    private fun generateList(): List<ItemDataReservation> {
-        val list = ArrayList<ItemDataReservation>()
-
-        for (i in 0 until 5) {
-
-            val item = ItemDataReservation( "Item $i", "19.04.2020")
-            list += item
+        btnAcceptReservation.setOnClickListener {
+            onReservationAccepted()
+        }
+        btnRejectReservation.setOnClickListener {
+            onReservationRejected()
         }
 
-        return list
     }
-
 
     @SuppressLint("ResourceAsColor")
     override fun onItemClick(position: Int, currentItem: Reservation) {
-        var user=currentItem.userDto.username.toString()
-        var data=currentItem.endDate.toString()
-        // Tutaj wysyłamy powiadominie dla uzytkownika User o potwierdzeniu
     }
+
 
     private fun getReservations() {
         reservationViewModel.getReservations()
@@ -80,6 +74,14 @@ class ReservationFragment : Fragment(),AdapterReservation.OnItemClickListener  {
                 // #TODO: Handle server exception
             }
         })
+    }
+
+    private fun onReservationAccepted() {
+//        reservationViewModel.acceptReservation()
+    }
+
+    private fun onReservationRejected() {
+
     }
 
 
