@@ -82,6 +82,7 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMarkerC
                 val x=intent.getDoubleExtra("aa",0.0)
                 val y=intent.getDoubleExtra("bb",0.0)
                 val second=LatLng(x,y)
+                placeMarkerOnMap(second)
                 val polyline1 = mMap.addPolyline(
                     PolylineOptions()
                         .clickable(true)
