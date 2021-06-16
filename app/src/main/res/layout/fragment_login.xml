@@ -3,9 +3,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/constrainLayout"
+    style="@style/Theme.RentHome"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    style="@style/Theme.RentHome"
     tools:context=".fragments.management.LoginFragment">
 
 
@@ -13,25 +13,22 @@
         android:id="@+id/imageView"
         android:layout_width="match_parent"
         android:layout_height="96dp"
-        android:layout_marginBottom="30dp"
-        app:layout_constraintBottom_toTopOf="@+id/textInputUsername"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0"
         app:srcCompat="@drawable/ic_wave2" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/textInputUsername"
         android:layout_width="300dp"
-        app:startIconDrawable="@drawable/ic_profile"
         android:layout_height="50dp"
         android:layout_marginBottom="40dp"
         android:hint="@string/hint_username"
         app:layout_constraintBottom_toTopOf="@+id/textInputPassword"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.504"
-        app:layout_constraintStart_toStartOf="parent">
+        app:layout_constraintStart_toStartOf="parent"
+        app:startIconDrawable="@drawable/ic_profile">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/inputUsername"
@@ -44,13 +41,13 @@
         android:layout_width="300dp"
         android:layout_height="50dp"
         android:layout_marginBottom="200dp"
-        app:startIconDrawable="@android:drawable/ic_secure"
         android:hint="@string/Password"
         app:errorEnabled="true"
         app:layout_constraintBottom_toTopOf="@+id/loginButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.504"
-        app:layout_constraintStart_toStartOf="parent">
+        app:layout_constraintStart_toStartOf="parent"
+        app:startIconDrawable="@android:drawable/ic_secure">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/inputPassword"
@@ -72,13 +69,13 @@
 
     <TextView
         android:id="@+id/textViewSignUp"
+        style="@style/Theme.RentHome"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="64dp"
-        android:fontFamily="@font/font_2"
         android:clickable="true"
+        android:fontFamily="@font/font_2"
         android:text="@string/Sign_up"
-        style="@style/Theme.RentHome"
         app:layout_constraintBottom_toTopOf="@+id/loginButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.848"
@@ -88,14 +85,25 @@
 
     <TextView
         android:id="@+id/textView"
-        android:fontFamily="@font/font_2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="24dp"
+        android:fontFamily="@font/font_2"
         android:text="@string/don_t_have_an_account"
         app:layout_constraintBottom_toTopOf="@+id/textViewSignUp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.862"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageView15"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginEnd="10dp"
+        android:src="@drawable/ic_home"
+        app:layout_constraintBottom_toBottomOf="@+id/textViewSignUp"
+        app:layout_constraintEnd_toStartOf="@+id/textViewSignUp"
+        app:layout_constraintTop_toTopOf="@+id/textViewSignUp"
+        app:layout_constraintVertical_bias="0.0" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -70,7 +70,6 @@ class MapFragment : Fragment(), GoogleMap.OnMyLocationButtonClickListener,
 //                val pointZoom=LatLng(args.lat.toDouble(),args.long.toDouble())
 //                googleMap.moveCamera(CameraUpdateFactory.newLatLng(pointZoom))
 //            }
-
     }
 
 
