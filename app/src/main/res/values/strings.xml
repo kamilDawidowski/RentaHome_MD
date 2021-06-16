@@ -70,4 +70,5 @@
     <string name="your_choice">Your choice</string>
     <string name="incorrect_data">Incorrect data!!!</string>
     <string name="password_musst_be_identicial">Passwords must be identical!</string>
+    <string name="title_activity_map">MapActivity</string>
 </resources>

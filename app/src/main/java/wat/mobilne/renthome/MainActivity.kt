@@ -7,7 +7,9 @@ import android.content.res.Configuration
 import android.os.Bundle
 import android.util.AttributeSet
 import android.util.Log
+import android.view.MenuInflater
 import android.view.View
+import android.widget.SearchView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
@@ -73,23 +75,30 @@ class MainActivity : AppCompatActivity() {
                 }
                 id.mode -> {
 
-                    if (flag) {
+
                         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
                         Toast.makeText(
                             this,
                             getString(string.mode_is_changed_dark),
                             Toast.LENGTH_SHORT
                         ).show()
-                        flag = false
-                    } else {
-                        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
-                        Toast.makeText(
-                            this,
-                            getString(string.mode_is_changed_light),
-                            Toast.LENGTH_SHORT
-                        ).show()
-                        flag = true
-                    }
+
+
+
+
+                    true
+                }
+                id.light -> {
+                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+                    Toast.makeText(
+                        this,
+                        getString(string.mode_is_changed_light),
+                        Toast.LENGTH_SHORT
+                    ).show()
+
+
+
+
                     true
                 }
                 else -> false

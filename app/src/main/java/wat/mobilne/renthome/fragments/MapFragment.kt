@@ -1,5 +1,6 @@
 package wat.mobilne.renthome.fragments
-
+import android.Manifest
+import android.Manifest.permission.ACCESS_FINE_LOCATION
 import android.annotation.SuppressLint
 import android.content.Context
 import android.content.pm.PackageManager
@@ -11,8 +12,13 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
+import com.google.android.gms.location.FusedLocationProviderClient
+import com.google.android.gms.location.LocationServices
+import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
@@ -28,15 +34,22 @@ import wat.mobilne.renthome.R
 
 class MapFragment : Fragment(), GoogleMap.OnMyLocationButtonClickListener,
     GoogleMap.OnMyLocationClickListener,
-    OnMapReadyCallback {
+    OnMapReadyCallback, ActivityCompat.OnRequestPermissionsResultCallback {
 
     private val REQUEST_LOCATION_PERMISSION = 1
-//    private val args: MapFragmentArgs by navArgs()
+    private var permissionDenied = false
+    private lateinit var map: GoogleMap
+    private lateinit var lastLocation: Location
+    private lateinit var fusedLocationProviderClient: FusedLocationProviderClient
+
+    companion object{
+        private const val LOCATION_REQUST_CODE=1
+    }
 
     private fun isPermissionGranted() : Boolean {
         return ContextCompat.checkSelfPermission(
             activity as MainActivity,
-            android.Manifest.permission.ACCESS_FINE_LOCATION
+            ACCESS_FINE_LOCATION
         )==PackageManager.PERMISSION_GRANTED
     }
 
@@ -44,16 +57,29 @@ class MapFragment : Fragment(), GoogleMap.OnMyLocationButtonClickListener,
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
+            fusedLocationProviderClient=LocationServices.getFusedLocationProviderClient(context)
 
         }
     }
+
     private val callback = OnMapReadyCallback { googleMap ->
 
 
-
         val menuActivity = activity as MainActivity
-
         val offers = menuActivity.offers
+//        if (ActivityCompat.checkSelfPermission(
+//                menuActivity,
+//                Manifest.permission.ACCESS_FINE_LOCATION
+//            ) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(
+//                menuActivity,
+//                Manifest.permission.ACCESS_COARSE_LOCATION
+//            ) != PackageManager.PERMISSION_GRANTED
+//        ) {
+//
+//        }
+        googleMap.uiSettings.isZoomControlsEnabled=true
+        setUpMap()
+
 
         //Dodawanie znaczników ofert
         if (offers != null) {
@@ -73,7 +99,6 @@ class MapFragment : Fragment(), GoogleMap.OnMyLocationButtonClickListener,
                         }
                         )
                 )
-    //
             }
 //            if(args.orZoom)
 //            {
@@ -83,11 +108,43 @@ class MapFragment : Fragment(), GoogleMap.OnMyLocationButtonClickListener,
 
         }
 
+    }
 
+    private fun setUpMap() {
+        Toast.makeText(context,"ssssss1",Toast.LENGTH_LONG).show()
+        if (ActivityCompat.checkSelfPermission(
+                activity as MainActivity,
+                ACCESS_FINE_LOCATION
+            ) != PackageManager.PERMISSION_GRANTED)
+         {
+             ActivityCompat.requestPermissions(activity as MainActivity, arrayOf(
+                 ACCESS_FINE_LOCATION), LOCATION_REQUST_CODE
+             )
+            // TODO: Consider calling
+            //    ActivityCompat#requestPermissions
+            // here to request the missing permissions, and then overriding
+            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+            //                                          int[] grantResults)
+            // to handle the case where the user grants the permission. See the documentation
+            // for ActivityCompat#requestPermissions for more details.
+            return
+        }
+        map.isMyLocationEnabled=true
+        fusedLocationProviderClient.lastLocation.addOnSuccessListener { location->
+
+            if(location!=null)
+            {
+                Toast.makeText(context,"ssssss2",Toast.LENGTH_LONG).show()
+                lastLocation=location
+                val curerentLatLng=LatLng(location.latitude,location.longitude)
+                map.animateCamera((CameraUpdateFactory.newLatLngZoom(curerentLatLng,12f)))
+            }
+            Toast.makeText(context,"ssssss3",Toast.LENGTH_LONG).show()
+        }
     }
 
 
-private fun bitmapDescriptorFromVector(context: Context, vectorResId: Int): BitmapDescriptor? {
+    private fun bitmapDescriptorFromVector(context: Context, vectorResId: Int): BitmapDescriptor? {
     return ContextCompat.getDrawable(context, vectorResId)?.run {
         setBounds(0, 0, intrinsicWidth, intrinsicHeight)
         val bitmap = Bitmap.createBitmap(intrinsicWidth, intrinsicHeight, Bitmap.Config.ARGB_8888)
@@ -103,9 +160,6 @@ private fun bitmapDescriptorFromVector(context: Context, vectorResId: Int): Bitm
 
 
 
-
-
-
     }
 
 
@@ -116,8 +170,6 @@ private fun bitmapDescriptorFromVector(context: Context, vectorResId: Int): Bitm
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_map, container, false)
     }
-
-
 
     override fun onMyLocationClick(p0: Location) {
 
@@ -132,11 +184,22 @@ private fun bitmapDescriptorFromVector(context: Context, vectorResId: Int): Bitm
         map.setOnMyLocationButtonClickListener(this)
         map.setOnMyLocationClickListener(this)
     }
+    private fun enableMyLocation() {
+        if (!::map.isInitialized) return
+        if (context?.let { ContextCompat.checkSelfPermission(it, ACCESS_FINE_LOCATION) }
+            == PackageManager.PERMISSION_GRANTED) {
+            map.isMyLocationEnabled = true
+        } else {
+            // Permission to access the location is missing. Show rationale and request permission
+
+        }
+    }
+
+
 
     override fun onMyLocationButtonClick(): Boolean {
         TODO("Not yet implemented")
     }
-
 
 
 }
