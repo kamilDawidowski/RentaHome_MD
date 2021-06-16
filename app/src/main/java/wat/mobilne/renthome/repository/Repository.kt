@@ -29,8 +29,8 @@ class Repository {
         return RetrofitInstance.api.getReservations()
     }
 
-    suspend fun updateUser(username: String, email: String): Response<User> {
-        return  RetrofitInstance.api.updateUser(username, email)
+    suspend fun updateUser(username: String, name: String, surname: String, description: String): Response<User> {
+        return  RetrofitInstance.api.updateUser(username, name, surname, description)
     }
 
     suspend fun createOffer(offer: Offer): Response<Offer> {

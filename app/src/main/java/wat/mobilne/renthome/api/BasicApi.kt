@@ -18,6 +18,8 @@ interface BasicApi {
     @PUT("user")
     suspend fun updateUser(
         @Query("username") username: String,
+        @Query("name") name: String,
+        @Query("surname") surname: String,
         @Query("description") description: String) : Response<User>
 
 

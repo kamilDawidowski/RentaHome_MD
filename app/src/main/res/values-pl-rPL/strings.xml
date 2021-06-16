@@ -56,6 +56,7 @@
     <string name="languageENG">Language : ENG</string>
     <string name="languagePL">Language: PL</string>
 
+    <string name="logout">Wyloguj</string>
     <string name="hello_first_fragment">Hello first fragment</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
     <string name="my_reservation">Moja rezerwacja</string>

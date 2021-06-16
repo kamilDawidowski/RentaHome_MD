@@ -78,9 +78,9 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="16dp"
-                        android:layout_marginTop="40dp"
-                        android:text="@string/username"
+                        android:layout_marginTop="64dp"
                         android:fontFamily="@font/font_2"
+                        android:text="@string/username"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/profileImage" />
 
@@ -143,7 +143,8 @@
                         android:inputType="textPersonName"
                         android:visibility="invisible"
                         app:layout_constraintBottom_toBottomOf="@+id/tUsername"
-                        app:layout_constraintEnd_toEndOf="parent" />
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="@+id/tUsername" />
 
                     <EditText
                         android:id="@+id/chName"
@@ -164,8 +165,8 @@
                         android:visibility="invisible"
                         app:layout_constraintBottom_toBottomOf="@+id/tEmail"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintHorizontal_bias="0.0"
-                        app:layout_constraintStart_toStartOf="@+id/chUsername" />
+                        app:layout_constraintStart_toStartOf="@+id/chUsername"
+                        app:layout_constraintTop_toTopOf="@+id/tEmail" />
 
                     <EditText
                         android:id="@+id/chSurname"
@@ -175,30 +176,27 @@
                         android:inputType="textPersonName"
                         android:visibility="invisible"
                         app:layout_constraintBottom_toBottomOf="@+id/tSurname"
-                        app:layout_constraintStart_toStartOf="@+id/chName" />
+                        app:layout_constraintStart_toStartOf="@+id/chName"
+                        app:layout_constraintTop_toTopOf="@+id/tSurname" />
 
                     <Button
                         android:id="@+id/btnAddPhoto"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="20dp"
                         android:text="@string/add_profile_picture"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintHorizontal_bias="0.014"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/textView10" />
+                        app:layout_constraintBottom_toTopOf="@+id/btnUpdateProfile"
+                        app:layout_constraintEnd_toEndOf="@+id/btnUpdateProfile"
+                        app:layout_constraintStart_toStartOf="@+id/btnUpdateProfile" />
 
                     <Button
                         android:id="@+id/buttonConfirmChange"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="40dp"
+                        android:layout_marginTop="32dp"
+                        android:layout_marginEnd="16dp"
                         android:text="@string/confirm"
-                        app:layout_constraintBottom_toBottomOf="@+id/btnAddPhoto"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toEndOf="@+id/btnAddPhoto"
-                        app:layout_constraintTop_toTopOf="@+id/btnAddPhoto"
-                        app:layout_constraintVertical_bias="0.0"
+                        app:layout_constraintTop_toBottomOf="@+id/chSurname"
                         tools:visibility="invisible" />
 
                     <ImageView
@@ -210,26 +208,34 @@
                         app:layout_constraintEnd_toEndOf="@+id/buttonConfirmChange"
                         app:layout_constraintStart_toStartOf="@+id/buttonConfirmChange" />
 
+
                     <Button
                         android:id="@+id/btnUpdateProfile"
-                        android:layout_width="wrap_content"
-                        android:layout_height="48dp"
-                        android:layout_marginTop="5dp"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
                         android:text="@string/update_information"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintHorizontal_bias="0.0"
-                        app:layout_constraintStart_toStartOf="@+id/btnChangePassword"
-                        app:layout_constraintTop_toBottomOf="@+id/btnChangePassword" />
+                        app:layout_constraintBottom_toTopOf="@+id/btnChangePassword"
+                        app:layout_constraintEnd_toEndOf="@+id/btnChangePassword"
+                        app:layout_constraintStart_toStartOf="@+id/btnChangePassword" />
 
                     <Button
                         android:id="@+id/btnChangePassword"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="5dp"
                         android:text="@string/change_password"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/btnAddPhoto" />
+                        app:layout_constraintBottom_toTopOf="@+id/btnLogout"
+                        app:layout_constraintEnd_toEndOf="@+id/btnLogout"
+                        app:layout_constraintStart_toStartOf="@+id/btnLogout" />
 
+                    <Button
+                        android:id="@+id/btnLogout"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="16dp"
+                        android:text="@string/logout"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent" />
 
                     <com.google.android.material.imageview.ShapeableImageView
                         android:id="@+id/profileImage"

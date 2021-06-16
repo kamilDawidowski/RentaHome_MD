@@ -29,9 +29,9 @@ class UserViewModel: ViewModel() {
         }
     }
 
-    fun updateUser(username: String, description: String) {
+    fun updateUser(username: String, name: String, surname: String, description: String) {
         viewModelScope.launch {
-            val response = userRepository.updateUser(username, description)
+            val response = userRepository.updateUser(username, name, surname, description)
             updateUserResponse.value = response
         }
     }

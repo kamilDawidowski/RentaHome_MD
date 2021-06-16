@@ -70,7 +70,7 @@ class ProfileFragment : Fragment() {
 
         buttonConfirmChange.setOnClickListener {
             //updateUser(chUsername.text.toString(), chEmail.text.toString())
-            updateUser(chUsername.text.toString(), "abc1")
+            updateUser(chUsername.text.toString(), chName.text.toString(), chSurname.text.toString(), "temporary description")
             buttonConfirmChange.visibility = View.INVISIBLE
             hideEditInputs()
         }
@@ -103,32 +103,18 @@ class ProfileFragment : Fragment() {
         buttonConfirmChange.visibility = View.INVISIBLE
     }
 
-    private fun changeData() {
-
-    }
-
     private fun observeUpdate() {
         userViewModel.updateUserResponse.observe(viewLifecycleOwner, { response ->
             if (response.isSuccessful) {
                 Preferences.user = response.body()!!
+                setData()
                 Log.d("Login", "user changed: " + response.body().toString())
             }
         })
-//        val mainActivity = activity as MainActivity
-//        mainActivity.viewModel.updateUserResponse.observe(viewLifecycleOwner, { response ->
-//            if (response.isSuccessful) {
-//                Preferences.user = response.body()!!
-//                Log.d("Login", "user changed: " + response.body().toString())
-//            } else {
-//                // #TODO: Handle server exception
-//            }
-//        })
     }
 
-    private fun updateUser(username: String, description: String) {
-        userViewModel.updateUser(username, description)
-//        val mainActivity = activity as MainActivity
-//        mainActivity.viewModel.updateUser(username, description)
+    private fun updateUser(username: String, name: String, surname: String, description: String) {
+        userViewModel.updateUser(username, name, surname, description)
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
