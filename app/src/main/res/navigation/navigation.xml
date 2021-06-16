@@ -126,7 +126,8 @@
             app:popUpTo="@id/reservationFragment" />
         <action
             android:id="@+id/action_reservationFragment_to_reservationClickFragment"
-            app:destination="@id/reservationClickFragment" />
+            app:destination="@id/reservationClickFragment"
+            app:popUpTo="@id/reservationFragment" />
     </fragment>
     <fragment
         android:id="@+id/addOfferFragment"
@@ -163,5 +164,9 @@
         android:id="@+id/reservationClickFragment"
         android:name="wat.mobilne.renthome.fragments.reservation.ReservationClickFragment"
         android:label="fragment_reservation_click"
-        tools:layout="@layout/fragment_reservation_click" />
+        tools:layout="@layout/fragment_reservation_click" >
+        <argument
+            android:name="reservationId"
+            app:argType="long" />
+    </fragment>
 </navigation>

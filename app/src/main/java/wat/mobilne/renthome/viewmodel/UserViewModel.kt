@@ -47,9 +47,9 @@ class UserViewModel: ViewModel() {
     }
 
     val changePasswordResponse: MutableLiveData<Response<User>> = MutableLiveData()
-    fun changePassword(oldPassword: String, newPassword: String) {
+    fun changePassword(newPassword: String) {
         viewModelScope.launch {
-            val response = userRepository.changePassword(oldPassword, newPassword)
+            val response = userRepository.changePassword(newPassword)
             changePasswordResponse.value = response
         }
     }

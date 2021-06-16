@@ -42,15 +42,10 @@ class ItemReservationDetailFragment : Fragment() {
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-//        Log.d("Safeargs", args.offer.toString())
-
         reservationViewModel = ViewModelProvider(this).get(ReservationViewModel::class.java)
         observeReservation()
-
         val dataPicker=MaterialDatePicker.Builder.dateRangePicker().setTitleText("Pick your reservation Data").build()
         textCashSummary.text = args.price.toString()
-
-        var pricr=args.price.toString()
 
         btnConfirm.setOnClickListener {
             makeReservation()
@@ -60,7 +55,6 @@ class ItemReservationDetailFragment : Fragment() {
         btnShowData.setOnClickListener {
             dataPicker.show(parentFragmentManager,"DataPicker")
         }
-
 
 
         btnCancelReservation.setOnClickListener {
@@ -76,7 +70,7 @@ class ItemReservationDetailFragment : Fragment() {
 
     private fun makeReservation() {
         if (startDate != null && endDate != null) {
-            val reservation = Reservation(args.offer, Preferences.user, startDate!!, endDate!!)
+            val reservation = Reservation(null, args.offer, Preferences.user, startDate!!, endDate!!)
             reservationViewModel.makeReservation(reservation)
         }
     }

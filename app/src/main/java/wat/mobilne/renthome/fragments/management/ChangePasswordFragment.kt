@@ -40,7 +40,7 @@ class ChangePasswordFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         buttonConfirmNewPassword.setOnClickListener {
             if (validateForm(inputPassword.text.toString(),inputConfirmChangedPassword.text.toString())) {
-                userViewModel.changePassword(inputPasswordOld.text.toString(), inputPassword.text.toString())
+                userViewModel.changePassword(inputPassword.text.toString())
             }
         }
 

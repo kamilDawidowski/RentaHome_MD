@@ -16,6 +16,7 @@ class ReservationViewModel: ViewModel() {
     val reservationsResponse: MutableLiveData<Response<List<Reservation>>> = MutableLiveData()
     val makeReservationResponse: MutableLiveData<Response<Reservation>> = MutableLiveData()
     val acceptReservationResponse: MutableLiveData<Response<Reservation>> = MutableLiveData()
+    val rejectReservationResponse: MutableLiveData<Response<Boolean>> = MutableLiveData()
 
     fun getReservations() {
         viewModelScope.launch {
@@ -31,10 +32,17 @@ class ReservationViewModel: ViewModel() {
         }
     }
 
-    fun acceptReservation(reservation: Reservation) {
+    fun acceptReservation(reservation: Long) {
         viewModelScope.launch {
             val response = reservationRepository.acceptReservation(reservation)
             acceptReservationResponse.value = response
+        }
+    }
+
+    fun rejectReservation(reservation: Long) {
+        viewModelScope.launch {
+            val response = reservationRepository.rejectReservation(reservation)
+            rejectReservationResponse.value = response
         }
     }
 }

@@ -40,10 +40,11 @@ interface BasicApi {
     suspend fun makeReservation(@Body reservation: Reservation): Response<Reservation>
 
     @PUT("reservation")
-    suspend fun acceptReservation(@Body reservation: Reservation): Response<Reservation>
+    suspend fun acceptReservation(@Body reservation: Long): Response<Reservation>
 
     @DELETE("reservation")
-    suspend fun rejectReservation(@Body reservation: Reservation): Response<Boolean>
+    suspend fun rejectReservation(@Query("reservationId") reservationId: Long): Response<Boolean>
+
 
 
     //  Registration
@@ -56,6 +57,5 @@ interface BasicApi {
     suspend fun uploadImage(@Part image: MultipartBody.Part): Response<ResponseBody>
 
     @PUT("user/password")
-    suspend fun changePassword(@Query("oldPassword") oldPassword: String,
-                               @Query("newPassword") newPassword: String): Response<User>
+    suspend fun changePassword(@Query("newPassword") newPassword: String): Response<User>
 }

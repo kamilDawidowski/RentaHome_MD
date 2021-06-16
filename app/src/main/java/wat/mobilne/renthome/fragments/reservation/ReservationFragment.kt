@@ -50,15 +50,6 @@ class ReservationFragment : Fragment(),AdapterReservation.OnItemClickListener  {
         reservationViewModel = ViewModelProvider(this).get(ReservationViewModel::class.java)
         observeReservation()
         getReservations()
-
-//        btnAcceptReservation.setOnClickListener {
-//            onReservationAccepted()
-//        }
-//        btnRejectReservation.setOnClickListener {
-//            onReservationRejected()
-//        }
-
-
     }
 
 
@@ -66,9 +57,12 @@ class ReservationFragment : Fragment(),AdapterReservation.OnItemClickListener  {
     override fun onItemClick(position: Int, currentItem: Reservation) {
         Toast.makeText(context, "Click",Toast.LENGTH_SHORT)
 
-        val action = ReservationFragmentDirections.actionReservationFragmentToReservationClickFragment()
-        findNavController().navigate(action)
-        ////!
+        val action = currentItem.id?.let {
+            ReservationFragmentDirections.actionReservationFragmentToReservationClickFragment(
+                it
+            )
+        }
+        action?.let { findNavController().navigate(it) }
     }
 
 

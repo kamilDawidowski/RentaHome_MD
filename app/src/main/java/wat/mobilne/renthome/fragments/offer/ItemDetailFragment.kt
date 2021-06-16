@@ -32,9 +32,6 @@ class ItemDetailFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-
-
-
         return inflater.inflate(R.layout.fragment_item_detail, container, false)
     }
 
@@ -42,8 +39,6 @@ class ItemDetailFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         initData()
-
-        Log.d("Safeargs", args.offer.toString())
 
         btnReservation.setOnClickListener {
             val action=ItemDetailFragmentDirections.actionItemDetailFragmentToItemReservationDetailFragment(args.price, args.offer)

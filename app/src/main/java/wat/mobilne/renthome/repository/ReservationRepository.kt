@@ -13,7 +13,11 @@ class ReservationRepository {
         return RetrofitInstance.api.makeReservation(reservation)
     }
 
-    suspend fun acceptReservation(reservation: Reservation): Response<Reservation> {
+    suspend fun acceptReservation(reservation: Long): Response<Reservation> {
         return RetrofitInstance.api.acceptReservation(reservation)
+    }
+
+    suspend fun rejectReservation(reservation: Long): Response<Boolean> {
+        return RetrofitInstance.api.rejectReservation(reservation)
     }
 }
