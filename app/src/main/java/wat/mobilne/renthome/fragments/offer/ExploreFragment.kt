@@ -73,6 +73,7 @@ class ExploreFragment : Fragment(), AdapterExplore.OnItemClickListener {
     private fun observeOfferChange() {
         offerViewModel.getOffersResponse.observe(viewLifecycleOwner, { offers ->
             recyclerView.adapter = offers.body()?.let { AdapterExplore(it, this) }
+            recyclerView.adapter?.notifyDataSetChanged()
         })
     }
 }

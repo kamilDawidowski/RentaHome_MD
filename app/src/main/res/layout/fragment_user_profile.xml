@@ -8,12 +8,11 @@
     tools:context=".fragments.UserProfileFragment">
 
 
-
     <androidx.cardview.widget.CardView
+        android:id="@+id/cardView4"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         app:cardCornerRadius="40dp"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -23,7 +22,7 @@
             android:id="@+id/constraintLayout"
             android:layout_width="match_parent"
             android:layout_height="354dp"
-            android:background="@color/primaryColor">
+            android:background="?attr/colorPrimary">
 
 
             <TextView
@@ -42,7 +41,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:fontFamily="@font/font_3"
-                android:text="Marzena"
+                android:text="Nazwa użytkownika"
                 android:textSize="24dp"
                 app:layout_constraintEnd_toEndOf="@+id/imageView11"
                 app:layout_constraintStart_toStartOf="@+id/imageView11"
@@ -62,25 +61,27 @@
 
             <TextView
                 android:id="@+id/txtName"
-                android:layout_width="wrap_content"
+                android:layout_width="81dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="24dp"
-                android:layout_marginEnd="24dp"
+                android:layout_marginStart="48dp"
+                android:layout_marginTop="16dp"
                 android:fontFamily="@font/font_3"
                 android:text="TextView"
-                app:layout_constraintEnd_toStartOf="@+id/txtSurname"
+                app:layout_constraintEnd_toEndOf="@+id/txtEmail"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/txtEmail" />
 
             <TextView
                 android:id="@+id/txtSurname"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="48dp"
                 android:fontFamily="@font/font_3"
                 android:text="TextView"
-                app:layout_constraintBottom_toBottomOf="@+id/txtName"
-                app:layout_constraintTop_toTopOf="@+id/txtName"
-                app:layout_constraintVertical_bias="1.0"
-                tools:layout_editor_absoluteX="210dp" />
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/txtEmail"
+                app:layout_constraintTop_toBottomOf="@+id/txtEmail" />
 
             <ImageView
                 android:id="@+id/imageView11"
@@ -95,5 +96,16 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.cardview.widget.CardView>
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/txtDescription"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:text="There is example description"
+        android:layout_margin="12dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cardView4" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -31,6 +31,8 @@ class UserProfileFragment : Fragment() {
         txtName.text = args.user.name
         txtSurname.text = args.user.surname
         txtUsername.text = args.user.username
+        txtDescription.text = args.user.description
+
     }
 
 }

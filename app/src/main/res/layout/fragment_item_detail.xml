@@ -48,7 +48,7 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:background="@color/primaryLightColor"
+            android:background="?attr/colorPrimaryVariant"
             android:layout_height="match_parent">
 
             <TextView
@@ -80,7 +80,7 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="174dp"
-            android:background="@color/primaryLightColor">
+            android:background="?attr/colorPrimaryVariant">
 
             <ImageView
                 android:id="@+id/imageViewLocalization"
@@ -117,7 +117,7 @@
                 android:id="@+id/btnReservation"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@color/primaryColor"
+                android:background="?attr/colorPrimary"
                 android:text="@string/Reservation"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -127,7 +127,7 @@
                 android:id="@+id/btnCancel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@color/colorPrimaryVariant"
+                android:background="?attr/colorPrimary"
                 android:text="@android:string/cancel"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
