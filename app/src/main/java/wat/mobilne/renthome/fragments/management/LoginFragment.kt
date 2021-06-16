@@ -49,6 +49,7 @@ class LoginFragment : Fragment() {
         textViewSignUp.setOnClickListener {
             val action = LoginFragmentDirections.actionLoginFragmentToRegiserFragment()
             navController.navigate(action)
+
         }
     }
 
