@@ -138,4 +138,9 @@
         android:name="wat.mobilne.renthome.fragments.MapFragmentLocation"
         android:label="fragment_map_location"
         tools:layout="@layout/fragment_map_location" />
+    <fragment
+        android:id="@+id/userProfileFragment"
+        android:name="wat.mobilne.renthome.fragments.UserProfileFragment"
+        android:label="fragment_user_profile"
+        tools:layout="@layout/fragment_user_profile" />
 </navigation>

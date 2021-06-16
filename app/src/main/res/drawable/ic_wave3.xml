@@ -1,0 +1,13 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="1440dp"
+    android:height="335dp"
+    android:viewportWidth="1440"
+    style="@style/Theme.RentHome"
+
+    android:viewportHeight="335">
+
+
+  <path
+      android:pathData="M0,160L130.9,96L261.8,160L392.7,256L523.6,288L654.5,224L785.5,192L916.4,128L1047.3,160L1178.2,192L1309.1,192L1440,96L1440,0L1309.1,0L1178.2,0L1047.3,0L916.4,0L785.5,0L654.5,0L523.6,0L392.7,0L261.8,0L130.9,0L0,0Z"
+      android:fillColor="@color/primaryColor"/>
+</vector>
