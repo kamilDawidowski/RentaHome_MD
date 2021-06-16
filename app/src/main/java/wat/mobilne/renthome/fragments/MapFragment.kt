@@ -36,29 +36,16 @@ class MapFragment : Fragment(), GoogleMap.OnMyLocationButtonClickListener,
     GoogleMap.OnMyLocationClickListener,
     OnMapReadyCallback, ActivityCompat.OnRequestPermissionsResultCallback {
 
-    private val REQUEST_LOCATION_PERMISSION = 1
-    private var permissionDenied = false
     private lateinit var map: GoogleMap
-    private lateinit var lastLocation: Location
-    private lateinit var fusedLocationProviderClient: FusedLocationProviderClient
 
     companion object{
         private const val LOCATION_REQUST_CODE=1
-    }
-
-    private fun isPermissionGranted() : Boolean {
-        return ContextCompat.checkSelfPermission(
-            activity as MainActivity,
-            ACCESS_FINE_LOCATION
-        )==PackageManager.PERMISSION_GRANTED
     }
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
-            fusedLocationProviderClient=LocationServices.getFusedLocationProviderClient(context)
-
         }
     }
 
@@ -67,21 +54,9 @@ class MapFragment : Fragment(), GoogleMap.OnMyLocationButtonClickListener,
 
         val menuActivity = activity as MainActivity
         val offers = menuActivity.offers
-//        if (ActivityCompat.checkSelfPermission(
-//                menuActivity,
-//                Manifest.permission.ACCESS_FINE_LOCATION
-//            ) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(
-//                menuActivity,
-//                Manifest.permission.ACCESS_COARSE_LOCATION
-//            ) != PackageManager.PERMISSION_GRANTED
-//        ) {
-//
-//        }
+
         googleMap.uiSettings.isZoomControlsEnabled=true
-        setUpMap()
 
-
-        //Dodawanie znaczników ofert
         if (offers != null) {
             offers.value?.forEach {
                 val point = LatLng(it.latitude, it.longitude)
@@ -108,39 +83,6 @@ class MapFragment : Fragment(), GoogleMap.OnMyLocationButtonClickListener,
 
         }
 
-    }
-
-    private fun setUpMap() {
-        Toast.makeText(context,"ssssss1",Toast.LENGTH_LONG).show()
-        if (ActivityCompat.checkSelfPermission(
-                activity as MainActivity,
-                ACCESS_FINE_LOCATION
-            ) != PackageManager.PERMISSION_GRANTED)
-         {
-             ActivityCompat.requestPermissions(activity as MainActivity, arrayOf(
-                 ACCESS_FINE_LOCATION), LOCATION_REQUST_CODE
-             )
-            // TODO: Consider calling
-            //    ActivityCompat#requestPermissions
-            // here to request the missing permissions, and then overriding
-            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
-            //                                          int[] grantResults)
-            // to handle the case where the user grants the permission. See the documentation
-            // for ActivityCompat#requestPermissions for more details.
-            return
-        }
-        map.isMyLocationEnabled=true
-        fusedLocationProviderClient.lastLocation.addOnSuccessListener { location->
-
-            if(location!=null)
-            {
-                Toast.makeText(context,"ssssss2",Toast.LENGTH_LONG).show()
-                lastLocation=location
-                val curerentLatLng=LatLng(location.latitude,location.longitude)
-                map.animateCamera((CameraUpdateFactory.newLatLngZoom(curerentLatLng,12f)))
-            }
-            Toast.makeText(context,"ssssss3",Toast.LENGTH_LONG).show()
-        }
     }
 
 
