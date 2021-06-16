@@ -4,6 +4,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.TextView
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
@@ -47,8 +48,23 @@ class AdapterReservation(
         val itemUser: TextView = itemView.tReservatioUser
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
         init {
             itemView.setOnClickListener(this)
+
+
         }
 
         override fun onClick(v: View?) {
@@ -60,6 +76,9 @@ class AdapterReservation(
             }
 
         }
+
+
+
     }
 
     interface OnItemClickListener {
@@ -72,4 +91,6 @@ class AdapterReservation(
         holder.itemDate.text = currentItem.endDate
         holder.itemUser.text = currentItem.userDto.username
     }
+
+
 }

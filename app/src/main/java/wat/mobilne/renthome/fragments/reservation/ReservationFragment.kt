@@ -14,12 +14,16 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.fragment_list_item_reservation.*
 import kotlinx.android.synthetic.main.fragment_list_item_reservation.view.*
 import kotlinx.android.synthetic.main.fragment_reservation.*
 import wat.mobilne.renthome.R
 import wat.mobilne.renthome.adapter.AdapterReservation
+import wat.mobilne.renthome.fragments.management.LoginFragmentDirections
+import wat.mobilne.renthome.fragments.offer.ExploreFragmentDirections
 import wat.mobilne.renthome.fragments.offer.ItemDetailFragmentDirections
+import wat.mobilne.renthome.models.Offer
 import wat.mobilne.renthome.models.Reservation
 import wat.mobilne.renthome.utils.Preferences
 import wat.mobilne.renthome.viewmodel.ReservationViewModel
@@ -54,11 +58,17 @@ class ReservationFragment : Fragment(),AdapterReservation.OnItemClickListener  {
 //            onReservationRejected()
 //        }
 
+
     }
+
 
     @SuppressLint("ResourceAsColor")
     override fun onItemClick(position: Int, currentItem: Reservation) {
-        Toast.makeText(context, "Halo",Toast.LENGTH_SHORT)
+        Toast.makeText(context, "Click",Toast.LENGTH_SHORT)
+
+        val action = ReservationFragmentDirections.actionReservationFragmentToReservationClickFragment()
+        findNavController().navigate(action)
+        ////!
     }
 
 
@@ -83,6 +93,7 @@ class ReservationFragment : Fragment(),AdapterReservation.OnItemClickListener  {
         })
     }
 
+
     private fun onReservationAccepted() {
 //        reservationViewModel.acceptReservation()
     }
@@ -90,6 +101,7 @@ class ReservationFragment : Fragment(),AdapterReservation.OnItemClickListener  {
     private fun onReservationRejected() {
 
     }
+
 
 
 

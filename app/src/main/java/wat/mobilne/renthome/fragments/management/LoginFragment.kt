@@ -38,7 +38,7 @@ class LoginFragment : Fragment() {
     }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        (activity as MainActivity).hideBootomMenu()
+        (activity as MainActivity).hideBottomMenu()
         val navHostFragment =
             activity?.supportFragmentManager?.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
         navController = navHostFragment.navController
@@ -84,7 +84,7 @@ class LoginFragment : Fragment() {
                 Preferences.user = response.body()!!
                 Log.d("Login", "user: " + response.body().toString())
                 navigateToExplore()
-                (activity as MainActivity).showBootomMenu()
+                (activity as MainActivity).showBottomMenu()
             } else {
                 // #TODO: Handle server exception
             }
