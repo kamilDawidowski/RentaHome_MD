@@ -18,13 +18,6 @@ import java.util.*
 
 class ItemDetailFragment : Fragment() {
     private val args: ItemDetailFragmentArgs by navArgs()
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-
-        }
-    }
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -56,6 +49,11 @@ class ItemDetailFragment : Fragment() {
             val action=ItemDetailFragmentDirections.actionItemDetailFragmentToMapZoomFragment(args.lat.toFloat(),args.long.toFloat())
             findNavController().navigate(action)
 
+        }
+
+        imageViewUser.setOnClickListener {
+            val action = ItemDetailFragmentDirections.actionItemDetailFragmentToUserProfileFragment(args.offer.userDto)
+            findNavController().navigate(action)
         }
     }
 

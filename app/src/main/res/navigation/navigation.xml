@@ -93,6 +93,10 @@
         <argument
             android:name="offer"
             app:argType="wat.mobilne.renthome.models.Offer" />
+        <action
+            android:id="@+id/action_itemDetailFragment_to_userProfileFragment"
+            app:destination="@id/userProfileFragment"
+            app:popUpTo="@id/itemDetailFragment" />
     </fragment>
     <fragment
         android:id="@+id/itemReservationDetailFragment"
@@ -115,7 +119,12 @@
         android:id="@+id/reservationFragment"
         android:name="wat.mobilne.renthome.fragments.reservation.ReservationFragment"
         android:label="fragment_reservation"
-        tools:layout="@layout/fragment_reservation" />
+        tools:layout="@layout/fragment_reservation" >
+        <action
+            android:id="@+id/action_reservationFragment_to_userProfileFragment"
+            app:destination="@id/userProfileFragment"
+            app:popUpTo="@id/reservationFragment" />
+    </fragment>
     <fragment
         android:id="@+id/addOfferFragment"
         android:name="wat.mobilne.renthome.fragments.offer.AddOfferFragment"
@@ -142,5 +151,9 @@
         android:id="@+id/userProfileFragment"
         android:name="wat.mobilne.renthome.fragments.UserProfileFragment"
         android:label="fragment_user_profile"
-        tools:layout="@layout/fragment_user_profile" />
+        tools:layout="@layout/fragment_user_profile" >
+        <argument
+            android:name="user"
+            app:argType="wat.mobilne.renthome.models.User" />
+    </fragment>
 </navigation>
