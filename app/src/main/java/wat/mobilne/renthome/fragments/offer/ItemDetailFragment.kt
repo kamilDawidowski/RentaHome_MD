@@ -74,8 +74,7 @@ class ItemDetailFragment : Fragment() {
             val addresses = geocoder.getFromLocation(latitude, longitude, 1)
             if((latitude < -90.0 || latitude > 90.0) || (longitude < -180.0 || longitude > 180.0))
             {
-                result.append("Błąd").append("\n")
-                result.append("Błąd")
+                result.append("Zla lokalizacja")
             }
             else
             {
@@ -94,12 +93,11 @@ class ItemDetailFragment : Fragment() {
             }
 
         } catch (e: IOException) {
-            Log.e("tag","mApaaaaaaaaaaaaa")
+            Log.e("tag","map error")
         }
         catch (b: IllegalArgumentException)
         {
-            result.append("Brak dokładnego adresu").append("\n")
-            result.append("brak dokładnego adresu ")
+            result.append("Brak dokładnego adresu")
         }
         return result.toString()
     }
@@ -110,9 +108,7 @@ class ItemDetailFragment : Fragment() {
         textTitle.text = args.title
         textDescription.text = args.description
         textCash.text = args.price.toString()
-    }
-
-    private fun makeReservation() {
+        textUser.text = args.offer.userDto.username
     }
 
 

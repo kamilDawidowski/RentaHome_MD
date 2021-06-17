@@ -100,7 +100,7 @@ class ProfileFragment : Fragment() {
 
     private fun showEditInputs() {
         chUsername.visibility = View.VISIBLE
-        chEmail.visibility = View.VISIBLE
+//        chEmail.visibility = View.VISIBLE
         chName.visibility = View.VISIBLE
         chSurname.visibility = View.VISIBLE
         buttonConfirmChange.visibility = View.VISIBLE
@@ -108,7 +108,7 @@ class ProfileFragment : Fragment() {
 
     private fun hideEditInputs() {
         chUsername.visibility = View.INVISIBLE
-        chEmail.visibility = View.INVISIBLE
+//        chEmail.visibility = View.INVISIBLE
         chName.visibility = View.INVISIBLE
         chSurname.visibility = View.INVISIBLE
         buttonConfirmChange.visibility = View.INVISIBLE

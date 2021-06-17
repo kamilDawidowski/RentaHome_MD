@@ -47,7 +47,8 @@
     <string name="add_image">Dodaj zdjęcie</string>
     <string name="Login_Correct">Login jest prawidłowy</string>
     <string name="InCorrectLogin">"Login jest nieprawidłowy! "</string>
-    <string name="hintincorecpasssword">Twoje hasło musi mieć conajmniej 6 znnaków!</string>
+    <string name="failed_login">Niepoprawne dane logowania!</string>
+    <string name="hintincorecpasssword">Twoje hasło musi mieć conajmniej 6 znaków, a email zawierać @</string>
     <string name="title_activity_second">SecondActivity</string>
     <!-- Strings used for fragments for navigation -->
     <string name="first_fragment_label">First Fragment</string>

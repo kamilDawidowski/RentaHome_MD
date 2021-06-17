@@ -88,8 +88,9 @@ class AdapterReservation(
 
     override fun onBindViewHolder(holder: AdapterReservation.ExampleViewHolder, position: Int) {
         val currentItem = itemList[position]
+        val dateRange = currentItem.startDate + " - " + currentItem.endDate
         holder.itemOffer.text = currentItem.offerDto.title
-        holder.itemDate.text = currentItem.endDate
+        holder.itemDate.text = dateRange
         holder.itemUser.text = currentItem.userDto.username
     }
 

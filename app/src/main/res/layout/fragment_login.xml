@@ -14,6 +14,7 @@
         android:layout_width="match_parent"
         android:layout_height="96dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/ic_wave2" />
@@ -23,12 +24,12 @@
         android:layout_width="300dp"
         android:layout_height="50dp"
         android:layout_marginBottom="40dp"
-        android:hint="@string/hint_username"
+        android:hint="@string/hint_email"
         app:layout_constraintBottom_toTopOf="@+id/textInputPassword"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.504"
         app:layout_constraintStart_toStartOf="parent"
-        app:startIconDrawable="@drawable/ic_profile">
+        app:startIconDrawable="@drawable/ic_message">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/inputUsername"

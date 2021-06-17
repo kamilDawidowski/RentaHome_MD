@@ -45,6 +45,7 @@
     <string name="price_for_one_day">Price for one day</string>
     <string name="description">Description</string>
     <string name="add_image">Add image</string>
+    <string name="failed_login">Incorrect credentials!</string>
     <string name="Login_Correct">Login is corect</string>
     <string name="InCorrectLogin">"Login is incorrect! "</string>
     <string name="hintincorecpasssword">Your password,username must contain 6 characters and email must have @ !</string>

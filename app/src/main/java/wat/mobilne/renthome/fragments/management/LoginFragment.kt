@@ -50,6 +50,8 @@ class LoginFragment : Fragment() {
         loginButton.setOnClickListener {
             if(validateForm(inputUsername.text.toString(), inputPassword.text.toString())) {
                 onLoginButtonClick()
+            } else {
+                Toast.makeText(context, getString(R.string.failed_login), Toast.LENGTH_SHORT).show()
             }
         }
 
@@ -63,7 +65,7 @@ class LoginFragment : Fragment() {
     private fun navigateToExplore() {
         val action = LoginFragmentDirections.actionLoginFragmentToExploreFragment()
         navController.navigate(action)
-        Toast.makeText(context, inputUsername.text.toString(), Toast.LENGTH_SHORT).show()
+        Toast.makeText(context, inputUsername.text.toString() + " zalogowany", Toast.LENGTH_SHORT).show()
     }
 
     private fun onLoginButtonClick() {
@@ -86,7 +88,7 @@ class LoginFragment : Fragment() {
                 navigateToExplore()
                 (activity as MainActivity).showBottomMenu()
             } else {
-                // #TODO: Handle server exception
+                Toast.makeText(context, getString(R.string.failed_login), Toast.LENGTH_SHORT).show()
             }
         })
     }
